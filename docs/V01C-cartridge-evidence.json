@@ -1,0 +1,135 @@
+{
+  "authority": "exact ROM bytes plus documented SNES header/vector layout",
+  "canonical_crc32": "7D06F473",
+  "canonical_rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "canonical_rom_size_bytes": 1048576,
+  "canonical_sum16": "0x5F55",
+  "census_total_bytes": 1048576,
+  "census_totals": {
+    "HEADER_VECTOR": 64,
+    "UNRESOLVED": 1048512
+  },
+  "copier_header_bytes": 0,
+  "header_candidates": [
+    {
+      "checksum": "0x5F55",
+      "checksum_complement": "0xA0AA",
+      "emulation_reset": "0x8000",
+      "header_file_offset": "0x007FC0",
+      "maker_code": "0x71",
+      "map_mode": "0x30",
+      "mapping": "LoROM",
+      "present": true,
+      "reasons": [
+        "mostly printable nonempty title",
+        "checksum/complement pair sums to 0xFFFF",
+        "stored checksum equals canonical ROM byte sum",
+        "emulation RESET vector is in upper bank half",
+        "recognized map mode 0x30",
+        "map mode agrees with candidate header site",
+        "plausible ROM size code"
+      ],
+      "region_code": "0x01",
+      "rom_size_code": 10,
+      "rom_type": "0x00",
+      "score": 19,
+      "site": "LoROM",
+      "speed": "FastROM",
+      "sram_size_code": 0,
+      "title": "ROCK N' ROLL RACING",
+      "title_bytes_hex": "524f434b204e2720524f4c4c20524143494e472020",
+      "version": 0
+    },
+    {
+      "checksum": "0x0000",
+      "checksum_complement": "0x0000",
+      "emulation_reset": "0x0000",
+      "header_file_offset": "0x00FFC0",
+      "maker_code": "0x00",
+      "map_mode": "0x00",
+      "mapping": "UNKNOWN",
+      "present": true,
+      "reasons": [],
+      "region_code": "0x00",
+      "rom_size_code": 0,
+      "rom_type": "0x00",
+      "score": 0,
+      "site": "HiROM",
+      "speed": "UNKNOWN",
+      "sram_size_code": 0,
+      "title": "",
+      "title_bytes_hex": "000000000000000000000000000000000000000000",
+      "version": 0
+    },
+    {
+      "header_file_offset": "0x407FC0",
+      "present": false,
+      "reasons": [
+        "candidate lies outside canonical ROM"
+      ],
+      "score": -999,
+      "site": "ExLoROM"
+    },
+    {
+      "header_file_offset": "0x40FFC0",
+      "present": false,
+      "reasons": [
+        "candidate lies outside canonical ROM"
+      ],
+      "score": -999,
+      "site": "ExHiROM"
+    }
+  ],
+  "mapping_examples": {
+    "00:8000": "0x000000",
+    "00:FFFC": "0x007FFC",
+    "1F:FFFF": "0x0FFFFF",
+    "80:8000": "0x000000",
+    "9F:FFFF": "0x0FFFFF"
+  },
+  "schema": 1,
+  "selected_header": {
+    "checksum": "0x5F55",
+    "checksum_complement": "0xA0AA",
+    "emulation_reset": "0x8000",
+    "header_file_offset": "0x007FC0",
+    "maker_code": "0x71",
+    "map_mode": "0x30",
+    "mapping": "LoROM",
+    "present": true,
+    "reasons": [
+      "mostly printable nonempty title",
+      "checksum/complement pair sums to 0xFFFF",
+      "stored checksum equals canonical ROM byte sum",
+      "emulation RESET vector is in upper bank half",
+      "recognized map mode 0x30",
+      "map mode agrees with candidate header site",
+      "plausible ROM size code"
+    ],
+    "region_code": "0x01",
+    "rom_size_code": 10,
+    "rom_type": "0x00",
+    "score": 19,
+    "site": "LoROM",
+    "speed": "FastROM",
+    "sram_size_code": 0,
+    "title": "ROCK N' ROLL RACING",
+    "title_bytes_hex": "524f434b204e2720524f4c4c20524143494e472020",
+    "version": 0
+  },
+  "selection_margin": 19,
+  "vectors": {
+    "emulation_abort": "0x81BB",
+    "emulation_cop": "0x81BB",
+    "emulation_irq_brk": "0x81FD",
+    "emulation_nmi": "0x8166",
+    "emulation_reserved": "0x0000",
+    "emulation_reset": "0x8000",
+    "native_abort": "0x81BB",
+    "native_brk": "0x81BB",
+    "native_cop": "0x81BB",
+    "native_irq": "0x81FD",
+    "native_nmi": "0x8166",
+    "native_reset_reserved": "0x0000"
+  }
+}

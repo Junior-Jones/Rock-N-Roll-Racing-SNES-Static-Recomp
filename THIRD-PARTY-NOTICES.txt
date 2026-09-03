@@ -1,0 +1,35 @@
+Rock n' Roll Racing (SNES) Static Recompilation 1.0.0
+Third-party notices
+
+SDL 3.4.10
+----------
+
+The Windows launcher statically links SDL 3.4.10 for gamepad support. SDL's
+zlib license is distributed as SDL-LICENSE.txt.
+
+Snes9x/byuu S-SMP semantic provenance
+--------------------------------------
+
+The ahead-of-time S-SMP implementation was generated from a finite semantic
+library derived from Snes9x/byuu S-SMP sources. The complete opcode semantic
+library is an offline development input and is not linked as an interpreter.
+Production contains only Rock n' Roll Racing's discovered exact-PC forms and
+rejects unknown PCs, opcode mismatches and writes to owned audio code.
+
+The Snes9x license and copyright notice are distributed as
+SNES9X-LICENSE.txt. Its terms apply to the derived S-SMP semantic code. See
+runtime\v10_2_audio\PROVENANCE.md in the source package.
+
+Controller mappings
+-------------------
+
+The launcher uses SDL3's built-in controller mappings. It does not load or
+distribute the former external gamecontrollerdb.txt development file.
+
+Original game
+-------------
+
+Rock n' Roll Racing, its ROM and original assets are not distributed by this
+project. Users must supply the exact legally obtained ROM described in
+Rom\Readme.txt.
+

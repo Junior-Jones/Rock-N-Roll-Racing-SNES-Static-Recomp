@@ -1,0 +1,29 @@
+ROCK N' ROLL RACING SNES STATIC RECOMP - VERSION 10.1 FINAL REPORT
+Date: 19 August 2026
+
+STATUS
+V10.1 source/static authority is complete and accepted. The portable source cold gate has passed; the full workspace recovery seal is produced after the Git freeze. Construction was ROM/source/static-proof driven. No gameplay, trace, save-state, or oracle-observed PC promoted production authority, and no static-core compilation/build was performed.
+
+PREDECESSOR
+V09C remains immutable at Git commit/tag a9586abd7a2337f34a369ab2fcf72af5a570d1ce / V09C. The V10.1 predecessor certificate verifies 21 frozen V09 authority files plus the exact ROM, Starter SNES(4), and oracle package hashes.
+
+SOURCE-PROVED BOOTSTRAP
+The reset-authorized S-CPU graph proves four calls to $80:FA38 with X selectors 0, 1, 2 and 3. The corresponding ROM records upload 4,032 bytes to $0400-$13BF, 49,936 bytes to $3800-$FB0F, 1,105 bytes to $1400-$1850, and 3,295 bytes to $2000-$2CDE. Total source-proved uploaded ARAM is 58,368 bytes.
+
+FIXED IPL / APUIO AUTHORITY
+The immutable 64-byte SNES IPL is pinned independently from MesenCE source at SHA-256 c95f88b299030d5afa55b1031e2b5ef2dff650c4b4e6bb6f8b1359436521278f. V10.1 implements only the fixed AA/BB -> CC upload/restart protocol, shared by direct CPU and DMA/HDMA APUIO accesses. It is synchronized at the existing V07 rational S-SMP target-cycle seam and contains no generic SPC700 opcode decoder.
+
+ARAM KNOWNNESS
+The IPL's ordinary-ARAM clear of $0001-$00EF contributes 239 known bytes. Together with the four source-proved upload ranges, V10.1 knows 58,607 of 65,536 ARAM bytes at its frontier, leaving 6,929 unknown. MMIO $00F0-$00FF is not promoted to ordinary ARAM knownness merely because IPL register accesses touch it. The canonical combined ARAM state hash is 54e09724cf5839203d4a5515ef7e1fa70fdbf3b61c905e6cf222bb1d052f4a34. Reset preserves ARAM storage/knownness outside the IPL-cleared range.
+
+WRAM EPOCH CENSUS
+The frozen source proof contains many low-WRAM data writes but no admitted successor into executable WRAM. V10.1 therefore promotes zero executable-WRAM epochs; writes alone never imply code.
+
+EXACT NEXT FRONTIER
+Records 0-2 terminate at $FFC0 and restart the fixed IPL. Record 3 transfers control to exact S-SMP PC $0400. V10.1 stops there with JSV10_1_STOP_SMP_AOT_REQUIRED. V10.2 owns exact-PC static SPC700 AOT from the reconstructed known ARAM epoch. DSP/audio rendering remains later authority.
+
+CERTIFICATION
+The release static-proof gate passes the V09 predecessor certificate, 20/20 focused V10.1 tests, independent raw-ROM/frozen-source/pinned-IPL review, cache-cold deterministic generation, zero-promotion claim invariants, and the no-build workflow policy.
+
+PORTABLE SOURCE COLD GATE
+An explicit-allowlist source tree passed the Starter release audit with zero findings, source-manifest verification before and after the release gate, the complete V10.1 release gate from a Git-less fresh extraction, and deterministic byte-identical repacking.

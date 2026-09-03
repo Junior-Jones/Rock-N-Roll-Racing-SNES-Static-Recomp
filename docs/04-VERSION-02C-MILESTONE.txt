@@ -1,0 +1,33 @@
+VERSION MILESTONE REPORT
+
+Version/name/date: Version 02C - Complete W65C816 semantic foundation / 18 August 2026
+Objective: provide a complete, fail-closed, target-independent W65C816 semantic/address/access foundation suitable for later static analysis without creating a production runtime interpreter.
+Predecessor: accepted Version 01C, Git tag V01C, commit df17fc48b805154668241e07fbd6091bea190bd9.
+
+AUTHORITY CHANGES
+Offline decoder/analyser: complete 256-opcode metadata plus fail-closed E/M/X context decoder; 30 normalized addressing classes; project-owned semantic primitives for all 92 instruction mnemonics; CPU-cycle/access-shape annotations.
+Proofs: all 2,048 opcode/raw-E/M/X rows explicitly accounted; 1,280 legal rows admitted to the offline semantic matrix and 768 contradictory emulation rows explicitly rejected. No game executable contexts are admitted.
+Generator: deterministic V02C context/reference artifact generator added. No game-code generator exists yet.
+Generated production sources: none.
+Machine/runtime: unchanged from V01C; no production CPU interpreter, runtime opcode switch, SNES bus, scheduler, PPU, DMA, audio, or frontend execution authority is added.
+
+SEMANTIC COVERAGE
+Covers M/X width changes, hidden B preservation for 8-bit accumulator operations, zeroed high bytes for 8-bit indexes, flags, REP/SEP/XCE, transfers, stack wrap and multi-byte stack exceptions, decimal/binary ADC/SBC, BIT/TRB/TSB, shifts/rotates, branches and wrapping, jumps/calls/returns, interrupt entry/RTI forms and vector addresses, block moves, WAI, STP, NOP and WDM.
+Address analysis covers all normalized modes, direct-page/emulation wrap rules and exceptions, bank behavior, indexed 24-bit wrap, relative wrap, pointer reads, and indirect-jump bank rules.
+Access rows distinguish fetch, pointer reads, data reads/writes, dummy writes, stack reads/writes and vector reads. Sixteen-bit memory RMW is explicitly HIGH_THEN_LOW. Cycle ranges remain CPU-semantic cycles only; SNES master-clock scheduling belongs to later milestones.
+
+INDEPENDENT CHECKS
+Official WDC Table 5-4 reference CSV contains and compares all 256 base cycle/byte rows; official PDF SHA-256 is recorded in docs/V02C-WDC-MESEN-REFERENCE-NOTES.txt.
+Pinned MesenCE RunOp parser independently compares all 256 mnemonic/address-mode rows; mismatches must be zero.
+Exhaustive arithmetic regressions cover the full 65,536-value 16-bit accumulator domain against binary boundary operands for ADC and SBC, all 10,000 valid four-digit BCD accumulator values against decimal boundaries, and the full 65,536 bit-pattern accumulator domain against both valid and invalid decimal boundary operands for ADC and SBC.
+
+GATES
+The V02C release harness must preserve and rerun V01C, run all V02C unit/exhaustive tests from the source root, reproduce generated V02C artifacts byte-for-byte in a clean temporary root, and pass the independent Mesen comparison. Release staging must then pass the Starter release audit and source-manifest verification, including a cold-extracted rerun.
+
+KNOWN LIMITS
+V03C whole-ROM discovery has not begun. The 1,048,512 non-header/vector ROM bytes remain under the V01C UNRESOLVED ownership state. V02C does not authorize any Rock n' Roll Racing instruction address, indirect target, runtime component, or gameplay route. Mesen remains observation/reference evidence only.
+
+ACCEPTANCE
+ACCEPTED - Version 02C gate closed on 18 August 2026. The cumulative gate preserved accepted V01C, passed all 52 V02C unit/exhaustive tests, compared all 256 pinned MesenCE RunOp mnemonic/address-mode rows with zero mismatch, reproduced all generated V02C artifacts byte-for-byte, and passed the Starter ROM-free release audit plus source-manifest verification from a cold extraction. The pinned Mesen headless oracle self-test and exact-ROM load/hash checks also passed.
+V02C advances zero Rock n' Roll Racing executable-ROM authority; the V01C byte ownership census remains unchanged.
+Next milestone: 03C - whole-ROM discovery and classification, preserving candidate-versus-admitted separation and beginning APUIO/upload discovery without trace promotion.

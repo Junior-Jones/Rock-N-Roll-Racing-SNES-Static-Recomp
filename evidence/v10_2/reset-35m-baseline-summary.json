@@ -1,0 +1,22 @@
+{
+  "authority": "SOURCE_ONLY_RUN_AFTER_COMPLETE_D991_D99D_RECORD_PROOF",
+  "banks": 5,
+  "frontier_types": {
+    "SAFETY_STATE_LIMIT": 1
+  },
+  "max_stack_items_seen": 36,
+  "oracle_promotions": 0,
+  "pending_states_at_stop": 971,
+  "shards": 80,
+  "source": "generated/current/v10_2/V10.2-RESET-SCPU-REDISCOVERY.json",
+  "state_limit": 35000000,
+  "states": 35000001,
+  "trace_promotions": 0,
+  "unique_calls": 2058,
+  "unique_edges_with_stack_depth": 213942,
+  "unique_frontiers": 1,
+  "unique_instruction_contexts": 22741,
+  "unique_returns": 2576,
+  "unique_terminals": 3,
+  "wrong_production_bytes": 0
+}

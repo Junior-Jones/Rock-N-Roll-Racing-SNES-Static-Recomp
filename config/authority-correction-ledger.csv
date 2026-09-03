@@ -1,0 +1,6 @@
+correction_id,version,previous_claim_id,previous_status,corrected_claim_id,reason,production_authority_changed,historical_evidence_retained,affected_owners,evidence_path
+CORR-0001,V10.2,README-CURRENT-MILESTONE,V05C,V10.1_ACCEPTED_V10.2_ACTIVE,current README was not advanced after accepted later tags,false,true,documentation,README.txt
+CORR-0002,V10.2,ZIP-WRAPPER-CURRENT-MILESTONE,V07C,V10.1_TAGGED_LIVE_PROJECT,outer handoff files predate accepted V08C V09C and V10.1,false,true,documentation,docs/STARTER-SNES-V9-MIGRATION-AUDIT.md
+CORR-0003,V10.2,HISTORICAL-CURRENT-OWNER-TESTS,CURRENT_INVARIANT,HISTORICAL_VERSION_EVIDENCE,V05 V07 V08 and V09 tests assert their own old allowlists,false,true,test_classification,config/test-execution-classification.csv
+CORR-0004,V10.2,STARTER-SNES4-ACTIVE,ACTIVE,STARTER-SNES-V9-ACTIVE,latest Starter governs new work without rewriting accepted history,false,true,all,config/starter-authority.json
+CORR-0005,V10.2,V10.1-GENERATOR-HOST-NEWLINES,NONDETERMINISTIC_WINDOWS,V10.1-GENERATOR-LF-DETERMINISTIC,Path.write_text used host-native line endings for JSON and generated headers,false,true,generator,generator/v10_1_audio_gen.py

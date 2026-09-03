@@ -1,0 +1,1299 @@
+{
+  "authority_policy": {
+    "oracle_promotions": 0,
+    "source_bytes_only": true,
+    "trace_promotions": 0,
+    "unknown_domains_fail_closed": true
+  },
+  "proofs": [
+    {
+      "context": "81:D0C2:E0M1X1",
+      "flow_kind": "CALL",
+      "proof_kind": "EXACT_LITERAL_RELOAD_CHAIN",
+      "proved_x_offsets": [
+        2
+      ],
+      "source_proof": [
+        "81:D0BA LDA #$02",
+        "81:D0BC STA $0297",
+        "81:D0BF LDX $0297",
+        "81:D0C2 JSR ($D105,X)"
+      ],
+      "table": "81:D105",
+      "targets": [
+        "81:D32C"
+      ]
+    },
+    {
+      "context": "92:8B89:E0M0X0",
+      "flow_kind": "CALL",
+      "proof_kind": "MASK_AND_SCALE_DOMAIN",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54,
+        56,
+        58,
+        60,
+        62
+      ],
+      "source_proof": [
+        "92:8B81 LDA $1B00,X",
+        "92:8B84 AND #$001F",
+        "92:8B87 ASL A",
+        "92:8B88 TAX",
+        "92:8B89 JSR ($8BCB,X)"
+      ],
+      "table": "92:8BCB",
+      "targets": [
+        "92:8C4B",
+        "92:8C4C",
+        "92:8CEF",
+        "92:8E00",
+        "92:8E0D",
+        "92:8E1A",
+        "92:8E22",
+        "92:8E3B",
+        "92:8E40",
+        "92:8E45",
+        "92:8E4A",
+        "92:8E4F",
+        "92:8E5B",
+        "92:8E60",
+        "92:8E65",
+        "92:8E6A"
+      ]
+    },
+    {
+      "context": "92:8BAF:E0M0X0",
+      "flow_kind": "CALL",
+      "proof_kind": "MASK_AND_SCALE_DOMAIN",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54,
+        56,
+        58,
+        60,
+        62
+      ],
+      "source_proof": [
+        "92:8BA7 LDA $1B00,X",
+        "92:8BAA AND #$001F",
+        "92:8BAD ASL A",
+        "92:8BAE TAX",
+        "92:8BAF JSR ($8C0B,X)"
+      ],
+      "table": "92:8C0B",
+      "targets": [
+        "92:8C4B",
+        "92:8FC7",
+        "92:8FCF",
+        "92:8FD7",
+        "92:8FDF",
+        "92:8FE7"
+      ]
+    },
+    {
+      "context": "92:8EC4:E0M0X0",
+      "flow_kind": "JUMP",
+      "proof_kind": "MASK_AND_SCALE_DOMAIN",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54,
+        56,
+        58,
+        60,
+        62
+      ],
+      "source_proof": [
+        "92:8EBC LDA $1B00,X",
+        "92:8EBF AND #$001F",
+        "92:8EC2 ASL A",
+        "92:8EC3 TAX",
+        "92:8EC4 JMP ($8EC7,X)"
+      ],
+      "table": "92:8EC7",
+      "targets": [
+        "92:8EB8",
+        "92:8F07",
+        "92:8F72",
+        "92:8F86"
+      ]
+    },
+    {
+      "context": "81:B03F:E0M1X1",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "$13B8 five-entry first game-state table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:B081",
+      "targets": [
+        "81:8C6C",
+        "81:93DF",
+        "81:B701",
+        "81:C644"
+      ]
+    },
+    {
+      "context": "81:B04A:E0M1X1",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "$13B8 five-entry alternate game-state table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:B089",
+      "targets": [
+        "81:8C6C",
+        "81:93DF",
+        "81:A66A",
+        "81:B701"
+      ]
+    },
+    {
+      "context": "81:C3F3:E0M1X1",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        2,
+        4,
+        6,
+        8,
+        14
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "object handler table with $FFFF sentinels at offsets $0A/$0C",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:C3F6",
+      "targets": [
+        "81:C406",
+        "81:C449",
+        "81:C46B",
+        "81:C493",
+        "81:C4A6"
+      ]
+    },
+    {
+      "context": "81:CB46:E0M1X1",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "$0297 nonnegative 13-state sequence table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:CB54",
+      "targets": [
+        "81:CB53",
+        "81:CB6E",
+        "81:CB78",
+        "81:CB8C",
+        "81:CB9C",
+        "81:CBA6",
+        "81:CBAF",
+        "81:CBB5",
+        "81:CBBB",
+        "81:CBC1",
+        "81:CC41",
+        "81:CD3E",
+        "81:CD89"
+      ]
+    },
+    {
+      "context": "80:A489:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "$0B9E overlapping tail-dispatch table; non-handler prologue words excluded",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "80:A484",
+      "targets": [
+        "80:A484",
+        "80:A4B4",
+        "80:A632",
+        "80:A668",
+        "80:A69E",
+        "80:A6F8",
+        "80:A751",
+        "80:A7AB",
+        "80:A804",
+        "80:A877",
+        "80:A931",
+        "80:A9EB",
+        "80:AA9B"
+      ]
+    },
+    {
+      "context": "92:A7C6:E0M0X0",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "three-entry collision/action table ending where continuation code begins",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "92:A7CD",
+      "targets": [
+        "92:A450",
+        "92:A47E",
+        "92:A660"
+      ]
+    },
+    {
+      "context": "9F:F01B:E0M0X0",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "eight-entry stream-command tail-dispatch table",
+        "exact adjacent ROM signature verified",
+        "9F:F018 PEA $F01D creates handler RTS continuation $F01E"
+      ],
+      "synthetic_return_continuation": "9F:F01E",
+      "table": "9F:F031",
+      "targets": [
+        "9F:F041",
+        "9F:F04C",
+        "9F:F04E",
+        "9F:F04F",
+        "9F:F108",
+        "9F:F11A",
+        "9F:F149",
+        "9F:F15A"
+      ]
+    },
+    {
+      "context": "81:FB31:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "six-entry player-panel tail table; the only three direct callers load Y=$00/$01/$02 and the source sequence derives an even X",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:FB34",
+      "targets": [
+        "81:A6BE",
+        "81:FB3E",
+        "81:FBA8",
+        "81:FC12",
+        "81:FC5D",
+        "81:FC9B"
+      ]
+    },
+    {
+      "context": "81:FD5A:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "thirteen-entry $0297 state tail table; the dispatcher loads the state byte and doubles it immediately before the indexed jump",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:FD5D",
+      "targets": [
+        "81:FD77",
+        "81:FD7F",
+        "81:FD80",
+        "81:FD91",
+        "81:FD9F",
+        "81:FDB3",
+        "81:FDC7",
+        "81:FDDB"
+      ]
+    },
+    {
+      "context": "92:A2E1:E0M0X0",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "four-entry secondary object geometry call table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "92:A20C",
+      "targets": [
+        "92:A43D",
+        "92:A450",
+        "92:A47E",
+        "92:A53B"
+      ]
+    },
+    {
+      "context": "81:9868:E0M1X1",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "seven-entry race/object action call table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:986D",
+      "targets": [
+        "81:987B",
+        "81:9890",
+        "81:98A8",
+        "81:98C0",
+        "81:98E5",
+        "81:98FD",
+        "81:9915"
+      ]
+    },
+    {
+      "context": "92:A2DA:E0M0X0",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "ten-entry object geometry call table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "92:A200",
+      "targets": [
+        "92:A2F0",
+        "92:A31D",
+        "92:A323",
+        "92:A356",
+        "92:A365",
+        "92:A3AC",
+        "92:A43D",
+        "92:A450",
+        "92:A47E",
+        "92:A53B"
+      ]
+    },
+    {
+      "context": "92:B2AA:E0M0X0",
+      "flow_kind": "CALL",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "bit-$0002 two-entry terrain call table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "92:B2F3",
+      "targets": [
+        "92:A3E4",
+        "92:A40F"
+      ]
+    },
+    {
+      "context": "80:A8BB:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "five-entry first vehicle-state tail table; $AB7F proves Y=0..4",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "80:A8BE",
+      "targets": [
+        "80:A8C8",
+        "80:A8DD",
+        "80:A8F2",
+        "80:A907",
+        "80:A91C"
+      ]
+    },
+    {
+      "context": "80:A975:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "five-entry second vehicle-state tail table; $AB7F proves Y=0..4",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "80:A978",
+      "targets": [
+        "80:A982",
+        "80:A997",
+        "80:A9AC",
+        "80:A9C1",
+        "80:A9D6"
+      ]
+    },
+    {
+      "context": "80:AA25:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "five-entry third vehicle-state tail table; $AB7F proves Y=0..4",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "80:AA28",
+      "targets": [
+        "80:AA32",
+        "80:AA47",
+        "80:AA5C",
+        "80:AA71",
+        "80:AA86"
+      ]
+    },
+    {
+      "context": "80:AAD5:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "five-entry fourth vehicle-state tail table; $AB7F proves Y=0..4",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "80:AAD8",
+      "targets": [
+        "80:AAE2",
+        "80:AAF7",
+        "80:AB0C",
+        "80:AB21",
+        "80:AB36"
+      ]
+    },
+    {
+      "context": "81:96B7:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "eight-entry positive object-state tail table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:96BA",
+      "targets": [
+        "81:96CC",
+        "81:96E1",
+        "81:96F6",
+        "81:970B",
+        "81:9720",
+        "81:973D",
+        "81:975A"
+      ]
+    },
+    {
+      "context": "81:97D1:E0M1X1",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "index domain",
+        "fetched target set"
+      ],
+      "proof_kind": "FINITE_ROM_TABLE_WITH_FAIL_CLOSED_INDEX_AND_TARGET_GUARDS",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "eight-entry alternate object-state tail table",
+        "exact adjacent ROM signature verified"
+      ],
+      "table": "81:97D4",
+      "targets": [
+        "81:97E2",
+        "81:97EC",
+        "81:97F6",
+        "81:9800",
+        "81:980A",
+        "81:9823",
+        "81:983C"
+      ]
+    },
+    {
+      "context": "92:A643:E0M0X0",
+      "flow_kind": "CALL",
+      "proof_kind": "COUNTED_ROM_RECORD_POINTER",
+      "proved_x_offsets": [
+        0
+      ],
+      "source_proof": [
+        "92:A214 LDY #$A23E",
+        "record count=1, key=$0B9C, following target=$A251",
+        "92:A63B copies that target to $1F47; 92:A640 sets X=0"
+      ],
+      "table": "92:A23E-counted-record",
+      "targets": [
+        "92:A251"
+      ]
+    },
+    {
+      "context": "92:8E31:E0M0X0",
+      "continuation": "92:8E32",
+      "flow_kind": "SYNTHETIC_RTS_CALL",
+      "proof_kind": "SYNTHETIC_RTS_CALL_LITERAL_DOMAIN",
+      "proved_x_offsets": [],
+      "source_proof": [
+        "four exact literal target producers",
+        "92:8E2C PEA $8E31",
+        "92:8E2F DEC A; 92:8E30 PHA; 92:8E31 RTS"
+      ],
+      "table": "literal-producers-92:8E00/8E0D/8E1A/8E22",
+      "targets": [
+        "92:8C4C",
+        "92:8C51",
+        "92:8CEF",
+        "92:8CF4"
+      ]
+    },
+    {
+      "context": "92:A69E:E0M0X0",
+      "flow_kind": "CALL",
+      "proof_kind": "COUNTED_ROM_RECORD_POINTER",
+      "proved_x_offsets": [
+        0
+      ],
+      "source_proof": [
+        "92:D971 LDY #$D991",
+        "first record count=4, four $0000 keys, following target=$D9AB",
+        "second record count=4, four $4000 keys, following target=$D9C2",
+        "92:A696 copies that target to $1F47; 92:A69B sets X=0"
+      ],
+      "table": "92:D991/D99D-counted-records",
+      "targets": [
+        "92:D9AB",
+        "92:D9C2"
+      ]
+    },
+    {
+      "context": "92:A22A:E0M0X0",
+      "flow_kind": "JUMP",
+      "production_guards_required": [
+        "fetched target set"
+      ],
+      "proof_kind": "LOCAL_ROM_TABLE_POINTER_WITH_FAIL_CLOSED_TARGET_GUARD",
+      "proved_x_offsets": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "reachability_class": "SOURCE_DERIVED_FINITE_CANDIDATE_SET",
+      "source_proof": [
+        "92:A222 LDA $A22E,X",
+        "92:A225 BEQ rejects the zero entry",
+        "92:A227 STA $1F47",
+        "92:A22A JMP ($1F47)"
+      ],
+      "table": "92:A22E",
+      "targets": [
+        "92:B213",
+        "92:BB35",
+        "92:C621",
+        "92:CF63",
+        "92:D971",
+        "92:E34D"
+      ]
+    },
+    {
+      "context": "92:A7E1:E0M0X0",
+      "flow_kind": "CALL",
+      "proof_kind": "MASK_AND_SCALE_DOMAIN",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54,
+        56,
+        58,
+        60,
+        62
+      ],
+      "source_proof": [
+        "92:A7D9 LDA $1B00,X",
+        "92:A7DC AND #$001F",
+        "92:A7DF ASL A",
+        "92:A7E0 TAX",
+        "92:A7E1 JSR ($A7E5,X)"
+      ],
+      "table": "92:A7E5",
+      "targets": [
+        "92:A777",
+        "92:A77C",
+        "92:A7E4"
+      ]
+    },
+    {
+      "context": "92:A2EB:E0M0X0",
+      "flow_kind": "STACK_RETURN_REWRITE",
+      "proof_kind": "EXACT_STACK_RETURN_REWRITE_SEQUENCE",
+      "proved_x_offsets": [],
+      "source_proof": [
+        "92:A29B PHY; A29C PHA; A2A0 PHA; A2A1 JSR $A2AC",
+        "92:A2EB PLA pulls the exact $A2A1 JSR return",
+        "92:A2EC STA $03,S replaces the lower record word with that return",
+        "92:A2EE PLA discards the upper record word; A2EF RTS resumes at A2A4"
+      ],
+      "table": "none-exact-stack-sequence",
+      "targets": []
+    },
+    {
+      "context": "81:BE5F:E0M1X1",
+      "flow_kind": "TERMINAL_PATH",
+      "proof_kind": "EXACT_SELF_CHECK_TERMINAL_PATH",
+      "proved_x_offsets": [],
+      "source_proof": [
+        "81:BE12-BE30 compares four generated words with exact sentinels",
+        "81:BE32-BE5B sets terminal state and calls the final notification routine",
+        "81:BE5F JML $81:C869 reaches an RTL wrapper without a matching long-call frame",
+        "the resulting cross-frame execution maps to mirrored non-code bytes and hardware stop instructions"
+      ],
+      "table": "none-exact-self-check-sequence",
+      "targets": [],
+      "terminal_reason": "cartridge self-check sabotage path"
+    },
+    {
+      "context": "92:A7D1:E0M0X0",
+      "flow_kind": "TERMINAL_PATH",
+      "non_rom_rts_targets": [
+        "92:0717",
+        "92:0BA3",
+        "92:102F",
+        "92:14BB",
+        "92:1947",
+        "92:1DD3",
+        "92:225F",
+        "92:26EB",
+        "92:0B8B",
+        "92:1017",
+        "92:14A3",
+        "92:192F",
+        "92:1DBB",
+        "92:2247",
+        "92:26D3",
+        "92:2B5F",
+        "92:0FFF",
+        "92:148B",
+        "92:1917",
+        "92:1DA3",
+        "92:222F",
+        "92:26BB",
+        "92:2B47",
+        "92:2FD3",
+        "92:1473",
+        "92:18FF",
+        "92:1D8B",
+        "92:2217",
+        "92:26A3",
+        "92:2B2F",
+        "92:2FBB",
+        "92:3447",
+        "92:18E7",
+        "92:1D73",
+        "92:21FF",
+        "92:268B",
+        "92:2B17",
+        "92:2FA3",
+        "92:342F",
+        "92:38BB",
+        "92:1D5B",
+        "92:21E7",
+        "92:2673",
+        "92:2AFF",
+        "92:2F8B",
+        "92:3417",
+        "92:38A3",
+        "92:3D2F",
+        "92:21CF",
+        "92:265B",
+        "92:2AE7",
+        "92:2F73",
+        "92:33FF",
+        "92:388B",
+        "92:3D17",
+        "92:41A3",
+        "92:2643",
+        "92:2ACF",
+        "92:2F5B",
+        "92:33E7",
+        "92:3873",
+        "92:3CFF",
+        "92:418B",
+        "92:4617"
+      ],
+      "proof_kind": "FINITE_NON_ROM_INVALID_OBJECT_RTS_DOMAIN",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54,
+        56,
+        58,
+        60,
+        62,
+        64,
+        66,
+        68,
+        70,
+        72,
+        74,
+        76,
+        78,
+        80,
+        82,
+        84,
+        86,
+        88,
+        90,
+        92,
+        94,
+        96,
+        98,
+        100,
+        102,
+        104,
+        106,
+        108,
+        110,
+        112,
+        114,
+        116,
+        118,
+        120,
+        122,
+        124,
+        126
+      ],
+      "source_proof": [
+        "92:8B95 initializes X=0 and the loop advances X by two to $0080",
+        "92:8B9A loads $0D from the complete 64-word $91B8 table",
+        "the finite $8C0B handler domain returns directly or preserves $0D with PEI/PLA",
+        "92:A77F PEI $0D saves that word above the ordinary JSR return",
+        "92:A791/A7B4 negative object guards branch to A7D1 RTS through the saved word",
+        "all resulting bank-$92 PCs are below $8000 and are not cartridge ROM"
+      ],
+      "table": "92:91B8-9237",
+      "targets": [],
+      "terminal_reason": "invalid object descriptor route leaves cartridge ROM"
+    },
+    {
+      "context": "9F:F595:E0M0X0",
+      "flow_kind": "TERMINAL_PATH",
+      "proof_kind": "EXACT_ZERO_STATE_FAIL_STOP_PATH",
+      "proved_x_offsets": [],
+      "source_proof": [
+        "81:C6D3 JML $9F:F588 enters with an existing long-return frame",
+        "9F:F588 PHB saves DBR above that frame",
+        "9F:F58D-F595 tests $0336 and jumps to $F610 only for zero",
+        "$F610 is a local RTS subroutine and cannot consume the one-byte DBR save as a valid return"
+      ],
+      "table": "none-exact-zero-state-guard",
+      "targets": [],
+      "terminal_reason": "invalid zero state violates the long-jump handler stack contract"
+    },
+    {
+      "context": "80:FDFC:E0M1X1",
+      "flow_kind": "CALL",
+      "proof_kind": "THREE_CLASS_SOURCE_BRANCH_DOMAIN",
+      "proved_x_offsets": [
+        0,
+        2,
+        4
+      ],
+      "source_proof": [
+        "80:FEC2 initializes X=0",
+        "two source-visible threshold regions can each INX twice",
+        "all branches therefore return X in the exact set {0,2,4}",
+        "the caller stores no new X value before JSR ($FF00,X)"
+      ],
+      "table": "80:FF00",
+      "targets": [
+        "80:FE5C",
+        "80:FE69",
+        "80:FE77"
+      ]
+    },
+    {
+      "context": "80:FE0E:E0M1X1",
+      "flow_kind": "CALL",
+      "proof_kind": "THREE_CLASS_SOURCE_BRANCH_DOMAIN",
+      "proved_x_offsets": [
+        0,
+        2,
+        4
+      ],
+      "source_proof": [
+        "80:FEC2 initializes X=0",
+        "two source-visible threshold regions can each INX twice",
+        "all branches therefore return X in the exact set {0,2,4}",
+        "the caller stores no new X value before JSR ($FF00,X)"
+      ],
+      "table": "80:FF00",
+      "targets": [
+        "80:FE5C",
+        "80:FE69",
+        "80:FE77"
+      ]
+    },
+    {
+      "context": "81:809B:E0M0X0",
+      "continuation": "81:809B",
+      "flow_kind": "SYNTHETIC_RTS_CALL",
+      "proof_kind": "FINITE_WRAM_HANDLER_WRITER_DOMAIN",
+      "proved_x_offsets": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46
+      ],
+      "source_proof": [
+        "81:8072 LDY #$0018 and 81:8075 LDX #$FFFE bound the loop to 24 even slots",
+        "81:807D BEQ rejects inactive zero slots",
+        "81:8093 PEA $809A creates the handler-return continuation $809B",
+        "81:8096 loads the WRAM handler word; DEC/PHA/RTS calls that exact address",
+        "all 49 direct literal stores and all four generic-call literals are enumerated"
+      ],
+      "table": "WRAM 81:0F41-0F70 with complete source-writer proof",
+      "targets": [
+        "81:829A",
+        "81:82A7",
+        "81:82C7",
+        "81:82DF",
+        "81:82EC",
+        "81:830C",
+        "81:8356",
+        "81:8526",
+        "81:8533",
+        "81:8556",
+        "81:85E5",
+        "81:85EB",
+        "81:85F2",
+        "81:8615",
+        "81:86D5",
+        "81:86F4",
+        "81:871D",
+        "81:8724",
+        "81:872B",
+        "81:8738",
+        "81:873F",
+        "81:8746",
+        "81:8753",
+        "81:875A",
+        "81:8761",
+        "81:8768",
+        "81:8775",
+        "81:877F",
+        "81:8789",
+        "81:8799",
+        "81:87A3",
+        "81:87AD",
+        "81:87BD",
+        "81:87C7",
+        "81:87D1",
+        "81:87F5",
+        "81:880E",
+        "81:881B",
+        "81:8828",
+        "81:8835",
+        "81:8842",
+        "81:887C",
+        "81:8889",
+        "81:8896",
+        "81:88DC",
+        "81:88E8",
+        "81:8905",
+        "81:8912",
+        "81:8ABA",
+        "81:8B18",
+        "81:8B27",
+        "81:8C5B",
+        "81:8C65"
+      ]
+    }
+  ],
+  "rom": {
+    "sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+    "size": 1048576
+  },
+  "schema": "RRR_V10_2_DYNAMIC_CALL_PROOFS_V1",
+  "summary": {
+    "proved_call_sites": 35,
+    "unique_targets": 208
+  }
+}

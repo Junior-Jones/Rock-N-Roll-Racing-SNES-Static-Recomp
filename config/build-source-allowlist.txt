@@ -1,0 +1,32 @@
+# Version 10.1 active production link authority. Static-core compilation/build remains deferred unless explicitly requested by the user.
+# One active monotonic scheduler path: V07C scheduler timing tables remain frozen authority; the V07C machine wrapper is predecessor evidence and is not linked here.
+runtime/v05c_static_cpu.c
+runtime/v05c_static_cpu.h
+generated/current/v05c/js_v05c_dispatch.c
+generated/current/v05c/js_v05c_dispatch.h
+generated/current/v05c/js_v05c_shard_0020.c
+generated/current/v05c/js_v05c_shard_2020.c
+generated/current/v05c/js_v05c_shard_2021.c
+generated/current/v05c/js_v05c_shard_2028.c
+generated/current/v05c/js_v05c_shard_2029.c
+generated/current/v05c/js_v05c_shard_2030.c
+generated/current/v05c/js_v05c_shard_203E.c
+generated/current/v05c/js_v05c_shard_2067.c
+generated/current/v05c/js_v05c_shard_2068.c
+generated/current/v05c/js_v05c_shard_2069.c
+generated/current/v05c/js_v05c_shard_206B.c
+generated/current/v05c/js_v05c_shard_206D.c
+generated/current/v05c/js_v05c_shard_206E.c
+generated/current/v05c/js_v05c_shard_206F.c
+generated/current/v05c/js_v05c_shard_207D.c
+generated/current/v05c/js_v05c_shard_207E.c
+generated/current/v05c/js_v05c_shard_24BB.c
+generated/current/v05c/js_v05c_shard_24BC.c
+runtime/v10_1_machine.c
+runtime/v10_1_machine.h
+runtime/v10_1_apu.c
+runtime/v10_1_apu.h
+runtime/v09c_ppu.c
+runtime/v09c_ppu.h
+generated/current/v07c/js_v07c_timing.c
+generated/current/v07c/js_v07c_timing.h

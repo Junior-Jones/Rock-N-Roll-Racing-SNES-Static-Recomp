@@ -1,0 +1,221 @@
+{
+  "schema": "RRR_V10_2_SCPU_HARDWARE_ACCESS_CONTRACT_V1",
+  "authority": {
+    "source_bytes_only": true,
+    "oracle_promotions": 0,
+    "trace_promotions": 0,
+    "runtime_policy": "implement complete hardware ranges; fail closed outside owned semantics"
+  },
+  "input_instruction_counts": {
+    "V10.2-RESET-SCPU-REDISCOVERY.json": 22741,
+    "V10.2-VECTOR-SCPU-REDISCOVERY.json": 3143
+  },
+  "union_instruction_contexts": 24835,
+  "hardware_access_contexts": 890,
+  "area_context_counts": {
+    "APUIO": 30,
+    "CPU_IO": 150,
+    "DMA_HDMA": 205,
+    "INPUT": 2,
+    "PPU": 500,
+    "WRAM_PORT": 3
+  },
+  "area_registers": {
+    "APUIO": [
+      "2140",
+      "2141",
+      "2142",
+      "2143"
+    ],
+    "CPU_IO": [
+      "4200",
+      "4201",
+      "4202",
+      "4203",
+      "4209",
+      "420A",
+      "420B",
+      "420C",
+      "420D",
+      "4210",
+      "4211",
+      "4212",
+      "4216"
+    ],
+    "DMA_HDMA": [
+      "4300",
+      "4301",
+      "4302",
+      "4303",
+      "4304",
+      "4305",
+      "4306",
+      "4310",
+      "4311",
+      "4312",
+      "4314",
+      "4315",
+      "4330",
+      "4331",
+      "4332",
+      "4334",
+      "4335",
+      "4340",
+      "4341",
+      "4342",
+      "4344",
+      "4345",
+      "4350",
+      "4351",
+      "4352",
+      "4354",
+      "4355",
+      "4360",
+      "4361",
+      "4362",
+      "4364",
+      "4370",
+      "4371",
+      "4372",
+      "4373",
+      "4374",
+      "4375"
+    ],
+    "INPUT": [
+      "4218",
+      "421A"
+    ],
+    "PPU": [
+      "2100",
+      "2101",
+      "2102",
+      "2103",
+      "2104",
+      "2105",
+      "2107",
+      "2108",
+      "2109",
+      "210B",
+      "210C",
+      "210D",
+      "210E",
+      "210F",
+      "2110",
+      "2111",
+      "2112",
+      "2115",
+      "2116",
+      "2117",
+      "2118",
+      "2119",
+      "211A",
+      "211B",
+      "211C",
+      "211D",
+      "211E",
+      "211F",
+      "2120",
+      "2121",
+      "2122",
+      "2123",
+      "2124",
+      "2125",
+      "2126",
+      "2127",
+      "212C",
+      "212D",
+      "212E",
+      "212F",
+      "2130",
+      "2131",
+      "2132",
+      "2133",
+      "2134",
+      "2135",
+      "2136",
+      "2139",
+      "213F"
+    ],
+    "WRAM_PORT": [
+      "2181",
+      "2183"
+    ]
+  },
+  "area_access_types": {
+    "APUIO": [
+      "READ",
+      "WRITE"
+    ],
+    "CPU_IO": [
+      "READ",
+      "WRITE"
+    ],
+    "DMA_HDMA": [
+      "WRITE"
+    ],
+    "INPUT": [
+      "READ"
+    ],
+    "PPU": [
+      "READ",
+      "WRITE"
+    ],
+    "WRAM_PORT": [
+      "WRITE"
+    ]
+  },
+  "indexed_base_sites": [
+    {
+      "context": "92:EF81:E0M1X1",
+      "mnemonic": "STZ",
+      "mode": "ABS_X",
+      "base_address": "2101",
+      "area": "PPU"
+    },
+    {
+      "context": "92:EF89:E0M1X1",
+      "mnemonic": "STZ",
+      "mode": "ABS_X",
+      "base_address": "210D",
+      "area": "PPU"
+    },
+    {
+      "context": "92:EF8C:E0M1X1",
+      "mnemonic": "STZ",
+      "mode": "ABS_X",
+      "base_address": "210D",
+      "area": "PPU"
+    },
+    {
+      "context": "92:EF99:E0M1X1",
+      "mnemonic": "STZ",
+      "mode": "ABS_X",
+      "base_address": "2116",
+      "area": "PPU"
+    },
+    {
+      "context": "92:EFC9:E0M1X1",
+      "mnemonic": "STZ",
+      "mode": "ABS_X",
+      "base_address": "2121",
+      "area": "PPU"
+    },
+    {
+      "context": "92:EFE9:E0M1X1",
+      "mnemonic": "STZ",
+      "mode": "ABS_X",
+      "base_address": "4202",
+      "area": "CPU_IO"
+    }
+  ],
+  "indexed_policy": "An ABS_X/ABS_Y base is not collapsed to an observed index. Device ownership covers the full architectural register ranges, and runtime addresses are validated there.",
+  "required_machine_domains": [
+    "LoROM/open-bus/WRAM mapping and access speed",
+    "PPU registers and rendering",
+    "APUIO and complete static SMP/DSP execution",
+    "WRAM data port",
+    "controller serial and auto-joy",
+    "CPU interrupt/timer/multiply/divide registers",
+    "all eight architectural DMA/HDMA channels"
+  ]
+}

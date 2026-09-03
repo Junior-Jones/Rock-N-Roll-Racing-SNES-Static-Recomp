@@ -1,0 +1,11 @@
+Work_ID,Subsystem,Discovery_Method,Current_Status,Discovered_Authority,Production_Status,Next_Proof,Oracle_Role
+V10.2-SCPU-RESET,S_CPU,ROM-rooted exact PBR-PC-E-M-X reconstruction,IN_PROGRESS,V10.2 independent reset graph,V10.1 production comparison only,close every source frontier then regenerate all new static rows,S_CPU_CHECK_ONLY
+V10.2-SCPU-VECTORS,S_CPU_INTERRUPTS,ROM vectors plus exact frame and re-entry proof,PENDING,V10.1 has twelve scheduler RTI bodies,REOPENED,rediscover NMI IRQ BRK COP entry and return identities,S_CPU_CHECK_ONLY
+V10.2-SCPU-DYNAMIC,S_CPU_CONTROL,producer and finite table proof,PENDING,V10.1 has four unsupported indexed calls,FAIL_CLOSED,prove index domains table bytes targets and returns,S_CPU_CHECK_ONLY
+V10.2-SCPU-SHARDS,S_CPU_BANKS,per-bank and 1KiB address-group audit,PENDING,V10.1 has eighteen production shards,REOPENED,reconstruct all source-reached banks and cross-bank edges,S_CPU_CHECK_ONLY
+V10.2-WRAM-EXEC,EXECUTABLE_WRAM,producer-copy-epoch-live-byte proof,PENDING,V10.1 proves zero executable epochs,FAIL_CLOSED,prove or retain zero with complete target census,NONE
+V10.2-PPU,PPU,source consumer discovery plus device milestone,PENDING,V09 register state only,PARTIAL,graphics modes layers windows color math renderer and frame output,NONE
+V10.2-INPUT,INPUT,source consumers and controller state machine,PENDING,V07 autojoy timing only,PARTIAL,serial ports autojoy electrical samples and frontend mapping,NONE
+V10.2-SMP,S_SMP,exact uploaded ARAM source proof and exact-PC AOT,PENDING,V10.1 stops at 0400,FAIL_CLOSED,generate and validate complete reachable uploaded program,NONE
+V10.2-DSP,S_DSP_AUDIO,source DSP register consumers plus DSP semantics,PENDING,no PCM production,ABSENT,voices BRR echo mixing clocks FIFO and host contract,NONE
+V10.2-TIMING,CLOCKS,one monotonic master timeline and exact device rendezvous,PENDING,V07 current scheduler,PARTIAL,extend generated timing to every newly produced context,NONE

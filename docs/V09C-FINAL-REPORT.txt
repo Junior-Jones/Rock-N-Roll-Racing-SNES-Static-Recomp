@@ -1,0 +1,26 @@
+ROCK N' ROLL RACING SNES STATIC RECOMP - VERSION 09C FINAL REPORT
+Date: 19 August 2026
+
+STATUS
+V09C PPU state/register authority is complete and accepted; source cold-extraction and release-audit sealing passed.
+
+PREDECESSOR
+V08C commit 268c7d3fa9ee18c9dc88e87e88a96adf7562d5b9 is preserved by an 18-file immutable authority certificate plus exact ROM/Starter/oracle hashes.
+
+STATIC AUTHORITY
+2,258 admitted S-CPU contexts; 2,250 scheduler-executable contexts; 4,803 source-proved ROM bytes. V09 adds no program contexts or code bytes and uses zero gameplay, trace, save-state, or oracle-PC promotions.
+
+PPU AUTHORITY
+All $2100-$213F addresses are routed through one JSV09Ppu state object shared by CPU and DMA/HDMA. The source-proof inventory contains 47 reached registers: 46 direct admitted effective-address registers plus DMA-only $2122. VRAM (64 KiB), OAM (544 bytes), and CGRAM (256 words) have explicit knownness. Register latches, VRAM remapping/increment/read buffering, OAM pair buffering/addressing, CGRAM pair/latch behavior, Mode 7 state/multiply reads, windows, color math/fixed color, INIDISP/SETINI, PPU1/PPU2 open bus, and H/V latches are represented.
+
+FAIL-CLOSED BOUNDARY
+V09 does not render pixels. Active-display internal OAM/CGRAM addresses, renderer-dependent VRAM read-buffer refresh, and STAT77 sprite range/time flags stop at JSV09_STOP_PPU_RENDERER_V10. Unknown PPU memory needed by a read stops at JSV09_STOP_PPU_UNKNOWN_STATE.
+
+TIMING
+V07's single monotonic master-clock and event-order authority remains the only scheduler path. V09 PPU side effects occur on the already-established CPU/DMA bus phases; no approximate second timing path was added.
+
+VALIDATION
+V09 release static-proof gate: predecessor certificate PASS; 25 focused tests PASS; independent reconstruction PASS; pinned MesenCE PPU source anchors PASS; deterministic cache-cold regeneration PASS; claim/policy invariants PASS. No static-core compilation/build performed.
+
+NEXT
+V10C begins source-proved cold-boot closure. Renderer work is only added when a proved V10 frontier requires it; gameplay is never static construction authority.

@@ -1,0 +1,49 @@
+VERSION MILESTONE REPORT
+
+Version/name/date: Version 01C - Exact cartridge identity and total physical-byte census / 18 August 2026
+Objective (one new defensible claim): The exact supported Rock n' Roll Racing USA ROM is frozen, its cartridge profile is source-proved to the 01C claim level, and every physical ROM byte has one explicit conservative current classification.
+Supersedes: none; first accepted project milestone
+Verified predecessor package/SHA-256: none; initial milestone
+
+AUTHORITY CHANGES
+Decoder/analyser: added analysis/v01c_cartridge_profile.py. It does cartridge intake only; it performs no 65816 disassembly or execution.
+Proofs: exact ROM identity, copier-header handling, header candidate scoring/rejection, stored checksum/complement and independent ROM byte-sum equality, FastROM LoROM map mode, region, ROM-only/no-SRAM profile, all native/emulation vectors, fail-closed canonical analysis mapping, and total byte-census coverage.
+Generator: none; 05C not started.
+Generated current sources: none; generated/current remains an empty authority boundary.
+Machine/runtime: none; no production runtime code in 01C.
+Frontend/diagnostics: none; placeholder boundary only.
+
+COUNTS AND SIZE
+S-CPU contexts / unique addresses / shards: 0 / 0 / 0
+S-SMP contexts / forms / protected bytes: 0 / 0 / 0
+Dynamic transfers closed/open: 0 / 0; not started
+Frontiers by class before/after: no runtime/cold-boot frontiers exist in 01C
+Physical ROM ownership totals and percentage: 1,048,576 / 1,048,576 bytes have an explicit classification = 100.000000%
+Candidates/conflicts/unresolved bytes: 0 / 0 / 1,048,512; HEADER_VECTOR source-proved bytes = 64 (0.006104%)
+Executable-RAM epochs: 0
+Reached/certified hardware rows: 0 runtime rows; cartridge profile is source-proved analysis evidence, not a runtime hardware certification
+Generated source MiB: 0
+Static library MiB: 0
+Executable MiB: 0
+Source ZIP MiB: 0.032
+
+GATES
+Commands: scripts/run_v01c.sh <external private ROM>; Starter scripts/run_first_inventory.sh; repeated clean regeneration; Mesen ./mesen-oracle self-test/hash/info; release audit/manifest checks.
+Results: analyzer PASS; 5/5 V01C unit tests PASS; wrong-ROM rejection PASS; invalid/alias mapping rejection PASS; total census gap/overlap test PASS; repeated Starter inventory byte-identical PASS; Mesen headless self-test PASS and ROM load observation exit 0.
+Oracle pins and comparisons: MesenCE 2.2.1 SNES Headless Oracle V02; observation only. Low-level launcher SHA-256 039eda04c27060b2ee3f224dd2819888cfd50d90f529332b80a270ae34877e2a; core ff29ec49592f3d66d689e8561286d859e1e462d33d512651485b4e6bcd051ecb.
+Natural observations (not closure evidence): none; gameplay is intentionally not used for construction at this milestone.
+Source-proof artifacts used to authorize changes: exact ROM SHA-256 9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182; config/target-profile.json; docs/V01C-cartridge-evidence.json; config/byte-ownership.csv; project analyzer/tests; Starter SNES Revision 2 header/vector inventory as independent candidate evidence.
+
+CLEANUP
+Old sources removed from active target: none; first milestone.
+Manifest diff reviewed: PASS; final source staging is produced only from config/release-allowlist.txt and verified against its generated source manifest.
+Release scan result: PASS; final staged source contains no ROM/save/capture/audio/build/cache/.git/oracle binary forbidden material.
+Recoverable successor package/SHA-256: RockNRollRacing-SNES-Static-Recomp-V01C-Source.zip; exact SHA-256 recorded in 05_reports/V01C-FINAL-REPORT.txt after package creation.
+
+KNOWN LIMITS
+There is no W65C816 semantic foundation yet, no context-aware disassembly, no dynamic-flow proof, no generated static C, and no runtime machine subsystem. This is correct for 01C. All 1,048,512 bytes outside the selected internal header/vector block remain explicitly UNRESOLVED rather than being guessed as data or code. Exact physical PCB marking is unknown from the ROM image; current evidence establishes the standard ROM-only FastROM LoROM cartridge profile and no enhancement/SRAM claim. Any later contradictory board behavior must fail closed and be resolved from specification/board evidence.
+
+ACCEPTANCE
+Accepted/rejected by: ACCEPTED - Version 01C gate
+Reason: all 01C identity/census/reproduction/negative/oracle-boundary/source-staging gates pass; no later-milestone work is being claimed.
+Next version objective: 02C - complete W65C816 semantic foundation, with exhaustive legal opcode/addressing/E/M/X/flag/stack/decimal/wrapping/interrupt/WAI/STP/access-cycle tests independent of Rock n' Roll Racing.

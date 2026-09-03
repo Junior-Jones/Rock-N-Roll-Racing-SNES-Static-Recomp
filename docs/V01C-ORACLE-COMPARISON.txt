@@ -1,0 +1,18 @@
+V01C ORACLE COMPARISON / OBSERVATION
+
+Oracle: MesenCE 2.2.1 SNES Headless Oracle V02
+Low-level launcher SHA-256: 039eda04c27060b2ee3f224dd2819888cfd50d90f529332b80a270ae34877e2a
+Core SHA-256: ff29ec49592f3d66d689e8561286d859e1e462d33d512651485b4e6bcd051ecb
+ROM SHA-256: 9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182
+
+Bounded observation performed:
+1. ./mesen-oracle self-test -> ORACLE_SELF_TEST result=pass.
+2. ./mesen-oracle hash <private ROM> -> same SHA-256 and 1,048,576-byte size.
+3. ./mesen-oracle info --rom <private ROM> -> console=snes, format=sfc, region=Ntsc,
+   first-frame observation completed and ORACLE_EXIT code=0.
+
+Claim boundary:
+This is corroborating verification only. It did not select the mapper, vectors,
+code roots, contexts, targets, RAM/ARAM state or any production semantic. V01C
+cartridge authority comes from the exact ROM bytes, internal-header/vector layout,
+checksum arithmetic, deterministic project analysis, and fail-closed tests.

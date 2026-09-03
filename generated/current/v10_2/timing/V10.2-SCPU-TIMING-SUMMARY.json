@@ -1,0 +1,36 @@
+{
+  "contexts": 24835,
+  "dram_refresh_clocks": 40,
+  "executable_contexts": 24832,
+  "generator_sha256": "ee9e2e320a28ba8f9c6c60b338822d9768aa98d9893d9d1802758743bc78ab4c",
+  "manifest_sha256": "941e4644c0ee92ea2a895cac1b7e84e1509e8c209e8d37fae380da431c4ec0fe",
+  "master_time_unit": "one SNES master clock",
+  "normal_scanline_clocks": 1364,
+  "opcode_matrix_sha256": "a75a23a0b008e7dcbc82af54982121fed9b7310f6e02f101730b2611431b59f7",
+  "oracle_promotions": 0,
+  "reset_startup_clocks": 186,
+  "schema": "rock-n-roll-racing-v10.2-scpu-timing-v1",
+  "short_scanline_clocks": 1360,
+  "smp_ratio": {
+    "denominator": 328125,
+    "derived_smp_hz": 1025279.8698057142,
+    "derived_stereo_pcm_hz": 32039.99593142857,
+    "domain": "S-SMP clocks per SNES master clock",
+    "numerator": 15664,
+    "profile": "ntsc-measured-32040"
+  },
+  "terminal_contexts": 3,
+  "timing_class_counts": {
+    "BLOCK_MOVE_SEQUENCE": 5,
+    "BOUNDARY_NO_EXECUTION": 3,
+    "BRANCH_SEQUENCE": 2298,
+    "DIRECT_SEQUENCE": 1437,
+    "FIXED_IDLE_SEQUENCE": 7094,
+    "INDEX_SEQUENCE": 2603,
+    "JSL_DEFERRED_BANK_FETCH": 421,
+    "LINEAR_BUS_SEQUENCE": 9500,
+    "RETURN_SEQUENCE": 1001,
+    "RMW_SEQUENCE": 473
+  },
+  "trace_promotions": 0
+}

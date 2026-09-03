@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "production_authority": [
+    "exact_rom_bytes",
+    "cpu_and_hardware_specifications",
+    "reproducible_offline_analysis",
+    "project_tests"
+  ],
+  "pinned_primary_oracle": "MesenCE 2.2.1 SNES Headless Oracle V02",
+  "secondary_oracle": "NOT_CONFIGURED_V01C",
+  "permitted_oracle_uses": [
+    "bounded_load_and_machine_observation",
+    "instruction_and_mmio_comparison",
+    "event_order_comparison",
+    "checkpoint_state_comparison",
+    "framebuffer_comparison",
+    "pcm_comparison"
+  ],
+  "forbidden_oracle_uses": [
+    "create_production_contexts",
+    "supply_missing_semantics_or_targets",
+    "inject_future_ram_or_aram_state",
+    "replace_game_audio_or_frames",
+    "runtime_fallback_or_linkage"
+  ],
+  "v01c_oracle_use": "self-test, ROM SHA-256 corroboration, and one reset/load info observation only; no target/code authorization"
+}

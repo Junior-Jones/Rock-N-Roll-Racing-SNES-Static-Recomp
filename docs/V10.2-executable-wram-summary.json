@@ -1,0 +1,16 @@
+{
+  "admitted_executable_wram_contexts": [],
+  "admitted_executable_wram_epochs": 0,
+  "admitted_executable_wram_targets": [],
+  "interrupt_reentry_policy": "generated membership permits only an existing ROM production context",
+  "oracle_promotions": 0,
+  "production_contexts_checked": 24835,
+  "production_summary_sha256": "277d435ccf6f8469ca1ad45787fb2e0aa742ac3c5cd2b5c242b4f984be278dab",
+  "rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "schema": "rock-n-roll-racing-v10.2-executable-wram-audit-v1",
+  "source_terminal_policy": "three proved invalid cartridge paths stop and cannot seed mutable execution",
+  "static_successor_relations_checked": 28911,
+  "status": "COMPLETE_ZERO_EXECUTABLE_WRAM_EPOCHS",
+  "trace_promotions": 0,
+  "unknown_mutable_targets_fail_closed": true
+}

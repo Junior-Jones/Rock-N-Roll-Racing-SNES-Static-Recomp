@@ -1,0 +1,61 @@
+{
+  "address_space_count": 16777216,
+  "compile_build_gate": "DEFERRED_BY_USER_POLICY_NOT_RUN_AT_VERSION_END",
+  "deferred_components": [
+    "V07 scheduler/interrupt timing",
+    "V08 DMA/HDMA execution",
+    "V09 PPU",
+    "V10 input",
+    "later S-SMP/audio"
+  ],
+  "fetch_contexts": 2258,
+  "fetch_shards": 18,
+  "gameplay_promotion_count": 0,
+  "generator": "ROCKNROLL_V06C_MACHINE_GEN_1",
+  "mapping": "strict 1 MiB FastROM LoROM; upper 32 KiB ROM windows only; no modulo",
+  "milestone": "V06C",
+  "oracle_promotion_count": 0,
+  "power_on_reset_distinction": "power-on initializes WRAM host image/open-bus/base latches/ALU; reset preserves WRAM, WRAM port, open bus, MEMSEL, timer/output latches and ALU while resetting CPU/reset-owned state",
+  "pre_scheduler_counter_name": "access_clock_sum",
+  "region_counts": {
+    "APU": 8192,
+    "CPU_IO": 3072,
+    "DMA": 16384,
+    "INPUT": 1280,
+    "OPEN_BUS": 7236864,
+    "PPU": 8192,
+    "ROM": 8323072,
+    "WRAM": 1179648,
+    "WRAM_PORT": 512
+  },
+  "reset_vector": "00:8000",
+  "reset_vector_sampling": "side-effect-free untimed peek",
+  "rom_physical_32k_alias_counts": {
+    "distribution": {
+      "229376": 2,
+      "262144": 30
+    },
+    "max": 262144,
+    "min": 229376
+  },
+  "rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "rom_size": 1048576,
+  "schema": 1,
+  "sram_address_count": 0,
+  "status": "ACCEPTED",
+  "timing_cell_count": 131072,
+  "timing_counts": {
+    "0": {
+      "12": 256,
+      "6": 7936,
+      "8": 57344
+    },
+    "1": {
+      "12": 256,
+      "6": 32512,
+      "8": 32768
+    }
+  },
+  "trace_promotion_count": 0,
+  "v05_context_promotion_count": 0
+}

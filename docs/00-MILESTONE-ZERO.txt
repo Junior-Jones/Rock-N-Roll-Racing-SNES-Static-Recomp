@@ -1,0 +1,64 @@
+MILESTONE ZERO - PROJECT FREEZE
+
+Project name: Rock n' Roll Racing (USA) SNES Static Recompilation
+Owner/date: project owner / 18 August 2026
+
+TARGET IDENTITY
+Canonical ROM SHA-256: 9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182
+Original-file SHA-256: 9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182
+Canonical size: 1,048,576 bytes
+Copier header handling: no copier header present; original equals canonical; original never rewritten
+Region/revision: USA / NTSC, internal header version 0
+Mapper/speed: FastROM LoROM; map mode 0x30
+SRAM: none, header size code 0, 0 bytes
+Enhancement hardware: none asserted; header ROM type 0x00 (ROM only)
+Native vectors: COP 81BB, BRK 81BB, ABORT 81BB, NMI 8166, reserved 0000, IRQ 81FD
+Emulation vectors: COP 81BB, reserved 0000, ABORT 81BB, NMI 8166, RESET 8000, IRQ/BRK 81FD
+Evidence and unresolved questions: selected physical internal header 0x007FC0; checksum 5F55 equals canonical byte sum and complement A0AA sums to FFFF; HiROM 0x00FFC0 candidate is blank/weak. Exact physical PCB marking is not inferable from the ROM file and is not asserted. If later bus/mirror behavior requires board-specific evidence, 06C owns that proof and must fail closed until resolved.
+Physical-byte census location/schema: config/byte-ownership.csv; physical interval rows cover every byte exactly once. 64 bytes are HEADER_VECTOR; 1,048,512 bytes remain explicit UNRESOLVED in 01C.
+
+STATIC EXECUTION CONTRACT
+Context key (default PBR:PC:E:M:X): PBR:PC:E:M:X
+Unknown-width split policy: split only from finite source proof; otherwise fail closed
+Unknown-context behavior: fail closed with precise diagnostic
+Dynamic-transfer proof policy: finite source proof of producer, consumer, width, bank, index domain, table bytes, admitted and rejected targets; traces cannot authorize
+Executable-RAM epoch policy: immutable opcode bytes plus explicitly proved mutable operands and epoch guard; unknown epoch fails
+Runtime decoder/interpreter policy: generic 65816/SPC700 runtime decode forbidden in production
+Candidate-to-proof promotion rule: exact bytes/specification plus reproducible proof only; observation is not proof
+Knownness/provenance policy for WRAM/VRAM/CGRAM/OAM/ARAM: host initialization value is not knownness; provenance is tracked separately and unknown consumption fails at its milestone boundary
+
+MACHINE CONTRACT
+Master time unit: one SNES master clock tick; no runtime timing claim exists in 01C
+CPU access timing classes: deferred to 06C from SNES specification; unavailable classes cannot execute early
+Event tie-break order: deferred to 07C and must be explicit before scheduler execution
+PPU accuracy claim: none in 01C
+DMA/HDMA claim: none in 01C
+Input devices in scope: not yet source-proved; no production input claim in 01C
+S-SMP/DSP claim: none in 01C
+Enhancement hardware claim: none required by current cartridge evidence; any contradictory later evidence is a fail-closed profile error
+
+ORACLE CONTRACT
+Pinned primary oracle: MesenCE 2.2.1 SNES Headless Oracle V02; launcher SHA-256 039eda04c27060b2ee3f224dd2819888cfd50d90f529332b80a270ae34877e2a; core SHA-256 ff29ec49592f3d66d689e8561286d859e1e462d33d512651485b4e6bcd051ecb
+Pinned secondary oracle: none configured for 01C
+Permitted comparisons: bounded machine/load, later instruction/MMIO/event/checkpoint/framebuffer/PCM comparisons
+Forbidden production influence: contexts, semantics, targets, future WRAM/ARAM/state, frame/audio replacement, runtime fallback or linkage
+
+PROJECT HYGIENE
+Current generated directory: generated/current (empty authority in 01C)
+Archive directory (not built): generated/archive
+Build source allow-list location: config/build-source-allowlist.txt
+Release allow-list location: config/release-allowlist.txt
+Release exclusions: config/release-exclusions.json
+Artifact naming/version rule: RockNRollRacing-SNES-Static-Recomp-VNN[C]-<kind>; accepted source-proof line begins V01C
+Recoverable predecessor package rule: each accepted milestone records predecessor SHA-256 and must be reproducible without conversation memory; V01C has no predecessor
+Frontier ledger and finite phase table locations: config/frontier-ledger.csv and config/phase-table.csv; intentionally empty before cold-boot phase work
+
+EXIT REVIEW
+[x] Every unknown above has an owner and next proof step.
+[x] Another worker can reproduce target identification.
+[x] Unknown production execution fails closed.
+[x] Oracle code cannot link into the release.
+[x] Tests/research/archives cannot enter the production source list.
+[x] Gameplay and oracle observations cannot authorize contexts or targets.
+[x] Work packages contain reproducible source/proof artifacts, not reports alone.
+Reviewer/date: automated project gate / 18 August 2026

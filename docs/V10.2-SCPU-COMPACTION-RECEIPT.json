@@ -1,0 +1,54 @@
+{
+  "schema": "starter-snes-lossless-compaction-receipt-v1",
+  "project": "Rock n' Roll Racing (SNES) Static Recompilation",
+  "version": "1.0.0",
+  "source_tree_sha256": "3bac9f57f3ec10a1389daf6824bef4cb239ab5b8b7c01e8ad001e95c76ad6df3",
+  "production_graph_sha256": "86998ae8dc8f9f8197ca46b5ad61dbe7f962a555ecb85fa291965be50c2cf3ec",
+  "context_manifest_before_sha256": "941e4644c0ee92ea2a895cac1b7e84e1509e8c209e8d37fae380da431c4ec0fe",
+  "context_manifest_after_sha256": "941e4644c0ee92ea2a895cac1b7e84e1509e8c209e8d37fae380da431c4ec0fe",
+  "tool_sha256": "75512f5542bb0a62bc5fddbe24d6dabf241876219dff7e5ed905defaa6404717",
+  "method": "exact-key frozen-parameter semantic-template factoring",
+  "dispatch_precedence": [
+    "single V10.2 compact exact-context authority",
+    "unknown contexts fail closed"
+  ],
+  "counts": {
+    "source_proved": 24835,
+    "production_before": 24835,
+    "production_after": 24835,
+    "confirmed_not_lowered_after": 0,
+    "removed_shadowed": 0,
+    "removed_structural_only": 0,
+    "removed_unreachable": 0,
+    "equivalent_bodies_factored": 24526
+  },
+  "equivalence": {
+    "exact_context_identity_preserved": true,
+    "successor_sets_preserved": true,
+    "source_byte_guards_preserved": true,
+    "fail_closed_behavior_preserved": true,
+    "runtime_decoder_added": false,
+    "historical_fallback_added": false
+  },
+  "sizes": {
+    "generated_source_before": 11977948,
+    "generated_source_after": 3034271,
+    "static_library_before": 8693312,
+    "static_library_after": 3280010,
+    "executable_before": 7635968,
+    "executable_after": 5480448,
+    "release_zip_before": 2750883,
+    "release_zip_after": 2062385
+  },
+  "verification": {
+    "deterministic_regeneration_a_sha256": "3ec21e3f0d917e45bdecb0b9b06b0543c8263c0eb3264943a2f7f53f73114bcb",
+    "deterministic_regeneration_b_sha256": "3ec21e3f0d917e45bdecb0b9b06b0543c8263c0eb3264943a2f7f53f73114bcb",
+    "release_build": "PASS_MSVC_W4_WX",
+    "context_equivalence": "PASS_24835_OF_24835",
+    "dispatch_miss_test": "PASS_FAIL_CLOSED_UNKNOWN_CONTEXT",
+    "code_guard_test": "PASS_CANONICAL_ROM_BYTES",
+    "production_selection_audit": "PASS_SINGLE_COMPACT_AUTHORITY"
+  },
+  "reversible_predecessor": "D:/Users/build/retro/Recomp/rock n roll racing/Temp/V10.2-SCPU-Uncompacted-Baseline-20260903",
+  "status": "PASS"
+}

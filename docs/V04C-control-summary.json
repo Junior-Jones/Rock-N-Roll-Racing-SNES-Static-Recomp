@@ -1,0 +1,61 @@
+{
+  "admitted_context_rows": 27697,
+  "admitted_edge_rows": 29757,
+  "admitted_unique_context_keys": 2258,
+  "apuio_candidates_dispositioned": 35,
+  "apuio_dispositions": {
+    "REJECTED_V03_CANDIDATE": 17,
+    "SOURCE_PROVED_MMIO": 18
+  },
+  "authority": "source-proved dynamic flow/control closure with explicit fail-closed unsupported boundaries; still zero production execution authority",
+  "dynamic_proof_rows": 1973,
+  "dynamic_proofs_by_class": {
+    "DIRECT_CALL": 940,
+    "DIRECT_TARGET": 66,
+    "RETURN": 967
+  },
+  "executable_wram_epochs": 0,
+  "executable_wram_policy": "No admitted V04 control target enters WRAM; any non-ROM target fails closed until producer/copy/epoch proof exists.",
+  "fail_closed_boundary_rows": 57,
+  "fail_closed_by_class": {
+    "DYNAMIC_TARGET": 7,
+    "INTERRUPT_REENTRY": 21,
+    "RETURN": 29
+  },
+  "gate": "Every admitted successor is direct/source-proved, finite-table-proved, paired-return/re-entry-proved, or stops at an explicit fail-closed boundary.",
+  "memory_access_rows": 14904,
+  "milestone": "04C",
+  "oracle_promotions": 0,
+  "ownership_bytes": {
+    "CANDIDATE": 36835,
+    "HEADER_VECTOR": 64,
+    "PROVED_CODE": 4803,
+    "UNRESOLVED": 1006874
+  },
+  "ownership_range_rows": 301,
+  "predecessor_v03c_commit": "e52ddb5200e1ec87eb0dc0426789e0370299e659",
+  "proved_conflict_blockers": 0,
+  "rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "rom_size": 1048576,
+  "runtime_decoder_added": false,
+  "schema": 1,
+  "source_proved_mmio_rows": 1507,
+  "source_proved_wram_access_rows": 6638,
+  "stack_tracking_window_bytes": 20,
+  "stack_window_policy": "Exact top-of-stack bytes are retained. Older caller state is deliberately truncated; any pull/return crossing that unknown base fails closed.",
+  "trace_promotions": 0,
+  "v03_conflicts_dispositioned": 3,
+  "v03_frontier_dispositions": {
+    "CLOSED_SOURCE_PROVED": 2,
+    "FAIL_CLOSED_UNSUPPORTED": 12,
+    "REJECTED_V03_CANDIDATE": 714,
+    "SUPERSEDED_BY_SOURCE_PROVED_CONTEXT": 146
+  },
+  "v03_frontiers_dispositioned": 874,
+  "v03_root_dispositions": {
+    "PRESERVED_SOURCE_ROOT": 16,
+    "REJECTED_CANDIDATE_ROOT": 1526,
+    "SUPERSEDED_BY_SOURCE_PROOF": 182
+  },
+  "v03_roots_dispositioned": 1724
+}

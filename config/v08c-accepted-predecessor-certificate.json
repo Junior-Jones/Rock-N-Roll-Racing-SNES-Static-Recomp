@@ -1,0 +1,30 @@
+{
+  "canonical_rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "certificate": "V07C-accepted-predecessor-for-V08C",
+  "files": {
+    "analysis/v07c_scheduler_model.py": "50db8590f78c0ec60d75063b773893d76f76e4009b0107c12845c9ce4e96daa2",
+    "config/v07c-release-state.txt": "45ac8388b0fcc0c6f3aaa8ffa15435db4385d67a1c12e1e5b70a79d999f59e7b",
+    "docs/04-VERSION-07C-MILESTONE.txt": "c88305e1b7fcf7e66e677a7874c2bdeab98e53fb6d71acdc3a2ed949fe6fff55",
+    "docs/V07C-scheduler-summary.json": "003193fd77c32db087d21a252114244db54b3ce0c2316412176062ae9aedcd95",
+    "docs/V07C-timing-manifest.csv": "1fd8e67659d7436318722f987504390a313d064174fcc157f5cde7cb7980f111",
+    "generated/current/v07c/V07C-GENERATED-SHA256.json": "6a73d2fb6f3dadcef8ffe6742d7bba0111f305736383227d012cc697a1d0e9fb",
+    "generated/current/v07c/js_v07c_timing.c": "1d27b80c4bc52dd58cbd6b408bac0f6ef3999fc33a63b1efadbee3bd9993adcc",
+    "generated/current/v07c/js_v07c_timing.h": "310449bcdb7b58c55c2ce2c882ecf1fb101d192cda9295711fa2cd7122be27d2",
+    "generator/v07c_scheduler_gen.py": "f9b705c1a5c396b4e2785c5f5dc68c2d1ef2cd51ed8f3c15871c917d1bfef9b3",
+    "runtime/v07c_machine.c": "f586ee084dcc44f3e656df8ad649e571a9ced8f11009026ea570571c8523760a",
+    "runtime/v07c_machine.h": "13c2422c879cd677e39ee3bea01ba1242295b9c19d969f8416e377be9753782e",
+    "scripts/run_v07c.sh": "4ba05236eb5b88fbbe5c1b06de359e973cc975e42ced2b4a263a2d259f6e0e50",
+    "tests/unit/test_v07c_machine_authority.py": "81ed1d98394bc235093baf0828880d561591d8760f0f98d61282be6aea5c4cbb",
+    "tests/unit/test_v07c_scheduler.py": "f7cb884b0134b0a70d45c13c2665a2702bf24d7b98a112f6c284733402bdd17c",
+    "tests/unit/test_v07c_timing_projection.py": "fd766ffcce7be1f023e00054a15ce95cc11539fd6f0c7d77b7595dcdee43f29d",
+    "tools/verify_v07c_independent.py": "ec25ef96cef1396c4aa6ba752659e3066f7e9900a853ee2b48785d9886072460",
+    "work_packages/V07C-WP01/receipt.json": "342bec4d92d83f6192ee499ae552b248c6b7c5634f19171741237bc9f4c8a12e"
+  },
+  "full_predecessor_regression_required_on_mismatch": true,
+  "git_commit": "a4ed5b1061fca4b44196dc7dc2c346273d569ea0",
+  "git_tag": "V07C",
+  "oracle_zip_sha256": "b8a96ca1b934cd9247d43122a33075f1a5674eef68c608e2876607b8b8e06c27",
+  "schema": 1,
+  "starter_zip_sha256": "d9240bc6bba8b9604e7a4bf037e04b009452fefa9f5ec2f13bb9a03486460bf1",
+  "validation_rule": "If the V07C Git tag, exact ROM/Starter/oracle hashes and every immutable V07C authority hash match, routine V08C work reuses accepted V07C proof. Shared current policy/config ledgers are intentionally outside the predecessor hash set because V08C updates them."
+}

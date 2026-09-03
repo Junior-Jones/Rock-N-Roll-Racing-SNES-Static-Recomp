@@ -1,0 +1,29 @@
+{
+  "canonical_rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "certificate": "V06C-accepted-predecessor-for-V07C",
+  "files": {
+    "analysis/v06c_machine_model.py": "08f8180c6f3a0d23becf89bcf30f99fc8c3f316a327eadbe7aabc610636b155f",
+    "docs/04-VERSION-06C-MILESTONE.txt": "5a314c19a27962378aa70793ad1817f0536bb8fe6ffaaee51bf1b2f5cf9c2a38",
+    "docs/V06C-bus-census.csv": "4f6eded44af7fecce868e03e361b23f0bfdce0498afd0e56c66650fb98a46231",
+    "docs/V06C-fetch-manifest.csv": "ffabd77108046659da19bf3e4dcf2a64ed25f84e910613dba46125d70d855039",
+    "docs/V06C-machine-summary.json": "7b0bb9b1aa00b4700a4801db8c1ead3b273bc5502594dfe1381eab5844c7b674",
+    "docs/V06C-speed-census.csv": "0d653e94aa8016cda52878648dbf1ce0dadc8d29b8feeddbc8b8ccb0b232fe7e",
+    "generated/current/v06c/V06C-GENERATED-SHA256.json": "3c9fe6236d638dfa79516e767cdf52046e41d62295a33f8ccaac443ba77323ca",
+    "generated/current/v06c/js_v06c_fetch.c": "a4cbc1b6dd21a98caa65b869ad66a829973aa8c38d87ba6d2545c903a08c6f7e",
+    "generated/current/v06c/js_v06c_fetch.h": "e2d77449ce528132a4187e1c3120ebce1e7bad762ef788b27a4e1e17d5952756",
+    "generator/v06c_machine_gen.py": "69ce372a8dcc16c3c7698e92a4f2f7ab4e893c6109a9648534e069aa1a6eedd6",
+    "runtime/v06c_machine.c": "97f441d07a700cc50c51b306dfc87342ef866b88af7dad9fbb3066bcd89ba24d",
+    "runtime/v06c_machine.h": "84fe24086b7466cd51c24e6f216aa8502d3afc734915817cb621cd6f6a3a43af",
+    "scripts/run_v06c.sh": "5b137e5623b5e5bd60129af6a778f39f35e4d8a0ec522243a3fea4e4acd36c8c",
+    "tests/unit/test_v06c_machine.py": "5ad4fbc573b224a009198691975152392fc12e4aaa8477992c6b82a69eea8e87",
+    "tools/verify_v06c_alu.py": "28969d85c8d5a6e9bac614458afb4b686572510e0227a3b6d644057b8a7c1714",
+    "tools/verify_v06c_independent.py": "4cfaaa3fbdc381cf850b83b1c9974f54f7f1511d167fc6eff0bcb3adea3e8924"
+  },
+  "full_predecessor_regression_required_on_mismatch": true,
+  "git_commit": "099801ea46bfb80d8f9065a430775ce6b9bae31a",
+  "git_tag": "V06C",
+  "oracle_zip_sha256": "b8a96ca1b934cd9247d43122a33075f1a5674eef68c608e2876607b8b8e06c27",
+  "schema": 1,
+  "starter_zip_sha256": "d9240bc6bba8b9604e7a4bf037e04b009452fefa9f5ec2f13bb9a03486460bf1",
+  "validation_rule": "If the V06C Git tag, exact ROM/Starter/oracle hashes and every immutable V06C authority hash match, routine V07C work reuses the accepted V06C proof instead of rerunning historical exhaustive gates. Current V07 policy/config/ledgers are intentionally outside the predecessor hash set."
+}

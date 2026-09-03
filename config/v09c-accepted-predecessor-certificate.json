@@ -1,0 +1,29 @@
+{
+  "files": {
+    "analysis/v08c_dma_model.py": "f3d40b340c6ed49acaaff6e29fb17b6316753b935cec75cf2a0cb79406dd520f",
+    "config/v08c-release-state.txt": "45ac8388b0fcc0c6f3aaa8ffa15435db4385d67a1c12e1e5b70a79d999f59e7b",
+    "docs/04-VERSION-08C-MILESTONE.txt": "a7ad5f3caf861b99eb783f741bf3f8faf19abba250849dec75602f1c1d6b1a64",
+    "docs/V08C-dma-summary.json": "251d5757f2e39e04c86fdc0a5b7fd8e9e2df0baa2d3d7539bd9a38d4507114e9",
+    "docs/V08C-source-dma-configurations.csv": "22ee3a55a5a9ee07756cae69f8144c5da3f08c989aa9117774055add23117db7",
+    "generated/current/v07c/js_v07c_timing.c": "1d27b80c4bc52dd58cbd6b408bac0f6ef3999fc33a63b1efadbee3bd9993adcc",
+    "generated/current/v07c/js_v07c_timing.h": "310449bcdb7b58c55c2ce2c882ecf1fb101d192cda9295711fa2cd7122be27d2",
+    "generated/current/v08c/V08C-GENERATED-SHA256.json": "0c46d0aea4780e880bf529d85b4a37c0b4d51275e3f637e29810062db109bf5b",
+    "generated/current/v08c/js_v08c_dma_tables.h": "cbdb57c853b96f38371853ab04189e3e07c75a39e252259d476bec10543d7bce",
+    "generator/v08c_dma_gen.py": "1983e4c70bbc2324598d6663f3e7bec6545680ae58c24b86928e833332f48d3e",
+    "runtime/v08c_machine.c": "6ad5085c713ae4a4e6f54eb22532b49cc899cf3fe0c1a5ab62bc8411341e9df9",
+    "runtime/v08c_machine.h": "d987fd25a0dd139b083e410a6949992e1e03fc570fdff86103e6310010cdd6c2",
+    "scripts/run_v08c.sh": "997cb5585534b5aeb3b47cfd842536467b0c2983373cdcd253b8c9fc84a7892a",
+    "tests/unit/test_v08c_dma_controller.py": "8b619a52f21f74adc0663892f6bac64a8d4d03f42d42a5518548a2c8ec13ebac",
+    "tests/unit/test_v08c_machine_authority.py": "369854c5c6dc1908d2869d4e605efa51f81cf8f5c49a725884d643aa446597e7",
+    "tools/verify_v08c_independent.py": "9e0ad2aa78250f257c72181da1f04e581798212500b57c238a2a377f34f8526d",
+    "tools/verify_v08c_predecessor_certificate.py": "6fb42d213e12f7d20980ab3561882088a12bb50d98c30646978ad63cbdad2186",
+    "work_packages/V08C-WP01/receipt.json": "8d551eeea063820148ee609ca1f65b94326a827daed9936be5afae8bce5946df"
+  },
+  "git_commit": "268c7d3fa9ee18c9dc88e87e88a96adf7562d5b9",
+  "git_tag": "V08C",
+  "milestone": "V09C",
+  "oracle_sha256": "b8a96ca1b934cd9247d43122a33075f1a5674eef68c608e2876607b8b8e06c27",
+  "rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "schema": 1,
+  "starter_sha256": "d9240bc6bba8b9604e7a4bf037e04b009452fefa9f5ec2f13bb9a03486460bf1"
+}

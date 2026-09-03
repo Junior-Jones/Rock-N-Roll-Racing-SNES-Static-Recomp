@@ -1,0 +1,13 @@
+{
+  "fixed_ipl_sha256": "c95f88b299030d5afa55b1031e2b5ef2dff650c4b4e6bb6f8b1359436521278f",
+  "milestone": "V10.1",
+  "protocol": "standard SNES fixed IPL $AA/$BB -> $CC upload -> terminator -> entry",
+  "record_table_cpu_start": "82:8000",
+  "record_table_physical_start": "010000",
+  "schema": 1,
+  "timing_claim": "APUIO protocol is synchronized at the inherited V07 rational S-SMP target seam; exact uploaded-program execution begins in V10.2.",
+  "uploader_and_helpers_sha256": "fcb28f19cfde02b8204b337af2810e8b2919d40f85fee831f96cdc7fe046d939",
+  "uploader_cpu_start": "80:FA38",
+  "uploader_helper_physical_end_exclusive": "007B2F",
+  "uploader_physical_start": "007A38"
+}

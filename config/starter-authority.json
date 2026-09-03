@@ -1,0 +1,15 @@
+{
+  "active_starter": "Starter SNES v9.zip",
+  "governing_from_project_version": "V10.2 and all later work",
+  "history_policy": "Accepted V01C through V10.1 artifacts retain their original Starter identity and numbering. Starter v9 governs new work without rewriting historical proof.",
+  "migration_audit": "docs/STARTER-SNES-V9-MIGRATION-AUDIT.md",
+  "schema": 2,
+  "starter_revision": "Starter SNES v9",
+  "starter_source_manifest_aggregate_sha256": "141205cebfb9114aebfc6437fa176b9a08540f6eea3f58a980e8a78c7839cdab",
+  "starter_source_manifest_file_count": 188,
+  "starter_source_manifest_sha256": "4a609ab751ffbae7eadb8241089ab5a0ece833c687a230c32abbe90a26a3c54b",
+  "starter_zip_sha256": "1d740c7c7c705ae7d4d4786d6046dbd41a30d7763b7fd2656c9324eab01ffcc9",
+  "supersedes_active_starter_zip_sha256": "d9240bc6bba8b9604e7a4bf037e04b009452fefa9f5ec2f13bb9a03486460bf1",
+  "verification": "PASS: identity; 40/40 tests; release audit; bundled Mesen source; SOURCE-MANIFEST",
+  "verified_installed_file_count": 189
+}

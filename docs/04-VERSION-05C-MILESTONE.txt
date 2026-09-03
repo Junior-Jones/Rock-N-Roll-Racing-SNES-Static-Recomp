@@ -1,0 +1,44 @@
+VERSION MILESTONE REPORT
+
+Version/name/date: Version 05C - First direct static S-CPU lowering / 18 August 2026
+Objective: project the complete accepted V04C PBR:PC:E:M:X source-proof authority into deterministic native C bodies and named non-execution boundaries, with source-specific successor guards and no runtime W65C816 opcode decoder.
+Predecessor: accepted Version 04C, Git tag V04C, commit 851b3d004682cde7a16c345a19117ed2d51f448d.
+Status: ACCEPTED. Candidate cold-package gate passed; exact accepted-state source package must reproduce this authority and is recorded by the external final release report.
+
+AUTHORITY AND METHOD
+V05C production authority is a lossless projection of frozen V04C source proof only. The exact target ROM is used as an external byte-identity/source input. Gameplay, gameplay traces, natural routes, Mesen traces and oracle observations contribute zero production contexts, zero successor targets and zero generated bodies.
+The generator groups exact production keys by ((PBR<<16)|PC)>>10 into 18 deterministic 1 KiB address shards. Each shard switches only on the exact PBR:PC:E:M:X key. A shard miss returns JS_EXEC_NOT_MINE; the top dispatcher converts the final miss into JS_STOP_UNKNOWN_CONTEXT. No generic runtime 65816 decode path exists.
+
+PROJECTION COUNTS
+V04C admitted 2,258 unique PBR:PC:E:M:X keys at 2,158 unique PBR:PC addresses. V05C emits exactly the same 2,258 keys and covers exactly the same 4,803 source-proved physical ROM bytes.
+2,238 keys have a fixed native instruction body plus a source-specific finite successor guard. Exactly 20 keys have no V04-proved outgoing edge and are emitted only as named non-execution boundaries.
+The V04 edge union becomes exactly 2,488 unique source-key/to-key successor relations. Every live body checks its resulting PBR:PC:E:M:X against only that source key's finite V04C set.
+
+FAIL-CLOSED BOUNDARIES
+The 57 V04 fail-closed evidence rows collapse to 32 exact production keys. Twenty are boundary-only production keys. Twelve are mixed return keys that have at least one proved return plus an older/unproved return path: their RTS/RTL semantics execute, but a live return outside the source-specific proved set stops as JS_STOP_UNPROVED_RETURN.
+Boundary-only keys stop before partial speculative execution. The named classes are JS_STOP_UNPROVED_DYNAMIC_TARGET, JS_STOP_UNPROVED_INTERRUPT_REENTRY and JS_STOP_UNPROVED_RETURN.
+
+NATIVE CPU SEMANTICS
+runtime/v05c_static_cpu.c provides fixed semantic/address/stack helpers called by generated bodies. It is not an opcode decoder and has no mnemonic/opcode dispatch table. Live memory effects use a generic byte read/write callback seam solely as the future V06C machine interface. A missing callback stops as JS_STOP_BUS_UNAVAILABLE; V05C does not hide a generic SNES bus implementation in the CPU layer.
+The fixed semantics include native/emulation E/M/X normalization, hidden accumulator B preservation in 8-bit M mode, zero-high index behavior, binary and decimal ADC/SBC, NZVC behavior, direct/absolute/long/stack-relative addressing used by this target, direct-indirect pointer rules, fixed call/return stack behavior, REP/SEP/XCE/PLP width transitions and the complete reached instruction subset.
+16-bit memory RMW reads low/high then writes the result high byte first and low byte second, matching the certified V02C access contract. Emulation-mode 8-bit memory RMW emits the required dummy write of the original byte before the final write.
+Relative branches are generated with explicit signed integer constants rather than host implementation-defined signed-byte casts.
+
+PRODUCTION BUILD BOUNDARY
+config/build-source-allowlist.txt contains exactly 20 C translation units and 2 headers: one runtime semantic helper C/header pair, one generated top dispatch C/header pair, and 18 generated shard C files. analysis/, generator/, tools/, tests/, oracle/, research/ and Mesen material are excluded from the production link set.
+
+TESTS AND ACCEPTANCE EVIDENCE
+The five V05C structural unit tests pass. The native C semantic/access/dispatch harness passes under GCC -std=c11 -Wall -Wextra -Werror -pedantic and again under UndefinedBehaviorSanitizer.
+The native harness independently checks full 16-bit A domains against the frozen Mesen-style ADC/SBC arithmetic reference over the V02C binary and decimal boundary operands, plus hidden-B behavior, direct-pointer page rules, exact JSR/RTS stack bytes, named boundaries, bus-unavailable failure, source-specific return rejection, unknown-context failure, and 16-bit/emulation-8-bit RMW access order.
+The independent V05 reviewer does not import the V05 generator. It reconstructs the 2,258-key authority from frozen V04 contexts/edges/boundaries, verifies raw instruction bytes against the exact ROM, independently checks opcode/mode/length against the frozen 1,280-row legal V02C matrix, reconciles all 4,803 source bytes, all 2,488 successors, 20 boundary-only keys, 12 mixed boundary keys, all 18 shards and the exact production build allow-list.
+
+ACCEPTANCE CLOSURE
+The live cumulative V01C->V04C predecessor proof passes. V05 deterministic regeneration, exact 20-C-unit production compile, native GCC and UBSan vectors, independent projection review and claim invariants pass.
+A ROM-free 127-file candidate source package passed Starter source-manifest verification and zero-finding release audit before and after a fresh cold extraction. The cold predecessor gate and cold V05 gate both passed from an unrelated working directory.
+The exact accepted-state ROM-free source package was rebuilt after the Starter SNES(4) authority update and passed a fresh cold extraction under that Starter: complete V01C->V04C predecessor proof, deterministic V05 regeneration, exact 20-C-unit production compile, native GCC and UBSan tests, independent projection review, claim invariants, source-manifest preservation and zero release-audit findings. V05C remains ACCEPTED subject only to freezing this exact metadata in Git and recovery-testing the complete no-game-ROM workspace backup. Any failure of those final freeze/recovery steps revokes completion rather than producing a partial-complete claim.
+
+NEXT MILESTONE AFTER ACCEPTANCE
+Version 06C - exact target-specific 24-bit SNES bus and deterministic reset/base-machine model. V06C must connect the V05 fixed bodies to ROM/WRAM/MMIO mapping, mirrors/open bus, base CPU I/O and access timing without adding a runtime opcode decoder or gameplay-derived execution authority.
+
+STARTER AUTHORITY UPDATE
+Before final V05C freeze, the active governing kit was replaced by Starter SNES(4), SHA-256 d9240bc6bba8b9604e7a4bf037e04b009452fefa9f5ec2f13bb9a03486460bf1, whose SOURCE-MANIFEST aggregate is 2324737d90cc237ab4a19db2f0c9bda4eb2bee17dd4ea459ef37900e3aad4975. Its official verification passes. The 2026-08-18 update adds explicit ROM-to-cold-boot/core-end fixed-point closure and mature static-core/frontend reference architecture. V05C's direct-static-S-CPU gate is unchanged; the new closure/structure requirements govern this final package and all later milestones. Historical accepted predecessor receipts retain the Starter hashes actually used when they were accepted.

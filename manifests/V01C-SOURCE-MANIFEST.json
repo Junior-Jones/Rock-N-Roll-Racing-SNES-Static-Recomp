@@ -1,0 +1,198 @@
+{
+  "aggregate_sha256": "4544efd8b600d056e48ba702b9914cc9348d203d898cf4b60d9fcacdbdf021c6",
+  "file_count": 38,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "e5daf9deac0900daaf526a2b7ff5073bc337e9da5daa0923044067f0887a1f59",
+      "size": 316
+    },
+    {
+      "path": "analysis/v01c_cartridge_profile.py",
+      "sha256": "f8d5f63463b021420b2ebb1466d0ad4fcce7cd66417c1cce97904782c93d4a5d",
+      "size": 16939
+    },
+    {
+      "path": "config/analysis-cache-key.json",
+      "sha256": "a8f5e74628e9421bdd22b41b861e3b7b57f7ecc3e3045bcf732d6347f1ccf809",
+      "size": 626
+    },
+    {
+      "path": "config/build-source-allowlist.txt",
+      "sha256": "c2e00f1496fc79e43a9600629bd00200f43b94d8f51b2a293e422bfc951449f5",
+      "size": 151
+    },
+    {
+      "path": "config/byte-ownership.csv",
+      "sha256": "a9937208f076e14abcbb1913f2d90856c6dd235bc25fb27ca7633495e582cdb9",
+      "size": 937
+    },
+    {
+      "path": "config/context-policy.json",
+      "sha256": "b6b84e07671dfc1eed78b665febea32d07db2a985be4312d8dff2ae08c481ff2",
+      "size": 408
+    },
+    {
+      "path": "config/execution-policy.json",
+      "sha256": "27e04f5720c629bdb56d3ae45f75952a9defd145d4a9ffd265ff7c022beaf683",
+      "size": 496
+    },
+    {
+      "path": "config/frontier-ledger.csv",
+      "sha256": "643f16750bc0216a3b92098cacaeedde6c632adf8506f6ad98f6305a68c0c5f5",
+      "size": 168
+    },
+    {
+      "path": "config/hardware-coverage-matrix.csv",
+      "sha256": "236c19b8bd8190d774e409a29bc4fe93a8c87395784b7f97076726615430af49",
+      "size": 671
+    },
+    {
+      "path": "config/oracle-policy.json",
+      "sha256": "212a52059c1195e5d01f8c5bf322a44b82a1617a637b1d197290a997fa4fd86f",
+      "size": 870
+    },
+    {
+      "path": "config/phase-table.csv",
+      "sha256": "09096adebe6da41417d6bce0b157e38e4756d8f266df0c31edd75c6a9c6559a0",
+      "size": 154
+    },
+    {
+      "path": "config/proof-ledger.csv",
+      "sha256": "aae1689c4b2d5facb4a37ca895a4a2b9b51a0763b6f79dfceb606d4c99872e0a",
+      "size": 1189
+    },
+    {
+      "path": "config/release-allowlist.txt",
+      "sha256": "b950d79bda4cde82bde9500a93f545a7bfdbce0162b355064d542e02ce347fff",
+      "size": 1033
+    },
+    {
+      "path": "config/release-exclusions.json",
+      "sha256": "af2553afeea3a0d255f1a3f9e2d1d43b13b4e23c4717726cec7065f6762475fb",
+      "size": 681
+    },
+    {
+      "path": "config/target-profile.json",
+      "sha256": "f77c4ccdb190d2436a6977336c607d46f0063cb8a719e46533368a9ed8ccca7e",
+      "size": 2582
+    },
+    {
+      "path": "config/timing-policy.json",
+      "sha256": "4bd115d8e8b92ccfbb1d505bc3e3ab4bf85cdbbd980303274b95e94d3599d259",
+      "size": 521
+    },
+    {
+      "path": "config/tool-lock.json",
+      "sha256": "80193113b5d46c92b45bbec4f9e8d0618931596aaf9a7c2deeb9220481c07c0c",
+      "size": 2042
+    },
+    {
+      "path": "docs/00-MILESTONE-ZERO.txt",
+      "sha256": "6bcc64de5bf5964ca632952a1655b54fb9465ddf80349b7dc04957f17fca0434",
+      "size": 4771
+    },
+    {
+      "path": "docs/01-ARCHITECTURE-DECISION.txt",
+      "sha256": "c9b5c5aec2f6a14b864e5e298b0cfa3e7507cc63e1255aecd59c1a0b3fe8a53c",
+      "size": 952
+    },
+    {
+      "path": "docs/04-VERSION-01C-MILESTONE.txt",
+      "sha256": "643103debc3eb1fb5bf81fd99379b493bb077e886bf06fb0c5427e97dc28aaae",
+      "size": 4655
+    },
+    {
+      "path": "docs/06-TEST-CATALOGUE.csv",
+      "sha256": "70bb10b86d55b3c9aebd7901638adf3b6f785331806498de9fe8a099fce30d87",
+      "size": 1572
+    },
+    {
+      "path": "docs/V01C-byte-census-summary.json",
+      "sha256": "ffaa0544faf1baa286ba452f96423df56b904cfeba6eacdcfdfccbb55d3781a4",
+      "size": 295
+    },
+    {
+      "path": "docs/V01C-cartridge-evidence.json",
+      "sha256": "92b41a845e71a42409ba7279e1f2abe1aa7daf6e076999fd3262b308e061353a",
+      "size": 3810
+    },
+    {
+      "path": "docs/V01C-ORACLE-COMPARISON.txt",
+      "sha256": "f9d0331ffa01c0bcc3ae47acc030749d51899f6f36058c4e5e672dc605f050e1",
+      "size": 987
+    },
+    {
+      "path": "frontend/README.txt",
+      "sha256": "73c52ecfddf55b63c6edba12b7db4dbae81a5bae75e706e09736bed88feea001",
+      "size": 239
+    },
+    {
+      "path": "generated/current/README.txt",
+      "sha256": "73c52ecfddf55b63c6edba12b7db4dbae81a5bae75e706e09736bed88feea001",
+      "size": 239
+    },
+    {
+      "path": "generator/README.txt",
+      "sha256": "73c52ecfddf55b63c6edba12b7db4dbae81a5bae75e706e09736bed88feea001",
+      "size": 239
+    },
+    {
+      "path": "LICENSES/README.txt",
+      "sha256": "942b36367b592466a7947fe65c46933b58e634496e5d0fba8189ae1edb5864d1",
+      "size": 381
+    },
+    {
+      "path": "oracle/mesen/config/v01c-profile.json",
+      "sha256": "dd7c8d8bf814da1ea5c5c8d069d1b2ab3634c8e9b35a62fc058308ef2d41fe9a",
+      "size": 1070
+    },
+    {
+      "path": "oracle/README.txt",
+      "sha256": "3781da45f019c55aa49d733ed473b178bc5db5254f9b8e0413a3afd7b88ee5ea",
+      "size": 305
+    },
+    {
+      "path": "README.txt",
+      "sha256": "13f655d26a790821501af534228f00099b612a60ec60d1d4ca9b7e4ce2889e25",
+      "size": 780
+    },
+    {
+      "path": "runtime/README.txt",
+      "sha256": "73c52ecfddf55b63c6edba12b7db4dbae81a5bae75e706e09736bed88feea001",
+      "size": 239
+    },
+    {
+      "path": "scripts/run_v01c.sh",
+      "sha256": "ba8c0b5fe6ead6b7dd6bb090121a54532a6cd348e6e73aeb686c8963dbd0625c",
+      "size": 491
+    },
+    {
+      "path": "tests/differential/README.txt",
+      "sha256": "73c52ecfddf55b63c6edba12b7db4dbae81a5bae75e706e09736bed88feea001",
+      "size": 239
+    },
+    {
+      "path": "tests/routes/README.txt",
+      "sha256": "73c52ecfddf55b63c6edba12b7db4dbae81a5bae75e706e09736bed88feea001",
+      "size": 239
+    },
+    {
+      "path": "tests/unit/test_v01c_cartridge_profile.py",
+      "sha256": "49c12e5d80637e70e0aa60cbf9d6a14fe72bbd9f8ee836937d122c2078b85b8c",
+      "size": 4312
+    },
+    {
+      "path": "tools/README.txt",
+      "sha256": "73c52ecfddf55b63c6edba12b7db4dbae81a5bae75e706e09736bed88feea001",
+      "size": 239
+    },
+    {
+      "path": "work_packages/V01C-WP01/receipt.json",
+      "sha256": "ea6e4a605486a571ba717d0db01e2c0ab2cd7e02552a9e6d8c7509d9636eeccb",
+      "size": 3951
+    }
+  ],
+  "schema": 1,
+  "total_size": 59789
+}

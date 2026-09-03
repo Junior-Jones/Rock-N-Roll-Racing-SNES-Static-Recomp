@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "effective_from": "V06C",
+  "compile_or_build_at_version_end": false,
+  "compile_or_build_only_on_explicit_user_request": true,
+  "routine_predecessor_validation": "hash_certificate",
+  "full_historical_exhaustive_rerun": "only_when_a_certified_predecessor_input_hash_changes_or_user_requests_it",
+  "focused_current_milestone_tests": true,
+  "deterministic_regeneration": true,
+  "accepted_release_requires_one_cache_cold_regeneration": true,
+  "accepted_release_requires_manifest_and_recovery_check": true,
+  "gameplay_or_trace_authority": "FORBIDDEN",
+  "notes": "This policy removes repetitive end-of-version static-core compilation and repeated predecessor exhaustive runs while preserving source-proof, deterministic generation, fail-closed checks, manifests, and recoverability."
+}

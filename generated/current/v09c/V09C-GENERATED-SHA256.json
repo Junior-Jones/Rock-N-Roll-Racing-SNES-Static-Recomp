@@ -1,0 +1,10 @@
+{
+  "files": {
+    "docs/V09C-ppu-summary.json": "b82a133423a284ebcadc9e05e1829efa99f9d12d14a27aaa7c5eeda30257a0be",
+    "docs/V09C-source-ppu-access-sites.csv": "29fa7b5713b6a98bda0c5294a097acd33e4f7bcb8a0cff095fbbbdafdb80cda0",
+    "docs/V09C-source-ppu-registers.csv": "fbb89c3762462df21366ddba6b837f9bbf5e18fc4709d89b1a91e2328e28f1dd",
+    "generated/current/v09c/js_v09c_ppu_inventory.h": "6450853499395b43064690800d123f819a0756f0adba8369441f09c3b7da1fff"
+  },
+  "milestone": "V09C",
+  "schema": 1
+}

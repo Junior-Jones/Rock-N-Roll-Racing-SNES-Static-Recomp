@@ -1,0 +1,53 @@
+{
+  "aram_knownness_sha256": "cfc036970e3e6cf1ea390f5e6b05c64ef21c647d738dba59d595a429e474eb3f",
+  "aram_state_sha256": "54e09724cf5839203d4a5515ef7e1fa70fdbf3b61c905e6cf222bb1d052f4a34",
+  "aram_storage_sha256": "602e481fef7fdf716ac91b142f86fafc861580e4d4c06adb552e18574257608a",
+  "exact_uploaded_spc700_aot_implemented": false,
+  "final_uploaded_entry": "0400",
+  "fixed_ipl_protocol_state_machine": true,
+  "fixed_ipl_sha256": "c95f88b299030d5afa55b1031e2b5ef2dff650c4b4e6bb6f8b1359436521278f",
+  "gameplay_promotion_count": 0,
+  "generic_spc700_runtime_decoder": false,
+  "ipl_cleared_aram_bytes": 239,
+  "known_aram_bytes_at_frontier": 58607,
+  "milestone": "V10.1",
+  "next_frontier": "JSV10_1_STOP_SMP_AOT_REQUIRED",
+  "notes": "V10.1 reconstructs source-proved bootstrap ARAM and stops before executing uploaded SPC700 at $0400.",
+  "oracle_pc_promotion_count": 0,
+  "production_s_cpu_contexts": 2258,
+  "reset_upload_call_count": 4,
+  "reset_upload_selectors": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "scheduler_executable_s_cpu_contexts": 2250,
+  "schema": 1,
+  "smp_scheduler_rendezvous_reused": true,
+  "source_proved_s_cpu_rom_bytes": 4803,
+  "static_core_compilation_performed": false,
+  "trace_promotion_count": 0,
+  "unknown_aram_bytes_at_frontier": 6929,
+  "upload_record_count": 4,
+  "uploaded_aram_bytes": 58368,
+  "uploaded_ranges": [
+    [
+      "0400",
+      "13BF"
+    ],
+    [
+      "3800",
+      "FB0F"
+    ],
+    [
+      "1400",
+      "1850"
+    ],
+    [
+      "2000",
+      "2CDE"
+    ]
+  ]
+}

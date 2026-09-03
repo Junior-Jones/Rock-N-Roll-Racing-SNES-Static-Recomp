@@ -1,0 +1,15 @@
+{
+  "authority": "offline-analysis-only; zero Rock n Roll Racing executable ROM contexts admitted by V02C",
+  "legal_context_rows": 1280,
+  "matrix_sha256": "a75a23a0b008e7dcbc82af54982121fed9b7310f6e02f101730b2611431b59f7",
+  "milestone": "02C",
+  "opcode_count": 256,
+  "pinned_mesen_source_zip_sha256": "2771dea145bc9b1b637f7c1ced821a46d0586f1836fff0df86c721a7903c3f87",
+  "raw_context_rows": 2048,
+  "rejected_context_rows": 768,
+  "schema": 1,
+  "unique_mnemonics": 92,
+  "unique_project_modes": 30,
+  "wdc_reference_csv_sha256": "f0c96ae2a8a3a0e394026f7b3724cae71dcbd2dcc4492649ad2339d000943a96",
+  "wdc_table_5_4_pdf_sha256": "b9177e1b045d2c8a801d1b23619abb4e5b29b88868fa491df7296dbc0b13447e"
+}

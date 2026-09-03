@@ -1,0 +1,21 @@
+{
+  "candidate_promotion": "exact_rom_or_proved_initialized_memory_plus_reproducible_analysis",
+  "captured_future_state": "FORBIDDEN",
+  "dynamic_transfer_authorization": "finite_source_proof_required",
+  "executable_ram": "proved_epoch_and_live_byte_guard_required",
+  "gameplay_derived_execution_authority": "FORBIDDEN",
+  "production_dispatch": "exact_static_context_only",
+  "runtime_65816_decoder": "FORBIDDEN",
+  "runtime_spc700_decoder": "FORBIDDEN",
+  "schema": 1,
+  "trace_learned_targets": "FORBIDDEN",
+  "unknown_context": "FAIL_CLOSED",
+  "v05c_boundary_execution": "named_stop_before_speculation_for_boundary_only_keys",
+  "v05c_final_dispatch_miss": "JS_STOP_UNKNOWN_CONTEXT",
+  "v05c_production_contexts": "exact_frozen_v04c_projection_2258_keys",
+  "v05c_source_specific_successor_guard": "REQUIRED",
+  "v06c_component_failure_policy": "PPU/APU/DMA/INPUT/TIMING/ROM_WRITE remain distinct named stops",
+  "v06c_context_promotions": 0,
+  "v06c_fixed_fetch_guard": "every frozen V05C instruction byte is fetched through the target bus and compared to constants before its fixed body executes",
+  "v06c_runtime_opcode_decoder": false
+}

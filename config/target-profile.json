@@ -1,0 +1,80 @@
+{
+  "byte_ownership_manifest": "config/byte-ownership.csv",
+  "candidate_observation_is_proof": false,
+  "cartridge": {
+    "analysis_mapping_policy": "canonical unique 1 MiB LoROM windows only; unproved mirror aliases reject instead of modulo-wrap",
+    "board_class_claim": "standard ROM-only FastROM LoROM cartridge profile; exact PCB marking not asserted",
+    "enhancement_hardware": [],
+    "exact_pcb_board_id": "UNKNOWN_FROM_ROM_IMAGE",
+    "map_mode": "0x30",
+    "mapping": "LoROM",
+    "mapping_examples": {
+      "00:8000": "0x000000",
+      "00:FFFC": "0x007FFC",
+      "1F:FFFF": "0x0FFFFF",
+      "80:8000": "0x000000",
+      "9F:FFFF": "0x0FFFFF"
+    },
+    "rom_size_code": 10,
+    "rom_type": "0x00 (ROM only)",
+    "selected_header_file_offset": "0x007FC0",
+    "speed": "FastROM",
+    "sram_bytes": 0,
+    "sram_size_code": 0
+  },
+  "context_key": [
+    "PBR",
+    "PC",
+    "E",
+    "M",
+    "X"
+  ],
+  "internal_header": {
+    "checksum": "0x5F55",
+    "checksum_complement": "0xA0AA",
+    "checksum_matches_canonical_byte_sum": true,
+    "checksum_pair_valid": true,
+    "maker_code": "0x71",
+    "region_code": "0x01",
+    "title": "ROCK N' ROLL RACING",
+    "version": 0
+  },
+  "notes": [
+    "V01C contains no disassembly and no runtime game code.",
+    "All non-header/vector ROM bytes remain explicitly UNRESOLVED until source-proof discovery milestones.",
+    "Mesen observations may corroborate testing but do not authorize cartridge fields or code targets."
+  ],
+  "recoverable_predecessor_sha256": "NONE_INITIAL_V01C",
+  "rom": {
+    "canonical_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+    "canonical_size_bytes": 1048576,
+    "copier_header_bytes": 0,
+    "crc32": "7D06F473",
+    "expected_input_filename": "Rock n' Roll Racing (USA).sfc",
+    "original_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+    "original_size_bytes": 1048576,
+    "region_revision": "USA / NTSC, header version 0",
+    "sum16": "0x5F55"
+  },
+  "runtime_cpu_decoder_allowed": false,
+  "runtime_mapping_policy_v06c": "strict 1 MiB LoROM: ROM only in $8000-$FFFF of all banks except $7E/$7F; physical offset ((bank & 0x1F)<<15)|(addr&0x7FFF); no ROM-size modulo; zero SRAM",
+  "schema": 1,
+  "target_name": "Rock n' Roll Racing (USA) SNES static recomp",
+  "unknown_context_policy": "FAIL_CLOSED",
+  "v06c_bus_regions": "docs/V06C-bus-census.csv",
+  "v06c_power_reset": "power-on and CPU reset are distinct; reset vector is sampled by untimed side-effect-free peek",
+  "vectors": {
+    "emulation_abort": "0x81BB",
+    "emulation_cop": "0x81BB",
+    "emulation_irq_brk": "0x81FD",
+    "emulation_nmi": "0x8166",
+    "emulation_reserved": "0x0000",
+    "emulation_reset": "0x8000",
+    "native_abort": "0x81BB",
+    "native_brk": "0x81BB",
+    "native_cop": "0x81BB",
+    "native_irq": "0x81FD",
+    "native_nmi": "0x8166",
+    "native_reset_reserved": "0x0000"
+  }
+}

@@ -1,0 +1,15 @@
+V02C INDEPENDENT REFERENCE NOTES
+
+Official specification reference:
+Western Design Center W65C816S Datasheet, March 13 2024, Table 5-4 on PDF page 31.
+Downloaded SHA-256: b9177e1b045d2c8a801d1b23619abb4e5b29b88868fa491df7296dbc0b13447e
+Role: independent comparison of all 256 opcode base cycle/byte pairs and specification checks for mode/stack/interrupt behavior. The PDF is research evidence and is not shipped in the source package.
+
+Pinned implementation reference:
+MesenCE 2.2.1 source-with-dependencies ZIP.
+ZIP SHA-256: 2771dea145bc9b1b637f7c1ced821a46d0586f1836fff0df86c721a7903c3f87
+RunOp source member SHA-256: 1e2b77cf29baf5e477809ba82a0da9a89fc05274a081c3b5b61091573b87d96c
+Role: independent automated comparison of all 256 mnemonic/address-mode rows only. Mesen source is not copied into production or source release authority.
+
+Separation rule:
+Neither reference can admit Rock n' Roll Racing executable contexts. V02C is an offline CPU semantic foundation only. Runtime opcode decode remains forbidden. WDC/Mesen disagreements are not silently resolved; a disagreement would reject the V02C gate until classified.

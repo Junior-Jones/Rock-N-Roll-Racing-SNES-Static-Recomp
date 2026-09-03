@@ -1,0 +1,260 @@
+"""Emit Rock n' Roll Racing V10.2 fail-closed S-SMP AOT authority."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+from pathlib import Path
+
+CASE = re.compile(r"(?m)^[ \t]*case[ \t]+0x([0-9a-fA-F]{2})[ \t]*:[ \t]*\{")
+
+
+def sha(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def matching(text: str, opening: int) -> int:
+    depth = 0
+    index = opening
+    string = character = line_comment = block_comment = escaped = False
+    while index < len(text):
+        current = text[index]
+        following = text[index + 1] if index + 1 < len(text) else ""
+        if line_comment:
+            if current == "\n":
+                line_comment = False
+        elif block_comment:
+            if current == "*" and following == "/":
+                block_comment = False
+                index += 1
+        elif string:
+            if escaped:
+                escaped = False
+            elif current == "\\":
+                escaped = True
+            elif current == '"':
+                string = False
+        elif character:
+            if escaped:
+                escaped = False
+            elif current == "\\":
+                escaped = True
+            elif current == "'":
+                character = False
+        else:
+            if current == "/" and following == "/":
+                line_comment = True
+                index += 1
+            elif current == "/" and following == "*":
+                block_comment = True
+                index += 1
+            elif current == '"':
+                string = True
+            elif current == "'":
+                character = True
+            elif current == "{":
+                depth += 1
+            elif current == "}":
+                depth -= 1
+                if depth == 0:
+                    return index
+        index += 1
+    raise ValueError("unterminated SPC700 opcode case")
+
+
+def extract(pseudo_dir: Path) -> tuple[dict[int, str], dict[str, str]]:
+    cases: dict[int, str] = {}
+    hashes: dict[str, str] = {}
+    for path in sorted(pseudo_dir.glob("oppseudo_*.cpp")):
+        text = path.read_text(encoding="utf-8")
+        hashes[path.name] = sha(path)
+        for match in CASE.finditer(text):
+            opcode = int(match.group(1), 16)
+            opening = text.find("{", match.start())
+            closing = matching(text, opening)
+            if opcode in cases:
+                raise ValueError(f"duplicate opcode ${opcode:02X}")
+            cases[opcode] = text[match.start():closing + 1].strip()
+    if len(cases) != 256:
+        raise ValueError(f"parsed {len(cases)} SPC700 opcode cases, expected 256")
+    return cases, hashes
+
+
+def load_authority(path: Path) -> tuple[dict[int, int], bytearray, dict]:
+    report = json.loads(path.read_text(encoding="utf-8"))
+    if report.get("schema") != "RRR_V10_2_SMP_DIRECT_REDISCOVERY_V4":
+        raise ValueError("unexpected S-SMP rediscovery schema")
+    policy = report.get("authority_policy", "")
+    summary = report.get("summary", {})
+    if "oracle/traces promote zero contexts" not in policy:
+        raise ValueError("S-SMP authority policy is not source-only")
+    if summary.get("oracle_promotions") or summary.get("trace_promotions"):
+        raise ValueError("S-SMP authority includes non-source promotion")
+    if summary.get("frontier_count"):
+        raise ValueError("S-SMP rediscovery still has a frontier")
+    rows: dict[int, int] = {}
+    bitmap = bytearray(8192)
+    for instruction in report["instructions"]:
+        pc = int(instruction["pc"], 16)
+        opcode = int(instruction["opcode"], 16)
+        prior = rows.setdefault(pc, opcode)
+        if prior != opcode:
+            raise ValueError(f"PC/opcode conflict at ${pc:04X}")
+        if instruction["epoch"] == "UPLOADED_DRIVER":
+            for offset in range(instruction["length"]):
+                address = (pc + offset) & 0xFFFF
+                bitmap[address >> 3] |= 1 << (address & 7)
+    if len(rows) != summary["unique_instruction_pcs"]:
+        raise ValueError("S-SMP exact-PC count mismatch")
+    return rows, bitmap, report
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--authority", type=Path, required=True)
+    parser.add_argument("--pseudo-dir", type=Path, required=True)
+    parser.add_argument("--lookup", type=Path, required=True)
+    parser.add_argument("--dispatch", type=Path, required=True)
+    parser.add_argument("--shard-dir", type=Path, required=True)
+    parser.add_argument("--bitmap-include", type=Path, required=True)
+    parser.add_argument("--metadata", type=Path, required=True)
+    args = parser.parse_args()
+
+    cases, source_hashes = extract(args.pseudo_dir)
+    rows, bitmap, report = load_authority(args.authority)
+    used = sorted(set(rows.values()))
+
+    lookup = [
+        "/* Generated by generator/v10_2_smp_aot_gen.py. */\n",
+        "bool SMP::sc_aot_prepare(uint16 pc, uint8 actual) {\n",
+        "  uint8 expected=0xffu;\n",
+        "  switch(pc) {\n",
+    ]
+    for pc, opcode in sorted(rows.items()):
+        lookup.append(f"    case 0x{pc:04x}u: expected=0x{opcode:02x}u; break;\n")
+    lookup.extend([
+        "    default: return sc_aot_fail(1u,pc,0xffu,actual);\n",
+        "  }\n",
+        "  if(actual != expected) return sc_aot_fail(2u,pc,expected,actual);\n",
+        "  ++sc_aot_instructions; return true;\n",
+        "}\n",
+    ])
+
+    dispatch = ["/* Generated exact-PC static S-SMP dispatch. */\n"]
+    for pc, opcode in sorted(rows.items()):
+        body = re.sub(
+            r"^case[ \t]+0x[0-9a-fA-F]{2}[ \t]*:",
+            f"case 0x{pc:04x}u:",
+            cases[opcode],
+            count=1,
+        )
+        body = re.sub(r"(?m)^(\s*)op_readdp\((.*)\);\s*$", r"\1op_readdp_discard(\2);", body)
+        body = re.sub(r"(?m)^(\s*)op_readaddr\((.*)\);\s*$", r"\1op_readaddr_discard(\2);", body)
+        dispatch.append(body + "\n")
+    dispatch.extend([
+        "default: sc_aot_fail(3u,current_static_pc,0xffu,guard_byte); break;\n",
+    ])
+
+    bitmap_include = [
+        "/* Generated uploaded-driver executable-byte bitmap. */\n",
+        "static const uint8 sc_smp_aot_code_bitmap[8192] = {\n",
+    ]
+    for index in range(0, len(bitmap), 16):
+        bitmap_include.append("  " + ",".join(f"0x{value:02x}u" for value in bitmap[index:index + 16]) + ",\n")
+    bitmap_include.append("};\n")
+
+    for path in (args.lookup, args.dispatch, args.bitmap_include, args.metadata):
+        path.parent.mkdir(parents=True, exist_ok=True)
+    args.lookup.write_text("".join(lookup), encoding="utf-8", newline="\n")
+    args.dispatch.write_text("".join(dispatch), encoding="utf-8", newline="\n")
+    args.bitmap_include.write_text("".join(bitmap_include), encoding="utf-8", newline="\n")
+
+    args.shard_dir.mkdir(parents=True, exist_ok=True)
+    for stale in args.shard_dir.glob("smp_exact_*"):
+        stale.unlink()
+    shard_hashes: dict[str, str] = {}
+    occupied_shards = sorted({pc >> 8 for pc in rows})
+    declarations: list[str] = ["/* Generated exact-PC S-SMP shard declarations. */\n"]
+    index: list[str] = ["/* Generated exact-PC S-SMP shard index. */\n"]
+    for shard in occupied_shards:
+        declarations.append(f"void op_step_shard_{shard:02x}();\n")
+        index.append(f"case 0x{shard:02x}u:op_step_shard_{shard:02x}();break;\n")
+        lines = [
+            "/* Generated exact-PC static S-SMP shard. */\n",
+            '#include "static_snes.hpp"\n',
+            "namespace SC_STATIC_SNES {\n",
+            f"void SMP::op_step_shard_{shard:02x}() {{\n",
+            "#define op_readpc() op_read(regs.pc++)\n",
+            "#define op_readdp(addr) op_read((regs.p.p << 8) + ((addr) & 0xff))\n",
+            "#define op_readdp_discard(addr) op_read_discard((uint16)((regs.p.p << 8) + ((addr) & 0xff)))\n",
+            "#define op_writedp(addr,data) op_write((regs.p.p << 8) + ((addr) & 0xff),data)\n",
+            "#define op_readaddr(addr) op_read(addr)\n",
+            "#define op_readaddr_discard(addr) op_read_discard((uint16)(addr))\n",
+            "#define op_writeaddr(addr,data) op_write(addr,data)\n",
+            "switch(current_static_pc) {\n",
+        ]
+        for pc, opcode in sorted(rows.items()):
+            if (pc >> 8) != shard:
+                continue
+            body = re.sub(
+                r"^case[ \t]+0x[0-9a-fA-F]{2}[ \t]*:",
+                f"case 0x{pc:04x}u:",
+                cases[opcode],
+                count=1,
+            )
+            body = re.sub(r"(?m)^(\s*)op_readdp\((.*)\);\s*$", r"\1op_readdp_discard(\2);", body)
+            body = re.sub(r"(?m)^(\s*)op_readaddr\((.*)\);\s*$", r"\1op_readaddr_discard(\2);", body)
+            lines.append(body + "\n")
+        lines.extend([
+            "default: sc_aot_fail(3u,current_static_pc,0xffu,guard_byte); break;\n",
+            "}\n#undef op_readpc\n#undef op_readdp\n#undef op_readdp_discard\n#undef op_writedp\n",
+            "#undef op_readaddr\n#undef op_readaddr_discard\n#undef op_writeaddr\n}\n}\n",
+        ])
+        path = args.shard_dir / f"smp_exact_{shard:02x}.cpp"
+        path.write_text("".join(lines), encoding="utf-8", newline="\n")
+        shard_hashes[path.name] = sha(path)
+    index.append("default:sc_aot_fail(3u,current_static_pc,0xffu,guard_byte);break;\n")
+    declarations_path=args.shard_dir/"smp_exact_declarations.inc"
+    index_path=args.shard_dir/"smp_exact_index.inc"
+    declarations_path.write_text("".join(declarations),encoding="utf-8",newline="\n")
+    index_path.write_text("".join(index),encoding="utf-8",newline="\n")
+
+    metadata = {
+        "schema": "RRR_V10_2_STATIC_SMP_AOT_GENERATION_V1",
+        "result": "pass",
+        "authority": args.authority.name,
+        "authority_sha256": sha(args.authority),
+        "source_only": True,
+        "oracle_promotions": 0,
+        "trace_promotions": 0,
+        "exact_pc_opcode_contexts": len(rows),
+        "uploaded_driver_pcs": report["summary"]["uploaded_driver_instruction_pcs"],
+        "fixed_ipl_pcs": report["summary"]["fixed_ipl_instruction_pcs"],
+        "protected_driver_code_bytes": sum(value.bit_count() for value in bitmap),
+        "used_opcode_count": len(used),
+        "used_opcodes": [f"{opcode:02X}" for opcode in used],
+        "dispatch_authority": "exact_pc",
+        "generic_runtime_dispatcher": False,
+        "fallback": False,
+        "failure_policy": {
+            "unknown_pc": "stop",
+            "opcode_mismatch": "stop",
+            "unemitted_opcode": "stop",
+            "owned_code_write": "stop/new epoch required",
+        },
+        "lookup_sha256": sha(args.lookup),
+        "dispatch_sha256": sha(args.dispatch),
+        "shard_count": len(shard_hashes),
+        "shard_sha256": shard_hashes,
+        "shard_declarations_sha256": sha(declarations_path),
+        "shard_index_sha256": sha(index_path),
+        "bitmap_include_sha256": sha(args.bitmap_include),
+        "opcode_semantic_sources": source_hashes,
+    }
+    args.metadata.write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    print(json.dumps(metadata, indent=2))
+
+
+if __name__ == "__main__":
+    main()

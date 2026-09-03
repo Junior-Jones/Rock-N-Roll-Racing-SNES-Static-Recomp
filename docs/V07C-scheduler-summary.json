@@ -1,0 +1,56 @@
+{
+  "compile_build_gate": "DEFERRED_BY_USER_POLICY_NOT_RUN_AT_VERSION_END",
+  "context_promotion_count": 0,
+  "dram_refresh_wall_clocks": 40,
+  "event_tie_order": [
+    "PRIMARY_RASTER_EVENT",
+    "PPU_OR_IRQ_PHASE",
+    "AUTOJOY",
+    "S_SMP_RENDEZVOUS"
+  ],
+  "gameplay_promotion_count": 0,
+  "generator": "ROCKNROLL_V07C_SCHEDULER_GEN_2",
+  "hdma_line_hclock": 1104,
+  "historical_approximate_v06_timing_path_active": false,
+  "interrupt_reentry_policy": "RTI is scheduler-owned only for the 12 already-admitted V05 interrupt-vector RTI keys; live return key must exist in V07 timing table or execution stops",
+  "interrupt_return_contexts": 12,
+  "later_subsystem_seams": [
+    "V08 DMA/HDMA transfer execution",
+    "V09 PPU rendering/register semantics",
+    "V11 input electrical devices",
+    "later S-SMP execution/audio"
+  ],
+  "master_time_unit": "one SNES master clock",
+  "milestone": "V07C",
+  "normal_scanline_clocks": 1364,
+  "oracle_promotion_count": 0,
+  "production_contexts": 2258,
+  "read_effect_phase": "duration-4 then effect then final 4",
+  "remaining_boundary_contexts": 8,
+  "reset_startup_delay_master_clocks": 186,
+  "reset_vector_sampling": "untimed side-effect-free peek",
+  "scheduler_executable_contexts": 2250,
+  "schema": 2,
+  "short_scanline_clocks": 1360,
+  "smp_ratio": {
+    "denominator": 21477270,
+    "numerator": 2048000
+  },
+  "status": "ACCEPTED",
+  "timing_class_counts": {
+    "BOUNDARY_NO_EXECUTION": 8,
+    "BRANCH_SEQUENCE": 180,
+    "DIRECT_INDEX_SEQUENCE": 11,
+    "DIRECT_SEQUENCE": 153,
+    "FIXED_IDLE_SEQUENCE": 745,
+    "INDEX_SEQUENCE": 75,
+    "JSL_DEFERRED_BANK_FETCH": 40,
+    "LINEAR_BUS_SEQUENCE": 861,
+    "RETURN_SEQUENCE": 117,
+    "RMW_SEQUENCE": 68
+  },
+  "trace_promotion_count": 0,
+  "v05_native_contexts": 2238,
+  "v06_files_modified": false,
+  "write_effect_phase": "full duration then effect"
+}

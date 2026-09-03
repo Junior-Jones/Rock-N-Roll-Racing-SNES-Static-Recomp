@@ -1,0 +1,16 @@
+ROCK N' ROLL RACING SNES STATIC RECOMP - VERSION 09C MILESTONE
+
+V09C starts only from frozen V08C commit 268c7d3fa9ee18c9dc88e87e88a96adf7562d5b9. V08 DMA/HDMA authority and the V07 monotonic scheduler/timing plans are preserved by hash certificate.
+
+V09C owns the complete $2100-$213F PPU register/state layer required before renderer work. One JSV09Ppu object contains VRAM, OAM, CGRAM, latches, read buffers, address increments/remapping, Mode 7 matrix/latches, BG scroll/tilemap/CHR state, windows, main/subscreen selection, color math/fixed color, SETINI, INIDISP, PPU open-bus latches and H/V counter latches. CPU and DMA/HDMA access this same object.
+
+Power-on VRAM/OAM/CGRAM bytes are not invented as known game state. Per-byte knownness is retained and a read that needs unknown memory fails closed. Active-display OAM/CGRAM accesses and VRAM read-buffer refreshes whose real internal renderer address is not yet owned stop distinctly at JSV09_STOP_PPU_RENDERER_V10. STAT77 likewise remains renderer-owned because range/time-over depend sprite evaluation. V09 therefore makes no framebuffer or pixel-accuracy claim.
+
+The source-proof inventory contains 47 reached registers: 46 are directly reached by V04C admitted effective-address proof, and $2122 is added by source-proved V08C DMA delivery. All 64 PPU addresses are implemented/routed; reached, implemented and certified remain separate columns in docs/V09C-source-ppu-registers.csv.
+
+No gameplay route, trace, save state or oracle-observed PC promoted code or register authority. The frozen static program authority remains exactly 2,258 contexts, 2,250 scheduler-executable contexts and 4,803 source-proved ROM bytes.
+
+No static-core compilation/build is part of V09C completion unless explicitly requested. Acceptance uses predecessor hashes, focused non-build tests, independent reconstruction from frozen source proof and pinned MesenCE PPU source, deterministic regeneration, release audit and recovery testing.
+
+NEXT
+V10C begins source-proved cold-boot closure from this frozen package. Renderer/display-family work is introduced only when a proved V10 frontier requires it; visible output or gameplay is not construction authority.

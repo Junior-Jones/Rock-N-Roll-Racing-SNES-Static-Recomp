@@ -1,0 +1,7 @@
+authority_id,introduced_milestone,path_or_symbol,role,current_status,superseded_by,compile_input_absent,runtime_fallback_absent,notes
+AUTH-V06-MACHINE,V06C,runtime/v06c_machine.c,bus_and_reset_owner,HISTORICAL_RETIRED,runtime/v10_1_machine.c,true,true,retained as historical evidence
+AUTH-V07-MACHINE,V07C,runtime/v07c_machine.c,scheduler_machine_owner,HISTORICAL_RETIRED,runtime/v10_1_machine.c,true,true,frozen V07 timing table remains current separately
+AUTH-V08-MACHINE,V08C,runtime/v08c_machine.c,dma_hdma_machine_owner,HISTORICAL_RETIRED,runtime/v10_1_machine.c,true,true,V08 generated DMA table remains evidence
+AUTH-V09-MACHINE,V09C,runtime/v09c_machine.c,ppu_machine_owner,HISTORICAL_RETIRED,runtime/v10_1_machine.c,true,true,runtime/v09c_ppu.c remains current PPU state owner
+AUTH-V10.1-MACHINE,V10.1,runtime/v10_1_machine.c,current_machine_bus_scheduler_dma_owner,CURRENT,NONE,false,true,one selected current machine owner
+AUTH-V10.1-APU,V10.1,runtime/v10_1_apu.c,fixed_ipl_apuio_owner,CURRENT,NONE,false,true,stops at exact S-SMP PC 0400

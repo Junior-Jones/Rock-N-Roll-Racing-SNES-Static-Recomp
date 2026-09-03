@@ -1,0 +1,30 @@
+VERSION MILESTONE REPORT
+
+Version/name/date: Version 08C - General eight-channel DMA/HDMA controller on the V07 monotonic timeline / 19 August 2026
+Objective: replace the V07 DMA-transfer stop with a complete general SNES DMA/HDMA controller while preserving the frozen V07 scheduler/timing authority, source-proof construction policy, exact context universe and fail-closed later-device seams.
+Predecessor: accepted Version 07C, Git tag V07C, commit a4ed5b1061fca4b44196dc7dc2c346273d569ea0.
+Status: ACCEPTED STATIC AUTHORITY. Exact cold source-package and final recovery checks are external closure guards; any failure revokes acceptance without rewriting the tested package. No static-core compilation/build is part of this milestone unless explicitly requested by the user.
+
+STATIC AUTHORITY
+V08C adds zero executable contexts and zero proved code bytes. The authority remains exactly 2,258 PBR:PC:E:M:X contexts, 2,250 scheduler-executable contexts and 4,803 source-proved ROM bytes. Gameplay, traces, save states and oracle-observed PCs contribute zero promotions. Frozen V04 source proof independently reaches DMA channels 0, 3 and 4 and seven nonzero manual-DMA start sites plus one source-proved DMA/HDMA-clear site; no nonzero HDMAEN write is source-proved in the frozen target graph.
+
+GENERAL DMA
+All eight channel register files and all eight transfer modes are represented. Manual DMA implements A->B and B->A directions; increment, decrement and fixed A-bus stepping; channel masks and ascending channel priority; per-channel overhead; byte transfer ordering; DAS=$0000 as a 65,536-byte transfer; start alignment and CPU-speed end alignment. DMA A-bus accesses cannot re-enter B-bus register space or the DMA controller. The $2180 WRAM-port restriction is explicit in both directions.
+
+GENERAL HDMA
+V08C implements field initialization, direct and indirect table modes, per-mode byte counts and B-bus offsets, line counters, repeat behavior, per-line transfer eligibility, reload, termination, channel ordering and the pinned last-active-channel indirect termination behavior. Pending priority is HDMA line, then HDMA initialization, then manual DMA; lower-priority pending work is preserved rather than discarded.
+
+ONE TIMELINE
+DMA/HDMA consumes the already accepted V07 monotonic master clock. It is not a zero-time memcpy and does not create a second timing wrapper. Transfer work advances wall time through the V07 scheduler so raster/DRAM-refresh/event progress remains coherent. V07 instruction timing tables remain the selected CPU timing authority.
+
+LATER SUBSYSTEM SEAMS
+V08 owns DMA/HDMA controller semantics, bus ordering and transfer timing. B-bus PPU transfers are delivered through an explicit ordered callback seam and fail closed if that seam is absent; V08 does not claim $2100-$213F PPU register/rendering semantics. APUIO/S-SMP/DSP and electrical controller semantics remain later milestones. Direct CPU PPU/APU accesses therefore retain their existing fail-closed boundaries.
+
+SOURCE-REACHED NAMED TESTS
+The frozen source census yields eight named profiles in docs/V08C-source-dma-configurations.csv: three channel-0 Mode-1 VRAM-size families (0100/0080/0040), one channel-0 1000-byte source configuration, one channel-3 Mode-0 $2122 family, two channel-4 Mode-0 $2104 families and the DMA/HDMA clear loop. Each has a named focused test. These profiles select tests only; they do not limit the general controller implementation.
+
+VALIDATION
+Focused source/static test set: 31 tests (24 controller tests plus 7 machine-authority tests). Independent review reconstructs the source DMA census from frozen V04 evidence and raw ROM, validates exact target-ROM signatures, checks the emitted V08 authority and reviews the pinned MesenCE DMA/MemoryManager source without importing the V08 model or generator. Release validation performs one cache-cold V08 regeneration and reruns the focused and independent checks. No static-core compiler is invoked.
+
+NEXT AFTER ACCEPTANCE
+Version 09C - PPU state/register semantics on the already accepted V07 raster timeline, consuming V08's ordered DMA B-bus seam without changing V08 DMA authority.

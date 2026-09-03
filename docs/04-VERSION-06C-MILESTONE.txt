@@ -1,0 +1,24 @@
+VERSION MILESTONE REPORT
+
+Version/name/date: Version 06C - Exact target-specific 24-bit SNES bus and reset/base-machine model / 18 August 2026
+Objective: connect the frozen V05C static S-CPU bodies to exact target ROM/WRAM/base-MMIO mapping, mirrors/open bus, MEMSEL, CPU-I/O math state, reset/power-on behavior and per-access timing without adding a runtime opcode decoder or any gameplay-derived execution authority.
+Predecessor: accepted Version 05C, Git tag V05C, commit 281a8bcefb2eec0d4cafee071a1a8a122215d933.
+Status: ACCEPTED STATIC AUTHORITY. The exact accepted source-package cold gate and final recovery gate are external closure guards; any failure revokes acceptance rather than causing a post-test package rewrite.
+
+STATIC AUTHORITY
+All production contexts remain the exact 2,258 V05C PBR:PC:E:M:X keys covering 4,803 source-proved ROM bytes. V06C promotes zero contexts, zero targets, zero gameplay observations, zero trace observations and zero oracle observations. Each fixed instruction byte is fetched through the real target bus and compared before its unchanged V05 body runs. No runtime opcode decoder exists.
+
+TARGET BUS
+The complete 16,777,216-address CPU space is classified with strict 1 MiB FastROM LoROM rules and no modulo mapping. Counts are: ROM 8,323,072; WRAM 1,179,648; OPEN_BUS 7,236,864; DMA 16,384; PPU 8,192; APU 8,192; CPU_IO 3,072; INPUT 1,280; WRAM_PORT 512. SRAM is affirmatively zero. All 131,072 MEMSEL/bank/page timing cells are classified into 6/8/12 access-duration classes.
+
+RESET/BASE MACHINE
+Power-on and RESET are distinct. Reset-vector sampling is side-effect-free and untimed, so the pre-scheduler counter starts at zero and is named access_clock_sum. RESET preserves WRAM, WRAM-port position, open bus, MEMSEL, timer/output latches and ALU state while resetting CPU/reset-owned state. Base CPU-I/O, WRAM port and iterative multiply/divide are modeled. Scheduler/PPU/APU/DMA/input behavior remains named fail-closed future authority.
+
+STREAMLINED VALIDATION POLICY
+No static-core compilation/build is performed at version end from V06C onward unless explicitly requested by the user. Routine predecessor validation uses the frozen V05C tag plus 11 immutable authority hashes and exact ROM/Starter/oracle hashes; any mismatch forces the relevant full regression. Edit-time validation is focused and fast. Release validation adds one independent all-address mapper/timing review, exhaustive ALU proof and one cache-cold deterministic regeneration. One exact cold source package and one final recovery package are still mandatory.
+
+CURRENT EVIDENCE
+Focused V06 tests: PASS (9/9). Independent mapper/timing/fetch review: PASS over all 16,777,216 addresses, all 131,072 timing cells and all 2,258 fixed contexts. ALU proof: PASS over all 65,536 8x8 products and all 16,777,216 final dividend/divisor pairs plus iterative/partial-cycle checks. Accepted-state cache-cold deterministic regeneration: PASS. Compilation/build: DEFERRED BY USER POLICY / NOT RUN.
+
+NEXT AFTER ACCEPTANCE
+Version 07C - one authoritative monotonic scheduler and CPU timing/interrupt ownership.

@@ -1,0 +1,10 @@
+ROCK N' ROLL RACING SNES STATIC RECOMP - V09C ACCEPTED RELEASE STATE
+Milestone: V09C PPU state and complete register semantics
+Predecessor: V08C / 268c7d3fa9ee18c9dc88e87e88a96adf7562d5b9
+Static authority: 2258 contexts / 2250 scheduler-executable / 4803 source-proved ROM bytes
+PPU register authority: all $2100-$213F routed; 47 source-reached registers (46 direct graph + $2122 DMA-only)
+Memory state: 64 KiB VRAM, 544-byte OAM, 256-word CGRAM with explicit knownness
+Shared device: CPU and DMA/HDMA use the same PPU state object
+Renderer: not implemented in V09C; renderer-dependent accesses fail closed to V10
+Promotion policy: zero gameplay, trace, oracle or context promotions
+Build policy: static-core compilation/build deferred unless explicitly requested

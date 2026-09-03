@@ -1,0 +1,64 @@
+{
+  "all_offset_scan": {
+    "instruction_length_histogram": {
+      "1": 592800,
+      "2": 2933124,
+      "3": 1051941,
+      "4": 665015
+    },
+    "invalid_fetch_rows_at_lorom_bank_boundary": 236,
+    "legal_contexts_per_offset": 5,
+    "opcode_byte_histogram_sha256": "226a0602bda4370d2de67f1905c7146436bd27388bbd915dfbd82784c8183fe3",
+    "physical_offsets": 1048576,
+    "row_digest_serialization": "little-endian <IBBBB = physical_offset,legal_context_index,opcode,length,fetch_valid; context order 000,001,010,011,111 as E/M/X",
+    "row_digest_sha256": "fe280158538711ed7e99e104f6586f595052d0f92551efef008efce508e9bc6a",
+    "rows": 5242880
+  },
+  "apuio_candidate_rows": 35,
+  "apuio_claims": {
+    "ALL_OFFSET_ONLY": 17,
+    "GRAPH_REACHED_BANK_UNPROVED": 18
+  },
+  "authority": "whole-ROM discovery only; candidate != admitted production execution",
+  "candidate_root_records": 1708,
+  "conflict_rows": 3,
+  "context_rows": 19766,
+  "context_rows_by_level": {
+    "CANDIDATE": 19551,
+    "PROVED": 215
+  },
+  "edge_rows": 22291,
+  "frontier_rows": 874,
+  "frontiers_by_class": {
+    "DYNAMIC_TARGET": 23,
+    "INTERRUPT_REENTRY": 15,
+    "RETURN": 783,
+    "STATUS_WIDTH": 53
+  },
+  "limitations": [
+    "V03C does not close return sets, indirect targets, RTI re-entry, executable WRAM, DBR path provenance, or native callback domains.",
+    "Return continuations are explored only as candidates; they never upgrade byte ownership to source-proved code.",
+    "All-offset legal decodes are census evidence only and do not relabel arbitrary bytes as code or data.",
+    "APUIO absolute-operand matches remain candidates unless graph reach plus a known MMIO DBR proves the effective bank."
+  ],
+  "milestone": "03C",
+  "oracle_promotions": 0,
+  "ownership_bytes": {
+    "CANDIDATE": 41368,
+    "HEADER_VECTOR": 64,
+    "PROVED_CODE": 270,
+    "UNRESOLVED": 1006874
+  },
+  "ownership_range_rows": 242,
+  "predecessor_v02c_commit": "458128b8afa2a9819ef659cf28e447844959c20f",
+  "processed_internal_states": 19766,
+  "rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "rom_size": 1048576,
+  "schema": 1,
+  "trace_promotions": 0,
+  "unique_context_keys_by_level": {
+    "CANDIDATE": 18369,
+    "PROVED": 212
+  },
+  "vector_root_records": 16
+}

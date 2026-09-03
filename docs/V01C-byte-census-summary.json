@@ -1,0 +1,11 @@
+{
+  "canonical_rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "classification_totals": {
+    "HEADER_VECTOR": 64,
+    "UNRESOLVED": 1048512
+  },
+  "classified_non_unresolved_bytes": 64,
+  "schema": 1,
+  "total_bytes": 1048576,
+  "unresolved_bytes": 1048512
+}

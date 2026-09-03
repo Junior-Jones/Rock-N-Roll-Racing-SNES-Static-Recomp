@@ -1,0 +1,52 @@
+{
+  "schema": "starter-snes-current-production-graph-v1",
+  "status": "V10_1_ACCEPTED_WITH_V10_2_IN_PROGRESS",
+  "project": "Rock n' Roll Racing (USA) SNES static recomp",
+  "version": "V10.2-work",
+  "accepted_predecessor_tree": "git-tree-sha1:49789460fad1374a514772c553d6edf4a1638249",
+  "owners": {
+    "scpu": {
+      "current_sources": ["runtime/v05c_static_cpu.c", "generated/current/v05c/js_v05c_dispatch.c", "generated/current/v05c/js_v05c_shard_*.c"],
+      "historical_forbidden_in_production": []
+    },
+    "bus_mmio": {
+      "current_sources": ["runtime/v10_1_machine.c"],
+      "historical_forbidden_in_production": ["runtime/v06c_machine.c", "runtime/v07c_machine.c", "runtime/v08c_machine.c", "runtime/v09c_machine.c"]
+    },
+    "scheduler_interrupts": {
+      "current_sources": ["runtime/v10_1_machine.c", "generated/current/v07c/js_v07c_timing.c"],
+      "historical_forbidden_in_production": ["runtime/v07c_machine.c", "runtime/v08c_machine.c", "runtime/v09c_machine.c"]
+    },
+    "dma_hdma": {
+      "current_sources": ["runtime/v10_1_machine.c", "generated/current/v08c/js_v08c_dma_tables.h"],
+      "historical_forbidden_in_production": ["runtime/v08c_machine.c", "runtime/v09c_machine.c"]
+    },
+    "ppu_state": {
+      "current_sources": ["runtime/v09c_ppu.c", "generated/current/v09c/js_v09c_ppu_inventory.h"],
+      "historical_forbidden_in_production": []
+    },
+    "renderer_raster": {"current_sources": [], "historical_forbidden_in_production": []},
+    "input": {"current_sources": [], "historical_forbidden_in_production": []},
+    "ssmp": {
+      "current_sources": ["runtime/v10_1_apu.c"],
+      "candidate_sources": ["analysis/v10_2_smp_discovery.py"],
+      "historical_forbidden_in_production": []
+    },
+    "sdsp_audio": {"current_sources": [], "historical_forbidden_in_production": []},
+    "frontend_host": {"current_sources": [], "candidate_status": "SOURCE_PORTED_UNBUILT", "historical_forbidden_in_production": []}
+  },
+  "counts": {
+    "source_proved_scpu_contexts": 2258,
+    "current_production_scpu_contexts": 2258,
+    "scheduler_executable_scpu_contexts": 2250,
+    "confirmed_not_scheduler_lowered_scpu_contexts": 8,
+    "native_body_contexts": 2238,
+    "named_boundary_contexts_at_v05": 20,
+    "source_proved_scpu_rom_bytes": 4803
+  },
+  "negative_selection": {
+    "runtime_backend_selector_absent": true,
+    "historical_fallback_chain_absent": true,
+    "duplicate_current_owner_absent": true
+  }
+}

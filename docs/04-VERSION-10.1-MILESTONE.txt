@@ -1,0 +1,7 @@
+ROCK N' ROLL RACING - VERSION 10.1 COMPLETE-MILESTONE CONTRACT
+
+V10.1 owns the fixed SNES IPL handshake and APUIO bootstrap needed to reconstruct exact known ARAM from the source-proved S-CPU reset path. The four admitted reset call sites select upload records 0, 1, 2 and 3. The implementation is a dedicated fixed-IPL protocol state machine, never a generic SPC700 interpreter.
+
+Acceptance requires exact ROM record reconstruction, explicit ARAM storage/knownness, immutable IPL pinning, one shared APUIO object for CPU and DMA/HDMA, monotonic synchronization at the inherited V07 S-SMP target, a source-proof executable-WRAM epoch census, and fail-closed transfer at the final uploaded entry.
+
+V10.1 ends exactly at S-SMP PC $0400 with JSV10_1_STOP_SMP_AOT_REQUIRED. Exact-PC static SPC700 AOT begins in V10.2. DSP/audio rendering is not claimed here. No gameplay route, trace, save state, oracle-observed PC, or heuristic code scan may promote authority. Static-core compilation is not a version-end requirement unless explicitly requested by the user.

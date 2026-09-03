@@ -1,0 +1,30 @@
+VERSION MILESTONE REPORT
+
+Version/name/date: Version 07C - One authoritative monotonic scheduler and CPU timing/interrupt ownership / 18 August 2026
+Objective: replace the V06 pre-scheduler duration accumulator with one active master-clock timeline that owns S-CPU access phases/internal cycles, raster/field progress, DRAM refresh, NMI/IRQ, auto-joypad timing, DMA/HDMA rendezvous and exact S-SMP rendezvous targets without adding gameplay-derived authority or a runtime opcode decoder.
+Predecessor: accepted Version 06C, Git tag V06C, commit 099801ea46bfb80d8f9065a430775ce6b9bae31a.
+Status: ACCEPTED STATIC AUTHORITY. Exact cold source-package and final recovery checks are external closure guards; any failure revokes acceptance without rewriting the tested package.
+
+STATIC AUTHORITY
+The exact V05/V06 key universe remains unchanged at 2,258 PBR:PC:E:M:X contexts covering the same 4,803 source-proved ROM bytes. V07C adds zero context keys and zero gameplay, trace or oracle promotions. Scheduler interrupt ownership closes the old asynchronous re-entry disposition for the 12 already-admitted RTI keys; these are now fixed scheduler-owned RTI bodies whose live return target must already exist in the exact V07 key table. Eight source-proof boundaries remain: four unresolved JSR (abs,X) targets and four old-stack returns.
+
+ONE TIMELINE
+The active production selection no longer links runtime/v06c_machine.c or the V06 fixed-fetch wrapper. V07C owns one monotonically increasing master_clock. Read effects occur four master clocks before access completion and then advance the final four clocks; write effects occur after the full 6/8/12-clock duration. Internal CPU cycles are six master clocks. Reset-vector sampling remains untimed, followed by a separate 186-master-clock startup delay. CPU RESET does not rewind the global timeline.
+
+EVENT ORDER
+Boundary ordering is explicit: primary raster event first; then PPU phase or inverted master/4 IRQ phase; then auto-joy processing; then exact S-SMP rational rendezvous target update. DRAM refresh consumes 40 wall clocks at 538-(master_clock&7) per line. Normal and documented short/interlace line behavior is represented. NMI flag/signal/pending stages, H/V IRQ counters/acknowledge, WAI/STP, $4210-$4212 and 128-clock auto-joy scheduling are owned here.
+
+INSTRUCTION TIMING
+All 2,258 static keys have deterministic timing plans derived from the frozen V02 access/cycle matrix and pinned CPU-source ordering. 2,250 are scheduler-executable: 2,238 unchanged V05 native bodies and 12 scheduler RTI bodies. Special ordering includes deferred JSL bank-byte fetch, JSR stack idle, pull/return idles, RMW intermediate idle, direct-page and index penalties and conditional branch penalties. A runtime cycle-count certificate rejects any execution whose CPU-cycle count disagrees with the projected plan.
+
+LATER SUBSYSTEM SEAMS
+V07 schedules manual DMA/HDMA request/admission but deliberately stops at JSV07_STOP_DMA_TRANSFER_V08 before transfer execution; V08 owns the transfer engine. Raster timing is owned while PPU register/rendering semantics remain V09. Exact master-clock-to-S-SMP rational targets are owned while APUIO/S-SMP/DSP behavior remains later audio work. Auto-joy timing/results are owned while $4016/$4017 electrical controller semantics remain a later input milestone.
+
+STREAMLINED VALIDATION
+No static-core compilation/build is performed at version end unless explicitly requested by the user. Routine predecessor proof is the frozen V06C tag plus 16 immutable V06 authority hashes and exact ROM/Starter/oracle hashes. Current validation is 23 focused Python source/static tests plus one independent pinned-source reviewer. Release adds one cache-cold deterministic V07 regeneration, one exact cold source-package gate and one final no-ROM recovery test.
+
+CURRENT EVIDENCE
+Predecessor certificate: PASS. Focused V07 tests: PASS 23/23. Independent timing/source review: PASS over all 2,258 contexts, including 2,250 executable contexts, 12 scheduler-owned RTI returns and eight named boundaries. Compilation/build: DEFERRED BY USER POLICY / NOT RUN.
+
+NEXT AFTER ACCEPTANCE
+Version 08C - exact DMA/HDMA channel semantics and transfer/stall execution on the V07 monotonic timeline.

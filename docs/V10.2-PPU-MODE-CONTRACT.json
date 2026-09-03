@@ -1,0 +1,37 @@
+{
+  "schema": "RRR_V10_2_PPU_MODE_CONTRACT_V1",
+  "authority": {
+    "source_bytes_only": true,
+    "oracle_promotions": 0,
+    "trace_promotions": 0
+  },
+  "bgmode_register_values": [
+    "00",
+    "07",
+    "09",
+    "0B",
+    "0C"
+  ],
+  "selected_modes": [
+    0,
+    1,
+    3,
+    4,
+    7
+  ],
+  "setini_values": [
+    "00"
+  ],
+  "interlace_selected": false,
+  "overscan_selected": false,
+  "pseudo_hires_selected": false,
+  "dma_bbus_destinations": [
+    "2104",
+    "2118",
+    "2122",
+    "2126",
+    "2180"
+  ],
+  "dma_can_write_bgmode": false,
+  "conclusion": "The closed source graph selects modes 0, 1, 3, 4 and 7. SETINI remains zero, and no DMA channel targets BGMODE."
+}

@@ -1,0 +1,31 @@
+{
+  "authority": "frozen V04C source-proof projection only; no gameplay/oracle/trace authority",
+  "gameplay_promotions": 0,
+  "gate": "Every V04C production key has exactly one fixed body or named boundary; every live body successor is checked against its source-specific finite V04C set; final dispatch miss stops.",
+  "generator_sha256": "a8aece6bd5d2674238e81b35640f0619b61a056adb1bff300f83c99d3960bb99",
+  "generator_version": "V05C-GEN-1",
+  "input_hashes": {
+    "config/v05c-release-state.txt": "45ac8388b0fcc0c6f3aaa8ffa15435db4385d67a1c12e1e5b70a79d999f59e7b",
+    "docs/V04C-contexts.csv": "99ffd3ddfbbd98f2cc10ea14c8d2e99c2165581aaaf6d383213e5e0e8e7cbc27",
+    "docs/V04C-control-summary.json": "6a66bc2b1092c1753047147ce56f9fb3ba568ecd918bc26d2692a863d3f8f55d",
+    "docs/V04C-edges.csv": "f4b62e6192cf2104a18539951152d0b93fb515a8f6722200bb2352b6c5f7eb1a",
+    "docs/V04C-fail-closed-boundaries.csv": "0dbde8118d02f70b9e52a513a6ade2b8254ebf00ef997c112f6d9f76a919d9dd"
+  },
+  "milestone": "05C",
+  "mixed_fail_closed_keys": 12,
+  "named_boundary_keys": 20,
+  "native_body_keys": 2238,
+  "oracle_promotions": 0,
+  "production_context_keys": 2258,
+  "rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "runtime_opcode_decoder": false,
+  "schema": 1,
+  "shard_count": 18,
+  "shard_shift": 10,
+  "source_proved_rom_bytes": 4803,
+  "status": "ACCEPTED",
+  "successor_relations": 2488,
+  "trace_promotions": 0,
+  "unique_pbr_pc": 2158,
+  "v04c_commit": "851b3d004682cde7a16c345a19117ed2d51f448d"
+}

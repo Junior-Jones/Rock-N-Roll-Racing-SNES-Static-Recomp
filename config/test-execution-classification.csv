@@ -1,0 +1,10 @@
+test_id,class,carry_allowed,status,receipt
+V10.1-FOCUSED-CURRENT,CURRENT_INVARIANT,false,PASS_8_TESTS,tests/unit/test_v10_1_apu.py;tests/unit/test_v10_1_machine_authority.py
+V10.1-ROM-INDEPENDENT,RELEASE_CRITICAL,false,PASS,tools/verify_v10_1_independent.py
+V01C-ROM-DEPENDENT,HISTORICAL_VERSION_EVIDENCE,true,PASS_WITH_EXACT_ROM,tests/unit/test_v01c_cartridge_profile.py
+V06C-ROM-DEPENDENT,HISTORICAL_VERSION_EVIDENCE,true,PENDING_CLASSIFIED_RERUN,tests/unit/test_v06c_machine.py
+V05C-OWNER-ASSERTIONS,HISTORICAL_VERSION_EVIDENCE,true,HISTORICAL_NOT_CURRENT,tests/unit/test_v05c_static_lowering.py
+V07C-OWNER-ASSERTIONS,HISTORICAL_VERSION_EVIDENCE,true,HISTORICAL_NOT_CURRENT,tests/unit/test_v07c_machine_authority.py
+V08C-OWNER-ASSERTIONS,HISTORICAL_VERSION_EVIDENCE,true,HISTORICAL_NOT_CURRENT,tests/unit/test_v08c_machine_authority.py
+V09C-OWNER-ASSERTIONS,HISTORICAL_VERSION_EVIDENCE,true,HISTORICAL_NOT_CURRENT,tests/unit/test_v09c_machine_authority.py
+V10.2-EXACT-SMP,RELEASE_CRITICAL,false,IN_PROGRESS,work_packages/V10.2-WP01/receipt.json

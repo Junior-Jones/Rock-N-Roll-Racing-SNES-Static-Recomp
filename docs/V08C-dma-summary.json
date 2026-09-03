@@ -1,0 +1,98 @@
+{
+  "construction_authority": "ROM_SOURCE_STATIC_PROOF_ONLY",
+  "context_promotion_count": 0,
+  "gameplay_promotion_count": 0,
+  "general_dma_channels_implemented": 8,
+  "general_transfer_modes_implemented": 8,
+  "milestone": "V08C",
+  "oracle_promotion_count": 0,
+  "production_contexts": 2258,
+  "scheduler_executable_contexts": 2250,
+  "schema": 1,
+  "semantics": [
+    "both directions",
+    "A-bus increment/decrement/fixed",
+    "DAS=0000 is 65536 bytes",
+    "manual mask/order",
+    "direct HDMA",
+    "indirect HDMA",
+    "repeat/reload/termination",
+    "startup/alignment/end alignment",
+    "WRAM-port DMA restriction",
+    "HDMA line > HDMA init > manual priority",
+    "V07 monotonic scheduler integration",
+    "ordered V09 PPU B-bus seam"
+  ],
+  "source_proved_nonzero_hdma_enable": false,
+  "source_proved_rom_bytes": 4803,
+  "source_reached_dma_channels": [
+    0,
+    3,
+    4
+  ],
+  "source_reached_named_profiles": 8,
+  "static_core_compilation_performed": false,
+  "target_rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "trace_promotion_count": 0,
+  "transfer_byte_count": [
+    1,
+    2,
+    2,
+    4,
+    4,
+    4,
+    2,
+    4
+  ],
+  "transfer_offsets": [
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1
+    ]
+  ],
+  "v09_ppu_payload_semantics": false
+}

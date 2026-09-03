@@ -1,0 +1,4 @@
+Conflict_ID,Severity,Type,Physical,Details,V04_Disposition,V04_Admitted_Lengths,Notes
+V03X00001,CANDIDATE,WIDTH_LENGTH_AMBIGUITY,005C83,"instruction lengths=2,3",CANDIDATE_AMBIGUITY_NOT_ADMITTED,,Any proved ambiguity is a release blocker; candidate ambiguity remains non-authoritative.
+V03X00002,CANDIDATE,WIDTH_LENGTH_AMBIGUITY,00F7F7,"instruction lengths=2,3",RESOLVED_BY_SOURCE_CONTEXT,2,Any proved ambiguity is a release blocker; candidate ambiguity remains non-authoritative.
+V03X00003,CANDIDATE,WIDTH_LENGTH_AMBIGUITY,00F803,"instruction lengths=2,3",RESOLVED_BY_SOURCE_CONTEXT,2,Any proved ambiguity is a release blocker; candidate ambiguity remains non-authoritative.

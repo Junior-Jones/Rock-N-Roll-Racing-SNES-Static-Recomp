@@ -1,0 +1,82 @@
+ROCK N' ROLL RACING STATIC RECOMP - VERSION 10.2 WORKING MILESTONE
+=================================================================
+
+Status: CORE COMPLETE; WINDOWS GAMEPLAY TESTING IN PROGRESS - NOT A RELEASE
+
+Purpose
+-------
+V10.2 reopens S-CPU discovery before extending production. The accepted V10.1
+core contains 2,258 exact S-CPU context keys and 4,803 source-proved ROM bytes,
+but equality between that discovery set and its production set does not prove
+whole-program discovery. V10.2 uses the Rock n' Roll Racing repair method: independent
+ROM-rooted reconstruction first, production comparison second, and Windows
+Mesen headless-oracle checking only after source discovery.
+
+Completed V10.2 core acceptance work
+------------------------------------
+1. Reconstruct RESET and every hardware vector from exact ROM bytes.
+2. Trace direct control flow with exact PBR:PC:E:M:X identity, paired calls and
+   returns, status-width transitions and explicit dynamic boundaries.
+3. Split work by real LoROM bank/address shard while retaining cross-bank edges.
+4. Prove every indirect jump/call domain from its source producer and table.
+5. Prove executable-WRAM producer/copy/epoch identity before admitting any WRAM
+   target; otherwise continue to fail closed.
+6. Compare fresh discovery with the current production context set only after
+   the new source graph is complete. Promote every newly proved row into static
+   production; leave no unexplained discovery/production lag.
+7. Use the Windows Mesen headless oracle only as an S-CPU discovery coverage and
+   behavior check. An observed PC never becomes source proof by observation.
+8. Audit the resulting production shards, ROM guards, successor closure,
+   interrupt re-entry and call/return pairs independently.
+9. Preserve the one selected scheduler/machine authority while rebuilding its
+   generated timing rows for every newly admitted production context.
+10. Continue later hardware milestones from proved S-CPU MMIO consumers:
+    input, PPU modes/layers/windows/color math, DMA/HDMA, APUIO/S-SMP/S-DSP,
+    clocks and all inter-device ordering. Do not infer device completeness from
+    the existence of a bus register stub.
+
+The V10.2 production verifier now confirms these ledgers agree:
+  discovery context set == production context set
+  production executable set == all supported discovered rows
+  every unsupported row == named fail-closed boundary
+  every generated ROM guard == exact canonical ROM bytes
+  every successor == present exact context or named boundary
+
+Top Gear Version 27 is the local maturity reference for the completed machine
+shape. See docs/TOP-GEAR-V27-MATURITY-REFERENCE.md. Rock n' Roll Racing remains the
+rediscovery/repair method. Neither project's target-specific code or constants
+are authority for Rock n' Roll Racing.
+
+No ROM image, save state, oracle trace, screenshot or generated binary belongs
+in the source release.
+
+Windows connector and gameplay work completed
+---------------------------------------------
+11. Replaced the Linux-only host path with the full Rock n' Roll Racing Windows
+    frontend structure, connected directly to the V10.2 static machine.
+12. Cross-checked frame, input, pixel, audio, pacing, ROM ownership and reset
+    boundaries against current Mesen2, Snes9x and bsnes source. Corrected
+    opposing-direction handling and completed-frame numbering.
+13. Completed a natural new-game route through car purchase and Start Race,
+    then confirmed driving, steering, primary weapon and boost input in live
+    gameplay with continuous graphics and audio output.
+14. Added versioned, checksummed full-machine snapshots covering S-CPU,
+    scheduler/DMA, PPU, S-SMP/S-DSP and audio-clock state. Runtime pointers are
+    stripped from disk and rebound only to the verified live ROM/core.
+15. Proved the race-grid checkpoint deterministic across a 1,110-frame replay:
+    framebuffer hash, PCM count/hash and native instruction count all match.
+    Ongoing gameplay testing loads Test/Saves slot 1 and has no fixed duration.
+
+Current production verification
+-------------------------------
+  production contexts: 24,829
+  native bodies: 24,821
+  successor relations: 28,903
+  S-SMP exact PCs: 1,629
+  S-DSP static phases: 32
+  runtime opcode decoder: absent
+  production reconciliation: PASS
+  CTest: 8/8 PASS
+
+The generated race checkpoint remains local Test data. It is not part of the
+official source tree or release ZIP.

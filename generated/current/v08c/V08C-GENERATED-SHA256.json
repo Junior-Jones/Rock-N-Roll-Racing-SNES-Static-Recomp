@@ -1,0 +1,9 @@
+{
+  "files": {
+    "docs/V08C-dma-summary.json": "251d5757f2e39e04c86fdc0a5b7fd8e9e2df0baa2d3d7539bd9a38d4507114e9",
+    "docs/V08C-source-dma-configurations.csv": "22ee3a55a5a9ee07756cae69f8144c5da3f08c989aa9117774055add23117db7",
+    "generated/current/v08c/js_v08c_dma_tables.h": "cbdb57c853b96f38371853ab04189e3e07c75a39e252259d476bec10543d7bce"
+  },
+  "milestone": "V08C",
+  "schema": 1
+}

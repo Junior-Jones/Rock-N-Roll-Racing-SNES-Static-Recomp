@@ -1,0 +1,28 @@
+# Owner-provided game material
+*.sfc
+*.smc
+*.fig
+*.swc
+*.sav
+*.srm
+*.state
+
+# Generated research/oracle output
+research/
+*.trace
+*.wav
+*.pcm
+*.png
+*.ppm
+
+# Build/cache output
+build/
+out/
+release/
+__pycache__/
+*.pyc
+.vs/
+CMakeFiles/
+
+# Historical generated sources should normally be tags/releases
+generated/archive/

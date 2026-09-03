@@ -1,0 +1,43 @@
+VERSION MILESTONE REPORT
+
+Version/name/date: Version 04C - Dynamic flow, re-entry and executable-WRAM proof / 18 August 2026
+Objective: disposition the complete V03C discovery queue with source-only path proof, close exact direct calls/returns and status-stack provenance where provable, establish finite DBR/effective-address facts including APUIO, prove any finite dynamic target set that has an exact producer, and stop fail-closed at every remaining unsupported dynamic/re-entry/stack-history boundary.
+Predecessor: accepted Version 03C, Git tag V03C, commit e52ddb5200e1ec87eb0dc0426789e0370299e659.
+
+AUTHORITY CHANGES
+V04C adds an OFFLINE path-sensitive source-proof analyser. Production execution authority remains zero: there is still no runtime W65C816 decoder, generated game C, generic emulator fallback, gameplay-learned target set or oracle-promoted context.
+The analyser preserves V03C's full physical-byte classification and promotes a byte to PROVED_CODE only when an admitted V04C source context owns it. V03C candidate bytes remain candidate unless independently promoted by V04 source proof.
+Historical V03C byte ownership and frontier ledgers are frozen as docs/V03C-byte-ownership.csv and docs/V03C-frontier-ledger.csv so cumulative predecessor tests cannot overwrite or compare against newer live V04 authority.
+
+PATH AND STACK PROOF
+V04C path state includes PBR:PC:E:M:X plus DBR, direct page, finite register/flag producer facts, source origin and an exact symbolic top-of-hardware-stack window. The future production dispatch identity remains PBR:PC:E:M:X; extra path state is analysis proof, not a runtime decoder.
+The stack model is byte-accurate. A 16-bit push followed by an 8-bit pull consumes only the low byte and leaves the high byte, matching 65C816 behavior. This closes the native mixed-width PHP/PHX/PHY/PHA restore pattern at 80:F9E9 and 80:FA2E without guessing status bits.
+V04C also proves the Rock n' Roll Racing bulk stack-cleanup idiom at 80:83C5-83CD: TSX; TXA; CLC; ADC #$000A; TAX; TXS advances S by exactly ten source-proved bytes, exposing the exact older RET16 frame before RTS. The prior false unmatched-return boundary at 80:83CD is therefore closed.
+To keep interprocedural proof finite, the analyser retains an exact 20-byte top-of-stack window. Older caller bytes are deliberately forgotten. Any pull or return crossing that unknown base fails closed; no older continuation is guessed.
+
+WHOLE V04C RESULT
+27,697 admitted path-context rows cover 2,258 unique PBR:PC:E:M:X keys. They produce 29,757 admitted edge rows and 1,973 explicit dynamic proof rows: 940 DIRECT_CALL, 66 DIRECT_TARGET and 967 RETURN proofs.
+Physical ownership is complete across all 1,048,576 ROM bytes: 4,803 PROVED_CODE, 36,835 CANDIDATE, 1,006,874 UNRESOLVED and 64 HEADER_VECTOR. No source-proved ownership ambiguity exists.
+All 874 V03C frontier records, all 1,724 V03C root records, all three V03C candidate conflicts and all 35 V03C APUIO candidates receive a one-for-one V04 disposition. Candidate records are never promoted merely because they decode or were previously discovered.
+
+FAIL-CLOSED BOUNDARIES
+57 source-reached boundaries remain deliberately unsupported: seven DYNAMIC_TARGET rows, 21 INTERRUPT_REENTRY rows and 29 RETURN rows. There are zero STATUS_WIDTH boundaries after the corrected byte-accurate status-stack proof.
+The seven dynamic-target rows are the source-reached JSR (abs,X) sites at physical 000181 and 00021A. Their X/index producer is not finite under source proof, so no table target is admitted.
+The 21 RTI rows are asynchronous NMI/IRQ/ABORT/COP-style vector roots without an exact source-proved interrupted frame. V04C does not invent the pre-interrupt PC/status context.
+The 29 return rows occur only after the finite exact stack-history window has been exhausted; each has zero remaining source-modelled stack bytes. They fail closed instead of guessing an older caller.
+
+DBR, MMIO AND EXECUTABLE WRAM
+The path analyser records 14,904 finite/unknown memory access rows. 1,507 rows have source-proved MMIO effective addresses and 6,638 rows have source-proved WRAM effective addresses.
+All 18 V03 graph-reached $2140-$2143 candidates are now SOURCE_PROVED_MMIO through DBR/path/effective-address facts. The 17 all-offset-only APUIO operand matches remain rejected V03 candidates. This proves the CPU-side address identity only; upload protocol, S-SMP behavior and DSP/audio execution remain later milestones.
+No admitted V04 control target enters WRAM, so executable-WRAM epoch count is zero. Any future non-ROM control target must provide producer/copy/epoch/live-byte proof or fail closed.
+
+INDEPENDENT REVIEW
+The independent V04 reviewer imports neither the V04 analyser nor the V03 decoder. It uses the frozen V02C opcode-context matrix, an independent LoROM/raw-ROM reader and emitted evidence. It checks all 27,697 admitted contexts against exact ROM bytes and legal E/M/X matrix rows, all 4,803 source-proved instruction bytes, all 1,973 dynamic proofs, all 57 fail-closed boundaries, full physical ownership and one-for-one V03 disposition sets.
+The reviewer additionally proves that V03 candidate/proved/header ownership is never silently demoted: only exact admitted instruction bytes may be promoted to V04 PROVED_CODE.
+
+KNOWN LIMITS
+V04C intentionally does not infer asynchronous RTI re-entry state, unresolved JSR (abs,X) index domains, older callers beyond the finite exact stack window, executable-WRAM epochs that are not source-proved, S-SMP upload protocol or production runtime behavior. These are explicit fail-closed/later-milestone obligations, not hidden emulator fallbacks.
+
+ACCEPTANCE
+TECHNICAL CANDIDATE - exact target evidence, focused tests and independent reviewer pass. Final cumulative V01C->V04C gate, ROM-free cold source-package audit, Git freeze/tag and complete no-game-ROM recovery backup are still required before this record changes to ACCEPTED.
+Next milestone after acceptance: 05C - complete direct static S-CPU lowering of every V04C-admitted source context/edge, with no generic runtime decoder.

@@ -1,0 +1,79 @@
+ARCHITECTURE DECISION - V05C BASELINE
+
+Decision: use the Starter SNES Revision 2 source-proof-first direct static AOT method.
+Future production dispatch identity remains PBR:PC:E:M:X. Unknown production execution
+fails closed. No runtime 65816 or SPC700 decoder/interpreter is permitted and
+oracle/research results have no dependency edge into production authority.
+
+Version 01C owns exact cartridge intake/profile. Version 02C owns the complete
+target-independent OFFLINE W65C816 semantic/address/access foundation. Version 03C
+owns whole-ROM candidate/source discovery. Version 04C adds OFFLINE path proof:
+DBR/direct-page/register/flag producers, byte-accurate symbolic stack state, direct
+call/return pairing, finite target sets and explicit fail-closed dynamic boundaries.
+
+Analysis path identity is deliberately richer than production dispatch identity. It
+may include DBR, D, flags, finite register facts, source origin and the exact top
+20 bytes of symbolic hardware stack. Older stack history is never guessed: if a
+return/pull crosses that finite proof window, analysis stops fail closed. Mixed-width
+push/pull behavior is byte-accurate, and TSX/TXA/ADC/TAX/TXS stack cleanup can be
+proved by a short-lived affine relation to S.
+
+V03 candidate ownership remains visible in V04. Only source-admitted V04 instruction
+bytes are promoted to PROVED_CODE. All V03 roots/frontiers/conflicts/APUIO candidates
+receive explicit disposition records. An all-offset instruction-looking byte, trace,
+or oracle-observed PC never authorizes execution.
+
+The V04 CPU-side graph proves effective addresses for the 18 graph-reached APUIO
+candidates, but does not yet claim the upload protocol, S-SMP or DSP. Executable WRAM
+requires producer/copy/epoch/live-byte proof; V04 currently admits zero WRAM control
+targets. Asynchronous RTI roots and unproved indexed indirect calls remain explicit
+fail-closed boundaries.
+
+Current tree boundaries remain analysis, generator, generated/current, runtime,
+frontend, oracle, tests and research. generated/current is the only future
+production-generated authority; generated/archive is never selected by production.
+V05C introduces production static game C solely from frozen V04 source-proof authority: 2,258 exact PBR:PC:E:M:X keys in 18 deterministic shards, with 2,238 fixed bodies, 20 named boundary-only stops, source-specific successor guards and no runtime opcode decoder. The abstract byte-bus seam is not a target SNES bus; exact target mapping begins in V06C.
+
+The private ROM remains outside source/release archives. Mesen headless oracle and
+WDC reference material remain external research/reference material and must never
+be copied or linked into the production target.
+
+V06C STREAMLINED BUS/RESET DECISION
+
+From V06C onward, routine static-core compilation/build is not a version-end gate. It is performed only when the user explicitly requests it. Correctness authority instead comes from immutable predecessor hash certificates, focused source-level tests, independent whole-domain reviewers, deterministic generation, explicit proof/frontier ledgers, one cache-cold release regeneration, and cold recovery-package verification. If a predecessor authority hash changes, the shortcut is invalidated and the relevant historical regression chain must run.
+
+V06C owns the exact target-specific 24-bit base machine behind the frozen V05C byte-bus seam. The target is strict 1 MiB FastROM LoROM with no modulo alias fallback and affirmative zero SRAM; banks $7E/$7F are 128 KiB WRAM, system-bank low WRAM mirrors and $2180-$2183 WRAM ports are explicit, and unowned lower-bus regions use an external open-bus latch. Base CPU-I/O includes MEMSEL and iterative multiply/divide. PPU, APU, DMA, input and scheduler-owned behavior retain distinct named fail-closed stops rather than being hidden behind a generic bus failure.
+
+V06C owns only address access-duration classes (6/8/12 master clocks per access), accumulated under the deliberately pre-scheduler name access_clock_sum. It does not claim one global master-clock timeline, blanking/NMI/IRQ ordering, DMA scheduling or controller timing; V07C and later milestones own those. Reset-vector sampling is an untimed side-effect-free peek. Power-on and RESET remain distinct, with RESET preserving WRAM and non-reset-owned base-machine latch/ALU state.
+
+Instruction fetch remains static: every one of the 2,258 frozen V05C contexts has fixed source-proved instruction bytes fetched through the V06 target bus and compared before its unchanged V05C native body executes. There is no runtime opcode decoder and V06C promotes zero PCs, successors or gameplay/trace/oracle observations.
+
+
+V07C ARCHITECTURE DECISION - ONE ACTIVE MONOTONIC TIMELINE
+The accepted V06 machine remains immutable evidence, but its pre-scheduler duration accumulator and V06 fetch wrapper are not in the V07 active build authority. V07 uses runtime/v07c_machine.c plus generated exact-key timing plans to place fixed static instruction fetches, body accesses, internal cycles, raster/refresh, interrupt, autojoy, DMA/HDMA rendezvous and S-SMP target synchronization on one monotonic master timeline. The 12 already-admitted RTI keys become scheduler-owned return bodies; no new key is created. Later device milestones attach to this timeline rather than creating alternative clocks. Static-core compile/build remains deferred unless explicitly requested.
+
+V08C DMA/HDMA ARCHITECTURE ADDENDUM - 19 AUGUST 2026
+------------------------------------------------------
+V08C replaces the V07 DMA-transfer stop with one general eight-channel/eight-mode
+controller.  The V07 monotonic scheduler and generated V07 CPU timing plan remain
+the sole time authority; DMA/HDMA advances that timeline and never creates a
+zero-time copy path or a parallel approximate clock.  A-bus and B-bus actions are
+ordered explicitly, including DMA-controller/B-bus re-entry exclusions and the
+$2180 WRAM restriction.  HDMA line work outranks HDMA initialization, which
+outranks manual DMA, while lower-priority pending work is retained.
+
+The PPU boundary remains intentionally narrow: V08 emits ordered B-bus read/write
+operations through a callback seam and fails closed if the PPU device is absent.
+V09C owns the actual $2100-$213F register/state/rendering semantics.  Source-proved
+target DMA configurations select named tests only and never reduce the general
+hardware implementation.  Gameplay, trace, save-state and oracle-observed PCs are
+not construction authority.
+
+V09C replaces the V08 external PPU B-bus seam in the active source selection with one native PPU state object shared by direct CPU accesses and DMA/HDMA delivery. It owns $2100-$213F register/latch/buffer/memory semantics and explicit memory-knownness, but not pixel rendering. Renderer-internal active-display addresses and sprite range/time flags remain named fail-closed V10 boundaries rather than guessed state.
+
+
+V10.1 FIXED IPL / APUIO BOOTSTRAP ARCHITECTURE ADDENDUM - 19 AUGUST 2026
+-----------------------------------------------------------------------
+V10.1 attaches a single fixed-SNES-IPL protocol object to the V09 machine. Direct S-CPU APUIO accesses and DMA/HDMA B-bus APUIO accesses share that same state. Synchronization consumes the existing V07 rational S-SMP target cycle; no second timing path is introduced. The model implements only the immutable IPL handshake/upload/restart contract, not SPC700 opcode dispatch.
+
+The reset-authorized S-CPU graph proves four upload calls with X selectors 0, 1, 2 and 3. Their ROM records reconstruct 58,368 uploaded ARAM bytes. Together with the fixed IPL's ordinary-ARAM clear of $0001-$00EF, 58,607 bytes are known at the V10.1 frontier. Register space $00F0-$00FF is not promoted as ordinary ARAM merely because IPL MMIO touches it. The fourth record transfers control to $0400; execution stops there until V10.2 generates exact-PC static SPC700 authority. Low-WRAM data writes do not become executable epochs without a source-proved target and producer epoch; V10.1 admits none.

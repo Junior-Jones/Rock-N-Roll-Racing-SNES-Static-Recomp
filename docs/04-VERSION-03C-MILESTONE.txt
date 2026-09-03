@@ -1,0 +1,32 @@
+VERSION MILESTONE REPORT
+
+Version/name/date: Version 03C - Whole-ROM discovery and classification / 18 August 2026
+Objective: perform conservative whole-ROM candidate discovery from exact source bytes, seed all exact hardware-vector roots, separate source-proved direct flow from candidate continuations/frontiers, expose ownership conflicts/unresolved bytes, and begin APUIO/upload discovery without trace promotion.
+Predecessor: accepted Version 02C, Git tag V02C, commit 458128b8afa2a9819ef659cf28e447844959c20f.
+
+AUTHORITY CHANGES
+Offline analyser: project-owned V03C discovery now scans every physical ROM offset under all five legal architectural E/M/X combinations and separately follows exact source-proved vector/direct-flow contexts. Return continuations, unknown status-width continuations and re-entry continuations are demoted to CANDIDATE rather than silently treated as proof.
+Byte ownership: all 1,048,576 physical bytes remain represented exactly once. HEADER_VECTOR remains V01C authority; V03C adds PROVED_CODE only where source-proved graph contexts own bytes, CANDIDATE where weaker graph contexts own bytes, and leaves all other bytes explicitly UNRESOLVED.
+Production runtime: unchanged. V03C adds no runtime decoder, no generated game C, no SNES machine implementation, and no gameplay/oracle-derived allow-list.
+
+WHOLE-ROM DISCOVERY
+Every 1,048,576 physical offset is decoded under the five legal E/M/X combinations (000, 001, 010, 011, 111), producing 5,242,880 census rows. Instruction fetches that would cross a LoROM upper-half-bank boundary are marked invalid rather than wrapped into $0000. The independent Mesen-derived verifier recomputes this census without importing the project opcode table and must match the project row digest exactly.
+The exact internal vectors produce 16 unique source-proved root records after identical roots are collapsed while retaining their origins. The graph records 215 source-proved context rows and 19,551 candidate context rows; there are 212 unique source-proved PBR:PC:E:M:X keys. The source-proved graph owns 270 physical ROM bytes. Candidate graph coverage owns 41,368 physical bytes. The remaining 1,006,874 bytes are explicit UNRESOLVED, and 64 bytes remain HEADER_VECTOR.
+
+FRONTIERS AND CONFLICTS
+V03C exposes 874 open frontiers for V04C: 23 DYNAMIC_TARGET, 15 INTERRUPT_REENTRY, 783 RETURN, and 53 STATUS_WIDTH. These are discovery obligations, not failures hidden by a fallback.
+There are three candidate-only WIDTH_LENGTH_AMBIGUITY records at physical 005C83, 00F7F7 and 00F803. There are zero source-proved ownership conflicts. Candidate ambiguity does not overwrite source-proved ownership and is not promoted to production authority.
+
+APUIO / AUDIO DISCOVERY
+A source-only all-offset operand inventory found 35 apparent accesses to $2140-$2143. Eighteen are reached by the candidate graph but do not yet have source-proved DBR/MMIO-bank provenance; seventeen are all-offset-only candidates. A dense candidate cluster begins at physical 0079FD and continues through 007CB8, including reads/writes of all four APUIO registers. V03C deliberately does not call these source-proved MMIO accesses. DBR/path, upload protocol, S-SMP and finite target closure belong to later proof milestones.
+
+INDEPENDENT AND NEGATIVE CHECKS
+The independent verifier parses all 256 RunOp cases from the pinned MesenCE 2.2.1 source and derives its own 30 address-mode classes and instruction-length rules. It recomputes all 5,242,880 rows and must match digest fe280158538711ed7e99e104f6586f595052d0f92551efef008efce508e9bc6a exactly.
+V03C unit tests cover LoROM bank-boundary all-offset behavior, emulation PLP carry provenance, direct-call target versus return-continuation claim separation, source-proved APUIO address conditions, and unreachable all-offset APUIO candidates. Cumulative V01C and V02C gates must continue to pass first.
+
+KNOWN LIMITS
+V03C does not close indirect target sets, call returns, RTI re-entry, native PLP/status provenance, DBR path provenance, executable-WRAM epochs, native callbacks, finite script tables, or audio upload protocol. Those frontiers are intentionally open for V04C and later milestones. No trace or oracle observation has promoted any candidate to proof.
+
+ACCEPTANCE
+ACCEPTED - Version 03C gate closed on 18 August 2026. The cumulative gate preserved V01C and V02C, passed all five V03C focused tests, reproduced all nine V03C generated authority files byte-for-byte, independently recomputed all 5,242,880 all-offset rows from pinned MesenCE source with an exact digest match, and passed claim-level invariants with zero source-proved conflicts and zero trace/oracle promotions. A ROM-free explicit-allow-list source package then passed the Starter release audit and manifest verification before and after a fresh cold extraction and full cumulative rerun.
+Next milestone after acceptance: 04C - dynamic flow, re-entry, finite target sets and executable-WRAM proof.

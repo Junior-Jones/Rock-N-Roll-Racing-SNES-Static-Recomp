@@ -1,0 +1,32 @@
+{
+  "files": {
+    "config/v09c-release-state.txt": "a3756c70a870075b41726e0780b97c740f1fb4b320480b6a3a29f4ef5d15088f",
+    "docs/04-VERSION-09C-MILESTONE.txt": "ee2e56577770ddb7af8d7ce87c051e6c6879c934d68a9eb246fc554ccbed35b6",
+    "docs/V09C-FINAL-REPORT.txt": "bcddc810033fc4de771632c4895fffd2e8f65c7d70c74ed3168a2f97ea8f32fd",
+    "docs/V09C-ppu-summary.json": "b82a133423a284ebcadc9e05e1829efa99f9d12d14a27aaa7c5eeda30257a0be",
+    "docs/V09C-source-ppu-access-sites.csv": "29fa7b5713b6a98bda0c5294a097acd33e4f7bcb8a0cff095fbbbdafdb80cda0",
+    "docs/V09C-source-ppu-registers.csv": "fbb89c3762462df21366ddba6b837f9bbf5e18fc4709d89b1a91e2328e28f1dd",
+    "generated/current/v07c/js_v07c_timing.c": "1d27b80c4bc52dd58cbd6b408bac0f6ef3999fc33a63b1efadbee3bd9993adcc",
+    "generated/current/v07c/js_v07c_timing.h": "310449bcdb7b58c55c2ce2c882ecf1fb101d192cda9295711fa2cd7122be27d2",
+    "generated/current/v09c/V09C-GENERATED-SHA256.json": "928a59f48fc8e021f939e53852dc54c58c94bc49dd20dc17f37fe1d36d487c1a",
+    "generated/current/v09c/js_v09c_ppu_inventory.h": "6450853499395b43064690800d123f819a0756f0adba8369441f09c3b7da1fff",
+    "generator/v09c_ppu_gen.py": "4433a2c1719688d8150c6677b89d526bfdb546bf232265079fb0a6ba27f72f57",
+    "runtime/v09c_machine.c": "44771ad680010f60e49e3fee93097c7ebcfd60c744d4e64a3a503e2f370d8534",
+    "runtime/v09c_machine.h": "818c873df41a6f523b0c5f1e48948c9d14c12603f50debc4b42cdd1eebbfc9ce",
+    "runtime/v09c_ppu.c": "4795b751f2cce06b4b86f6e4774a6970678c57fcf967b98e9050cb2742d015b5",
+    "runtime/v09c_ppu.h": "e9939d832d513acc7d91f75009251d32fbda3fc982c98e870dfc184099c7caa4",
+    "scripts/run_v09c.sh": "f0c48f1e316c08f3ca69d24e6b9b501676a0df9a8646a88bfa3c2f9bedcaa80e",
+    "tests/unit/test_v09c_machine_authority.py": "e11008348f3b8f5d7d4c00fc238e3a70a2df7d1e091ff48ed968b62a4281cef7",
+    "tests/unit/test_v09c_ppu.py": "67cd5fd6f88fbc66ccad7a4d56438f5d87ecc69e1590255d92ddf38612832049",
+    "tools/verify_v09c_independent.py": "217143333dc665cacd7486de433708f5419356feb1ef455c32c2186fbe2c995b",
+    "tools/verify_v09c_predecessor_certificate.py": "a60be637a3dc9ce987c06b65918e771db8a89b91f54d03ef8bf04220b5e25fa6",
+    "work_packages/V09C-WP01/receipt.json": "c626bc08ce733c7b3549ca8784c595a0b60d05c96346495c0ef90c9be05a2a2f"
+  },
+  "git_commit": "a9586abd7a2337f34a369ab2fcf72af5a570d1ce",
+  "git_tag": "V09C",
+  "milestone": "V10.1",
+  "oracle_sha256": "b8a96ca1b934cd9247d43122a33075f1a5674eef68c608e2876607b8b8e06c27",
+  "rom_sha256": "9d721753301278325c851f1843d669a697aed757dcf6495a31fc31ddf664b182",
+  "schema": 1,
+  "starter_sha256": "d9240bc6bba8b9604e7a4bf037e04b009452fefa9f5ec2f13bb9a03486460bf1"
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "context_key": ["PBR", "PC", "E", "M", "X"],
+  "unknown_width_policy": "split_only_when_source_proof_enumerates_finite_legal_states_otherwise_fail_closed",
+  "same_pc_merge_policy": "forbidden_unless_all_context_key_fields_and_required_provenance_are_equivalent",
+  "candidate_to_proof_policy": "source_proof_only",
+  "oracle_observation_is_proof": false,
+  "version": "PBR-PC-E-M-X-v1"
+}

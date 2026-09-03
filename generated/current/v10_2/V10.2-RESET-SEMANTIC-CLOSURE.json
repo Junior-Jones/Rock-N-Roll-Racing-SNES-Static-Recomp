@@ -1,0 +1,43 @@
+{
+  "authority": "SOURCE_DISCOVERY_ONLY_NO_ORACLE_OR_TRACE_PROMOTION",
+  "baseline": {
+    "path": "D:/Users/build/retro/Recomp/rock n roll racing/Temp/04-RockNRR-V10.2-Work/evidence/v10_2/reset-35m-baseline-summary.json",
+    "pending_states": 971,
+    "sha256": "30cf81dd70072eab6ca3004cff4fdbc4c098835923664c8573c56f011e9397e6",
+    "state_limit": 35000000,
+    "states": 35000001
+  },
+  "candidate": {
+    "path": "D:/Users/build/retro/Recomp/rock n roll racing/Temp/04-RockNRR-V10.2-Work/generated/current/v10_2/V10.2-RESET-SCPU-REDISCOVERY.json",
+    "pending_redundant_stack_history_states": 1533,
+    "sha256": "546ab030ef4990a3c28cc5a6c9abcf1027ff61135a7514a40dc192ff4aced11f",
+    "state_limit": 45000000,
+    "states": 45000001
+  },
+  "candidate_context_pairs": 26460,
+  "candidate_semantic_edges": 26461,
+  "limitations": [
+    "The raw full-stack work queue is not represented as empty.",
+    "The certificate accepts only safety-limit residue after a ten-million-state semantic stability window.",
+    "Any new context, call, return, terminal, ROM mismatch, or non-safety frontier invalidates this certificate."
+  ],
+  "residual_frontier_types": {
+    "SAFETY_STATE_LIMIT": 1
+  },
+  "schema": "RRR_V10_2_RESET_SEMANTIC_CLOSURE_V1",
+  "stability_window_states": 10000000,
+  "stable_semantic_coverage": {
+    "banks": 5,
+    "max_stack_items_seen": 36,
+    "oracle_promotions": 0,
+    "shards": 80,
+    "trace_promotions": 0,
+    "unique_calls": 2058,
+    "unique_frontiers": 1,
+    "unique_instruction_contexts": 22741,
+    "unique_returns": 2576,
+    "unique_terminals": 3,
+    "wrong_production_bytes": 0
+  },
+  "status": "SEMANTIC_GRAPH_CLOSED_WITH_REDUNDANT_STACK_HISTORY_RESIDUAL"
+}

@@ -1,0 +1,251 @@
+{
+  "host_snapshot": {
+    "clang": "17.0.0 (not used by V01C)",
+    "cmake": "3.31.6 (not used by V01C)",
+    "gcc": "14.2.0 (not used by V01C)",
+    "os": "Linux x86_64 kernel 6.18.35"
+  },
+  "schema": 1,
+  "tools": [
+    {
+      "configuration": "python3 -B; standard library only",
+      "name": "python",
+      "official_url": "https://www.python.org/",
+      "purpose": "V01C deterministic analysis and unit tests",
+      "sha256": "SYSTEM_TOOL_NOT_DISTRIBUTED",
+      "version_or_commit": "CPython 3.13.5"
+    },
+    {
+      "configuration": "read-only inventory; header candidate output manually checked",
+      "name": "Starter SNES inspect_snes_rom.py",
+      "official_url": "bundled_starter_source",
+      "purpose": "independent first inventory candidate evidence",
+      "sha256": "a015b8c77d0c53ba7657e7da00079bc84c5fdaac59c0b799fbe962e6d8b9d906",
+      "version_or_commit": "Starter SNES Revision 2 dated 2026-08-17"
+    },
+    {
+      "configuration": "SOURCE-MANIFEST aggregate 2324737d90cc237ab4a19db2f0c9bda4eb2bee17dd4ea459ef37900e3aad4975; 103 installed files; official verification PASS; active from V05C final closure onward",
+      "name": "Starter SNES package authority",
+      "official_url": "user_supplied_project_authority",
+      "purpose": "governing source-proof, cold-boot/core-end closure, finished-core structure, packaging and frontend separation instructions",
+      "sha256": "d9240bc6bba8b9604e7a4bf037e04b009452fefa9f5ec2f13bb9a03486460bf1",
+      "version_or_commit": "Starter SNES Revision 2, 2026-08-18 frontend and closure update"
+    },
+    {
+      "configuration": "exact supported ROM hash pinned; no disassembly; canonical LoROM unique-window mapping rejects unproved aliases",
+      "name": "project v01c_cartridge_profile.py",
+      "official_url": "project_owned_source",
+      "purpose": "authoritative reproducible V01C target profile and byte census generation",
+      "sha256": "f8d5f63463b021420b2ebb1466d0ad4fcce7cd66417c1cce97904782c93d4a5d",
+      "version_or_commit": "V01C-WP01"
+    },
+    {
+      "configuration": "wrapper 5faff29e6a915a175c821de4e9a55305780245a9bfce75fe25bc11f61bc583c7; core ff29ec49592f3d66d689e8561286d859e1e462d33d512651485b4e6bcd051ecb; NTSC, zero WRAM, random power-on off, strict board mappings on, no frame skip/run-ahead, SPC adjustment 40, port1 standard controller, port2 none",
+      "name": "MesenCE",
+      "official_url": "https://github.com/nesdev-org/MesenCE",
+      "purpose": "verification_oracle_only",
+      "sha256": "039eda04c27060b2ee3f224dd2819888cfd50d90f529332b80a270ae34877e2a",
+      "version_or_commit": "2.2.1 SNES Headless Oracle V02; native build 2026-08-14"
+    },
+    {
+      "configuration": "research/reference only; PDF excluded from source release",
+      "name": "WDC W65C816S Datasheet",
+      "official_url": "https://www.westerndesigncenter.com/wdc/documentation/w65c816s.pdf",
+      "purpose": "V02C official CPU specification/reference; Table 5-4 cycle-byte check plus semantic edge review",
+      "sha256": "b9177e1b045d2c8a801d1b23619abb4e5b29b88868fa491df7296dbc0b13447e",
+      "version_or_commit": "March 13 2024"
+    },
+    {
+      "configuration": "SHA-256 aggregate of sorted per-file SHA-256 lines for __init__, opcodes, decode, addressing, semantics and access_contract; all 256 opcodes; 2048 raw E/M/X rows; analysis only; no production runtime decoder",
+      "name": "project V02C W65C816 semantic foundation",
+      "official_url": "project_owned_source",
+      "purpose": "offline opcode/context decode, semantics, addressing and access annotations",
+      "sha256": "bb1f26b3b7f94742480a6a518c818ac3c508dd6b527647d7a5581115c3a8a7f1",
+      "version_or_commit": "V02C-WP01"
+    },
+    {
+      "configuration": "standard library only",
+      "name": "project V02C artifact generator",
+      "official_url": "project_owned_source",
+      "purpose": "deterministic 2048-row context matrix and WDC reference artifact generation",
+      "sha256": "efa1da3dd08111a75498d233a6743db8736d7b3ed61839cb2104938a92106912",
+      "version_or_commit": "V02C-WP01"
+    },
+    {
+      "configuration": "parses pinned MesenCE source ZIP; zero mismatch required",
+      "name": "project V02C Mesen RunOp verifier",
+      "official_url": "project_owned_source",
+      "purpose": "independent 256-row mnemonic/address-mode comparison",
+      "sha256": "936180144365cf16123745900a7b2117a765df5c7c3bfc23d3c90b0b066bf923",
+      "version_or_commit": "V02C-WP01"
+    },
+    {
+      "configuration": "exact target ROM hash pinned; five legal E/M/X states per offset; candidate != proof; no trace/oracle promotion; return/dynamic/re-entry frontiers fail open only as explicit V04C obligations",
+      "name": "project V03C whole-ROM discovery analyser",
+      "official_url": "project_owned_source",
+      "purpose": "offline all-offset candidate census plus exact-vector/direct-flow source-proof graph",
+      "sha256": "2c71c3223c7c2d35ad3f1837acc7a49876078dff9f513611aef931b78c3243ea",
+      "version_or_commit": "V03C-WP01"
+    },
+    {
+      "configuration": "standard library only; external private exact ROM input; writes evidence only",
+      "name": "project V03C artifact generator",
+      "official_url": "project_owned_source",
+      "purpose": "deterministic discovery/context/edge/frontier/APUIO/ownership evidence generation",
+      "sha256": "9a65c4db0552bd4c5237f4fdd7dc2b70e4472a2d927c7aa5e8d2c1fb31c56e91",
+      "version_or_commit": "V03C-WP01"
+    },
+    {
+      "configuration": "does not import project opcode table; parses 256 pinned MesenCE RunOp cases and independently derives lengths for all 5,242,880 offset/E/M/X rows",
+      "name": "project V03C Mesen all-offset verifier",
+      "official_url": "project_owned_source",
+      "purpose": "independent full-ROM decoder disagreement check",
+      "sha256": "29498ba07ad452102e66fc5b8786433e11893101d8dd59c9e66f224da3dccb30",
+      "version_or_commit": "V03C-WP01"
+    },
+    {
+      "configuration": "exact target ROM hash pinned; byte-accurate symbolic top-of-stack window=20; candidate/oracle/trace observations cannot promote execution authority",
+      "name": "project V04C source-proof control analyser",
+      "official_url": "project_owned_source",
+      "purpose": "offline path-sensitive DBR/direct-page/register/flag/stack/control-flow proof and fail-closed frontier disposition",
+      "sha256": "e2231dd8d63987be656c1430975472b96f14ade069a07e4d9b0e768a2c1ffae3",
+      "version_or_commit": "V04C-WP01"
+    },
+    {
+      "configuration": "standard library only; exact private ROM input; writes proof evidence only",
+      "name": "project V04C artifact generator",
+      "official_url": "project_owned_source",
+      "purpose": "deterministic V04 contexts/edges/dynamic-proof/memory/disposition/ownership/frontier evidence generation",
+      "sha256": "d0ca81db97e380fb9607bf8b88166f075dac1770d1d0884b2f086943a138cc79",
+      "version_or_commit": "V04C-WP01"
+    },
+    {
+      "configuration": "does not import V04 analyser or V03 decoder; checks contexts, instruction bytes, dynamic proofs, fail-closed boundaries, ownership and all V03 dispositions",
+      "name": "project V04C independent verifier",
+      "official_url": "project_owned_source",
+      "purpose": "independent review of emitted V04 authority using frozen V02C matrix and raw ROM bytes",
+      "sha256": "35e94b0fb9072f79401ffd65f38a5f8ecf98d15d953f41623432d09cfec36cc6",
+      "version_or_commit": "V04C-WP01"
+    },
+    {
+      "configuration": "exact ROM + frozen V04 CSV authority only; 18 shards; no gameplay/trace/oracle context promotion; generator never linked into production",
+      "name": "project V05C static S-CPU generator",
+      "official_url": "project_owned_source",
+      "purpose": "offline deterministic projection of frozen V04C exact contexts/edges into native C shards",
+      "sha256": "a8aece6bd5d2674238e81b35640f0619b61a056adb1bff300f83c99d3960bb99",
+      "version_or_commit": "V05C-GEN-1"
+    },
+    {
+      "configuration": "aggregate of runtime/v05c_static_cpu.c/.h; no opcode decoder; SNES bus/timing deferred to V06C",
+      "name": "project V05C static CPU semantic layer",
+      "official_url": "project_owned_source",
+      "purpose": "portable fixed semantic/address/stack helpers and abstract byte-bus seam used by generated V05 bodies",
+      "sha256": "737ef12f859ab1a424ff8cfbfe1d24963fb767eca7caf7c5be3d18c550671a67",
+      "version_or_commit": "V05C-WP01"
+    },
+    {
+      "configuration": "does not import V05 generator; validates 2258 keys, 4803 bytes, 2488 successors, 20 boundary-only keys, 18 shards and exact production build list",
+      "name": "project V05C independent verifier",
+      "official_url": "project_owned_source",
+      "purpose": "independent reconciliation of V05 projection against frozen V04 authority, raw ROM and frozen V02 legal matrix",
+      "sha256": "4f2ed4ad9501003fc1ac328100875eac78b57cd60a1f1b911702bbdeb4a353d2",
+      "version_or_commit": "V05C-WP01"
+    },
+    {
+      "configuration": "-std=c11 -Wall -Wextra -Werror -pedantic; UBSan qualification adds -fsanitize=undefined -fno-sanitize-recover=undefined",
+      "name": "GCC",
+      "official_url": "https://gcc.gnu.org/",
+      "purpose": "V05C warning-clean C11 production compilation and UndefinedBehaviorSanitizer native qualification",
+      "sha256": "SYSTEM_TOOL_NOT_DISTRIBUTED",
+      "version_or_commit": "14.2.0"
+    },
+    {
+      "configuration": "no gameplay/trace authority; standard library; not linked into production",
+      "name": "project V06C bus/base-machine proof model",
+      "official_url": "project_owned_source",
+      "purpose": "offline exact target mapper/reset/open-bus/CPU-I/O/ALU qualification model",
+      "sha256": "08f8180c6f3a0d23becf89bcf30f99fc8c3f316a327eadbe7aabc610636b155f",
+      "version_or_commit": "V06C-WP01"
+    },
+    {
+      "configuration": "exact ROM + frozen V05 manifest; no compiler required; no context promotion",
+      "name": "project V06C machine/fetch generator",
+      "official_url": "project_owned_source",
+      "purpose": "deterministic V06 machine C plus fixed-byte fetch-guard generation and exhaustive bus/timing census",
+      "sha256": "69ce372a8dcc16c3c7698e92a4f2f7ab4e893c6109a9648534e069aa1a6eedd6",
+      "version_or_commit": "ROCKNROLL_V06C_MACHINE_GEN_1"
+    },
+    {
+      "configuration": "does not import V06 model/generator; iterates all 16,777,216 addresses",
+      "name": "project V06C independent verifier",
+      "official_url": "project_owned_source",
+      "purpose": "independent 24-bit mapper/timing/fetch/build-boundary review",
+      "sha256": "4cfaaa3fbdc381cf850b83b1c9974f54f7f1511d167fc6eff0bcb3adea3e8924",
+      "version_or_commit": "V06C-WP01"
+    },
+    {
+      "configuration": "live/recovery workspace verifies V05C Git tag+hashes; ROM-free source package verifies the same immutable file/input hashes without requiring .git; mismatch requires full regression",
+      "name": "project V06C predecessor certificate verifier",
+      "official_url": "project_owned_source",
+      "purpose": "fast hash-based proof that accepted V05C authority is unchanged",
+      "sha256": "c0fa2ea1cabe73c0f75c02f3f5615770e4efcb4f6c2ec2a9bbfc94d3a670f43d",
+      "version_or_commit": "V06C-WP01"
+    },
+    {
+      "configuration": "no static-core compilation; pinned Mesen AluMulDiv.cpp is corroboration only",
+      "name": "project V06C ALU verifier",
+      "official_url": "project_owned_source",
+      "purpose": "exhaustive source-level multiply/divide final-domain plus iterative/partial-cycle review",
+      "sha256": "28969d85c8d5a6e9bac614458afb4b686572510e0227a3b6d644057b8a7c1714",
+      "version_or_commit": "V06C-WP01"
+    },
+    {
+      "configuration": "default fast mode; --release adds independent mapper, exhaustive ALU and cache-cold regeneration; never compiles/builds static core",
+      "name": "project V06C streamlined gate",
+      "official_url": "project_owned_source",
+      "purpose": "fast hash-certificate/focused gate with optional release-only regeneration and whole-domain proofs",
+      "sha256": "5b137e5623b5e5bd60129af6a778f39f35e4d8a0ec522243a3fea4e4acd36c8c",
+      "version_or_commit": "V06C-WP01"
+    },
+    {
+      "configuration": "standard library; synthetic hardware vectors; no gameplay/trace/oracle target promotion; not linked as production runtime",
+      "name": "project V08C DMA proof model",
+      "official_url": "project_owned_source",
+      "purpose": "offline general 8-channel/8-mode DMA/HDMA semantic and scheduler-integration qualification",
+      "sha256": "f3d40b340c6ed49acaaff6e29fb17b6316753b935cec75cf2a0cb79406dd520f",
+      "version_or_commit": "V08C-WP01"
+    },
+    {
+      "configuration": "exact ROM + frozen V04 source proof only; no gameplay/trace/oracle authority",
+      "name": "project V08C DMA evidence generator",
+      "official_url": "project_owned_source",
+      "purpose": "deterministic target-source DMA profile census and general transfer-table evidence generation",
+      "sha256": "1983e4c70bbc2324598d6663f3e7bec6545680ae58c24b86928e833332f48d3e",
+      "version_or_commit": "V08C-WP01"
+    },
+    {
+      "configuration": "does not import V08 model or generator; validates source census, ROM signatures, transfer tables, runtime structure and pinned source semantics",
+      "name": "project V08C independent DMA verifier",
+      "official_url": "project_owned_source",
+      "purpose": "independent raw-ROM/frozen-source/emitted-authority and pinned Mesen DMA source review",
+      "sha256": "9e0ad2aa78250f257c72181da1f04e581798212500b57c238a2a377f34f8526d",
+      "version_or_commit": "V08C-WP01"
+    },
+    {
+      "configuration": "never compiles/builds static core; --release regenerates V08 evidence and reruns current proof only",
+      "name": "project V08C streamlined gate",
+      "official_url": "project_owned_source",
+      "purpose": "V07 predecessor certificate + focused V08 checks + optional one cache-cold release regeneration",
+      "sha256": "997cb5585534b5aeb3b47cfd842536467b0c2983373cdcd253b8c9fc84a7892a",
+      "version_or_commit": "V08C-WP01"
+    },
+    {
+      "configuration": "V08-specific certificate path; live Git tag verification when .git exists; source-package hash mode otherwise; no static-core build",
+      "name": "project V08C predecessor certificate verifier",
+      "official_url": "project_owned_source",
+      "purpose": "fast proof that accepted V07C authority and pinned inputs are unchanged",
+      "sha256": "6fb42d213e12f7d20980ab3561882088a12bb50d98c30646978ad63cbdad2186",
+      "version_or_commit": "V08C-WP01"
+    }
+  ]
+}

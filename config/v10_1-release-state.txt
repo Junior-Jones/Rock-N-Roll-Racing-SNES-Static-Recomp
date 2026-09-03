@@ -1,0 +1,13 @@
+ROCK N' ROLL RACING SNES STATIC RECOMP - V10.1 ACCEPTED RELEASE STATE
+Milestone: V10.1 S-SMP fixed IPL protocol / APUIO upload / known ARAM / WRAM epoch census
+Predecessor: V09C / a9586abd7a2337f34a369ab2fcf72af5a570d1ce
+Static S-CPU authority: 2258 contexts / 2250 scheduler-executable / 4803 source-proved ROM bytes; zero V10.1 S-CPU promotions
+Source-proved bootstrap: four reset-path upload selectors 0,1,2,3
+Uploaded ARAM: 58,368 bytes; known ARAM at frontier: 58,607 bytes; unknown: 6,929 bytes
+Final uploaded S-SMP entry: $0400; V10.1 stops fail-closed before executing uploaded SPC700
+WRAM execution: zero source-proved executable-WRAM epochs
+Timing: fixed IPL/APUIO protocol synchronized at inherited V07 rational S-SMP rendezvous; no alternate clock
+Construction authority: ROM/source/static proof only; gameplay/trace/oracle-PC promotion count zero
+Build policy: static-core compilation/build was not performed and remains explicit-request only
+Gate: predecessor PASS; 20/20 focused tests PASS; independent review PASS; cache-cold deterministic regeneration PASS
+Status: COMPLETE_ACCEPTED_SOURCE_COLD_GATE_PASS
