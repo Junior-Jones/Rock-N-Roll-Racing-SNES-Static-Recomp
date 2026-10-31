@@ -50,11 +50,12 @@ if(MSVC)
         ${V10_2_SMP_SOURCES}
         PROPERTIES COMPILE_OPTIONS "/W0;/O1")
 else()
-    target_compile_options(rnr_v10_2_scpu PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(rnr_v10_2_scpu PRIVATE -Wall -Wextra -Wpedantic -Werror -Wno-error=misleading-indentation -Wno-error=class-memaccess)
     set_source_files_properties(
         runtime/v10_2_audio/smp/smp.cpp
         ${V10_2_SMP_SOURCES}
         runtime/v10_2_audio/dsp/project_static_dsp.c
+        runtime/v10_2_audio/sc_static_apu.cpp
         PROPERTIES COMPILE_OPTIONS "-w")
 endif()
 
@@ -109,6 +110,8 @@ add_test(NAME v10_2_static_dsp COMMAND test_v10_2_static_dsp)
 
 # Developer-only real-ROM gate. It is intentionally not registered with CTest:
 # copyrighted ROM data is host supplied and never enters source or build output.
+# Windows-only (uses fopen_s); Linux frontend uses portable core + CLI instead.
+if(WIN32)
 add_executable(v10_2_real_boot tests/native/v10_2_real_boot.c)
 target_link_libraries(v10_2_real_boot PRIVATE rnr_v10_2_scpu)
 if(MSVC)
@@ -116,8 +119,14 @@ if(MSVC)
 else()
     target_compile_options(v10_2_real_boot PRIVATE -Wall -Wextra -Wpedantic -Werror)
 endif()
+endif()
 
 option(RNR_BUILD_WINDOWS_FRONTEND "Build the complete Windows launcher" ON)
 if(RNR_BUILD_WINDOWS_FRONTEND AND WIN32)
     add_subdirectory(frontend/windows)
+endif()
+
+option(RNR_BUILD_LINUX_FRONTEND "Build the SDL3 Linux frontend" ON)
+if(RNR_BUILD_LINUX_FRONTEND AND LINUX)
+    add_subdirectory(frontend/linux)
 endif()
