@@ -1,0 +1,72 @@
+name: Linux CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: linux-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux-build-test:
+    name: linux-build-test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34ea4a41551a30e80af # v6
+
+      - name: Install SDL3 build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            cmake g++ pkg-config file \
+            libx11-dev libxext-dev libxrandr-dev libxcursor-dev \
+            libxi-dev libxfixes-dev libxss-dev libxrender-dev \
+            libxcb1-dev libx11-xcb-dev libxcb-util-dev \
+            libxkbcommon-dev libwayland-dev wayland-protocols \
+            libasound2-dev libpulse-dev libgl1-mesa-dev libdrm-dev
+
+      - name: Configure (Release, Linux frontend)
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DRNR_BUILD_WINDOWS_FRONTEND=OFF \
+            -DRNR_BUILD_LINUX_FRONTEND=ON \
+            -DSDL_GPU_VULKAN=OFF -DSDL_RENDER_VULKAN=OFF
+
+      - name: Build Release
+        run: cmake --build build --config Release --parallel
+
+      - name: Run ROM-free tests
+        run: ctest --test-dir build -C Release --output-on-failure
+
+      - name: Package AppImage
+        run: |
+          curl -L -o appimagetool.AppImage \
+            https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool.AppImage
+          mkdir -p "$PWD/tools"
+          printf '#!/bin/sh\nexec "%s/appimagetool.AppImage" --appimage-extract-and-run "$@"\n' "$PWD" > "$PWD/tools/appimagetool"
+          chmod +x "$PWD/tools/appimagetool"
+          PATH="$PWD/tools:$PATH" packaging/appimage/build-appimage.sh \
+            build/linux/rock-n-roll-racing \
+            Rock-n-Roll-Racing-x86_64.AppImage
+
+      - name: Smoke-test AppImage (no ROM)
+        run: ./Rock-n-Roll-Racing-x86_64.AppImage 2>&1 | head -8
+
+      - name: Upload AppImage artifact
+        uses: actions/upload-artifact@330a01c490aca151604b6649aacdcfb0d0eb9bcb # v4
+        with:
+          name: Rock-n-Roll-Racing-x86_64.AppImage
+          path: Rock-n-Roll-Racing-x86_64.AppImage
+          if-no-files-found: error

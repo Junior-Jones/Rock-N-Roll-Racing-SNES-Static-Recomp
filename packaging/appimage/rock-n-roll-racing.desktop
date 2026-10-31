@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Rock n' Roll Racing (Static Recomp)
+Comment=SNES static recompilation for Linux (SDL3). ROM required.
+Exec=rock-n-roll-racing
+Icon=rock-n-roll-racing
+Type=Application
+Categories=Game;
+Terminal=false

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.herijooj.rock-n-roll-racing</id>
+  <name>Rock n' Roll Racing (Static Recomp)</name>
+  <summary>SNES static recompilation for Linux (SDL3). ROM required.</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>Zlib</project_license>
+  <description>
+    <p>Native Linux port of the Rock n' Roll Racing (SNES, 1993) static
+    recompilation: ahead-of-time W65C816/SPC700 execution with an SDL3
+    frontend. The original game ROM is required and is never distributed
+    with this package.</p>
+  </description>
+  <launchable type="desktop-id">rock-n-roll-racing.desktop</launchable>
+  <icon type="remote" width="256" height="256">rock-n-roll-racing</icon>
+  <categories>
+    <category>Game</category>
+  </categories>
+  <provides>
+    <binary>rock-n-roll-racing</binary>
+  </provides>
+</component>
