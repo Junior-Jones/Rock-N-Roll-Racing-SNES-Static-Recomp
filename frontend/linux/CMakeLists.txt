@@ -18,11 +18,13 @@ FetchContent_Declare(rnr_sdl
 )
 FetchContent_MakeAvailable(rnr_sdl)
 
+# Core instance + SHA-256 + input latch live in frontend/common and are
+# shared by every non-Windows frontend. The Windows launcher keeps its own
+# copies under frontend/windows and is untouched by this target.
 add_executable(rnr-linux
   main_sdl3.c
-  rnr_app_core_linux.c
-  rnr_sha256.c
-  rnr_audio_resampler.c
+  ../common/rnr_app_core.c
+  ../common/rnr_sha256.c
   ../common/rnr_input_latch.c
 )
 target_include_directories(rnr-linux PRIVATE

@@ -73,8 +73,31 @@ int js_v10_2_wram_offset(uint32_t address,uint32_t *offset) {
 }
 uint8_t js_v10_2_access_clocks(uint32_t address,uint8_t memsel) {
     uint8_t bg=(uint8_t)((address>>22)&3u),page=(uint8_t)(address>>8);memsel=memsel?1u:0u;
-    if(bg==1u)return 8u;if(bg==3u)return memsel?6u:8u;if(page<=0x1Fu)return 8u;if(page<=0x3Fu)return 6u;
-    if(page<=0x41u)return 12u;if(page<=0x5Fu)return 6u;if(page<=0x7Fu)return 8u;if(bg==0u)return 8u;return memsel?6u:8u;
+    if(bg==1u) {
+        return 8u;
+    }
+    if(bg==3u) {
+        return memsel?6u:8u;
+    }
+    if(page<=0x1Fu) {
+        return 8u;
+    }
+    if(page<=0x3Fu) {
+        return 6u;
+    }
+    if(page<=0x41u) {
+        return 12u;
+    }
+    if(page<=0x5Fu) {
+        return 6u;
+    }
+    if(page<=0x7Fu) {
+        return 8u;
+    }
+    if(bg==0u) {
+        return 8u;
+    }
+    return memsel?6u:8u;
 }
 
 
@@ -169,7 +192,9 @@ static void jsv10_2_arm_autojoy(JSV10_2Scheduler *s) {
     uint64_t r=s->master_clock+130u;s->autojoy_clock_start=r+((r&0xFFu)?(256u-(r&0xFFu)):0u)-128u;s->autojoy_next_clock=s->autojoy_clock_start;s->autojoy_disabled=0u;s->autojoy_step=-1;jsv10_2_event(s,12u,(uint32_t)s->autojoy_clock_start);
 }
 static void jsv10_2_queue_dma(JSV10_2Scheduler *s,JSV10_2DmaRendezvous kind) {
-    if(kind==JSV10_2_DMA_NONE)return;s->dma_pending_mask=(uint8_t)(s->dma_pending_mask|(1u<<((unsigned)kind-1u)));jsv10_2_dma_refresh_request(s);s->dma_start_delay=1u;jsv10_2_event(s,13u,(uint32_t)kind);
+    if(kind==JSV10_2_DMA_NONE)
+        return;
+    s->dma_pending_mask=(uint8_t)(s->dma_pending_mask|(1u<<((unsigned)kind-1u)));jsv10_2_dma_refresh_request(s);s->dma_start_delay=1u;jsv10_2_event(s,13u,(uint32_t)kind);
 }
 static int jsv10_2_line_ends(const JSV10_2Scheduler *s) {
     if(s->hclock>=JSV10_2_NORMAL_SCANLINE_CLOCKS)return 1;
@@ -207,10 +232,14 @@ static void jsv10_2_tick2(JSV10_2Scheduler *s) {
     jsv10_2_process_autojoy(s);
 }
 void js_v10_2_scheduler_init(JSV10_2Scheduler *s) {
-    if(!s)return;memset(s,0,sizeof(*s));s->forced_blank=1u;s->htimer=0x1FFu;s->vtimer=0x1FFu;s->autojoy_disabled=1u;s->autojoy_step=-1;s->dram_refresh_position=538u;s->next_primary_clock=538u;s->next_primary_event=JSV10_2_EVENT_DRAM_REFRESH;s->event_digest=UINT64_C(0xCBF29CE484222325);
+    if(!s)
+        return;
+    memset(s,0,sizeof(*s));s->forced_blank=1u;s->htimer=0x1FFu;s->vtimer=0x1FFu;s->autojoy_disabled=1u;s->autojoy_step=-1;s->dram_refresh_position=538u;s->next_primary_clock=538u;s->next_primary_event=JSV10_2_EVENT_DRAM_REFRESH;s->event_digest=UINT64_C(0xCBF29CE484222325);
 }
 void js_v10_2_scheduler_reset_cpu_side(JSV10_2Scheduler *s) {
-    if(!s)return;s->enable_autojoy=s->enable_nmi=s->enable_hirq=s->enable_virq=0u;s->nmi_flag=s->nmi_signal=s->nmi_pending=0u;s->irq_level=s->need_irq=s->irq_flag=s->irq_source=0u;s->autojoy_clock_start=s->autojoy_next_clock=0u;s->autojoy_active=0u;s->autojoy_disabled=1u;s->autojoy_strobe=0u;s->autojoy_step=-1;s->dma_request=s->dma_rendezvous_ready=JSV10_2_DMA_NONE;s->dma_start_delay=s->dma_pending_mask=0u;s->manual_dma_mask=s->hdma_enable_mask=0u;s->cpu_stop=JSV10_2_CPU_RUNNING;jsv10_2_event(s,17u,0u);
+    if(!s)
+        return;
+    s->enable_autojoy=s->enable_nmi=s->enable_hirq=s->enable_virq=0u;s->nmi_flag=s->nmi_signal=s->nmi_pending=0u;s->irq_level=s->need_irq=s->irq_flag=s->irq_source=0u;s->autojoy_clock_start=s->autojoy_next_clock=0u;s->autojoy_active=0u;s->autojoy_disabled=1u;s->autojoy_strobe=0u;s->autojoy_step=-1;s->dma_request=s->dma_rendezvous_ready=JSV10_2_DMA_NONE;s->dma_start_delay=s->dma_pending_mask=0u;s->manual_dma_mask=s->hdma_enable_mask=0u;s->cpu_stop=JSV10_2_CPU_RUNNING;jsv10_2_event(s,17u,0u);
 }
 void js_v10_2_scheduler_set_display(JSV10_2Scheduler *s,int overscan,int interlace){if(s){s->overscan=(uint8_t)!!overscan;s->interlace=(uint8_t)!!interlace;}}
 static JSV10_2DmaRendezvous jsv10_2_cpu_boundary(JSV10_2Scheduler *s) {
@@ -286,5 +315,9 @@ JSExecResult js_v10_2_step(JSV10_2Machine*m,JSV10_2Stop*s){const JSV10_2TimingPl
  memset(&m->timing,0,sizeof(m->timing));m->timing.plan=p;m->timing.before=m->cpu;m->timing.start_cpu_cycles=m->scheduler.cpu_cycle_count;
  if(!jsv10_2_prefetch(m,p,s))return JS_EXEC_STOP;
  jsv10_2_pre_body_fixed(m,p);if(jsv10_2_report_pending(m,s))return JS_EXEC_STOP;bus.opaque=m;bus.read8=jsv10_2_v05_read;bus.write8=jsv10_2_v05_write;js_stop_clear(&v05);r=js_v10_2_scpu_step(&m->cpu,&bus,&v05);if(r==JS_EXEC_STOP){if(s)s->v05=v05;if(v05.reason==JS_STOP_BUS_UNAVAILABLE&&m->pending_bus_stop!=JSV10_2_STOP_NONE){jsv10_2_report_pending(m,s);return r;}if(s){s->reason=JSV10_2_STOP_V05;s->source_key=v05.source_key;s->observed_key=v05.observed_key;s->address=v05.address;s->value=v05.value;}return r;}jsv10_2_post_body(m,p);
- if(r!=JS_EXEC_OK)return r;if(jsv10_2_report_pending(m,s))return JS_EXEC_STOP;cycles=m->scheduler.cpu_cycle_count-m->timing.start_cpu_cycles;expected=p->cycle_min;if((p->rule_flags&JSV10_2_RULE_DYN_DIRECT_LOW_PRE_IDLE)&&(m->timing.before.d&0xFFu))expected++;if((p->rule_flags&JSV10_2_RULE_DYN_INDEX_PRE_DATA_IDLE)&&jsv10_2_index_cross(&m->timing))expected++;if((p->rule_flags&JSV10_2_RULE_DYN_BRANCH_TAKEN_POST_IDLE)&&jsv10_2_branch_taken(&m->timing)){int8_t d=(int8_t)p->bytes[1];uint16_t seq=(uint16_t)(m->timing.before.pc+p->length),target=(uint16_t)(seq+d);expected++;if((p->rule_flags&JSV10_2_RULE_DYN_BRANCH_PAGE_POST_IDLE)&&m->timing.before.e&&((seq&0xFF00u)!=(target&0xFF00u)))expected++;}
+ if(r!=JS_EXEC_OK)
+    return r;
+ if(jsv10_2_report_pending(m,s))
+    return JS_EXEC_STOP;
+ cycles=m->scheduler.cpu_cycle_count-m->timing.start_cpu_cycles;expected=p->cycle_min;if((p->rule_flags&JSV10_2_RULE_DYN_DIRECT_LOW_PRE_IDLE)&&(m->timing.before.d&0xFFu))expected++;if((p->rule_flags&JSV10_2_RULE_DYN_INDEX_PRE_DATA_IDLE)&&jsv10_2_index_cross(&m->timing))expected++;if((p->rule_flags&JSV10_2_RULE_DYN_BRANCH_TAKEN_POST_IDLE)&&jsv10_2_branch_taken(&m->timing)){int8_t d=(int8_t)p->bytes[1];uint16_t seq=(uint16_t)(m->timing.before.pc+p->length),target=(uint16_t)(seq+d);expected++;if((p->rule_flags&JSV10_2_RULE_DYN_BRANCH_PAGE_POST_IDLE)&&m->timing.before.e&&((seq&0xFF00u)!=(target&0xFF00u)))expected++;}
  if(cycles!=expected){jsv10_2_fail(m,s,JSV10_2_STOP_TIMING_PLAN_MISMATCH,p->address,(uint8_t)expected);if(s){s->source_key=p->key;s->observed_key=(uint32_t)cycles;}return JS_EXEC_STOP;}return JS_EXEC_OK;}

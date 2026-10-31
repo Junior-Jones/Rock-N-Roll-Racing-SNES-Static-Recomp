@@ -1,4 +1,4 @@
-#include "rnr_app_core_linux.h"
+#include "rnr_app_core.h"
 #include "v10_2_machine.h"
 
 #include "rnr_sha256.h"

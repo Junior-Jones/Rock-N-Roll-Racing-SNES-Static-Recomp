@@ -38,6 +38,16 @@ typedef struct PortEvent {
     uint8_t direction, port, value;
 } PortEvent;
 
+static int open_file(FILE **out, const char *path, const char *mode) {
+    if (!out || !path || !mode) return 0;
+#ifdef _MSC_VER
+    return fopen_s(out, path, mode) == 0 && *out != NULL;
+#else
+    *out = fopen(path, mode);
+    return *out != NULL;
+#endif
+}
+
 typedef struct InstructionEvent {
     uint16_t pc;
     uint8_t opcode;
@@ -244,7 +254,7 @@ static int write_frame_ppm(const JSV10_2Machine *machine, const char *path) {
     FILE *file = NULL;
     const unsigned height = machine->ppu.overscan ? 239u : 224u;
     unsigned x, y;
-    if (!path || fopen_s(&file, path, "wb") != 0 || !file) return 0;
+    if (!path || !open_file(&file, path, "wb")) return 0;
     if (fprintf(file, "P6\n%u %u\n255\n", (unsigned)JSV10_2_FRAME_WIDTH, height) < 0) {
         fclose(file);
         return 0;
@@ -270,7 +280,7 @@ static int write_frame_ppm(const JSV10_2Machine *machine, const char *path) {
 
 static int write_binary_file(const char *path, const void *data, size_t size) {
     FILE *file = NULL;
-    if (!path || !data || fopen_s(&file, path, "wb") != 0 || !file) return 0;
+    if (!path || !data || !open_file(&file, path, "wb")) return 0;
     if (fwrite(data, 1u, size, file) != size) {
         fclose(file);
         return 0;
@@ -307,7 +317,7 @@ static uint8_t *load_rom(const char *path) {
     FILE *file = NULL;
     uint8_t *rom = NULL;
     long size;
-    if (fopen_s(&file, path, "rb") != 0 || !file) return NULL;
+    if (!open_file(&file, path, "rb")) return NULL;
     if (fseek(file, 0, SEEK_END) != 0) goto fail;
     size = ftell(file);
     if (size != (long)JSV10_2_ROM_SIZE) goto fail;
@@ -561,7 +571,7 @@ int main(int argc, char **argv) {
         return 2;
     }
     if (options.log_path &&
-        (fopen_s(&diagnostic_log, options.log_path, "wb") != 0 || !diagnostic_log)) {
+        !open_file(&diagnostic_log, options.log_path, "wb")) {
         fprintf(stderr, "could not create diagnostic log: %s\n", options.log_path);
         return 2;
     }

@@ -50,7 +50,7 @@ if(MSVC)
         ${V10_2_SMP_SOURCES}
         PROPERTIES COMPILE_OPTIONS "/W0;/O1")
 else()
-    target_compile_options(rnr_v10_2_scpu PRIVATE -Wall -Wextra -Wpedantic -Werror -Wno-error=misleading-indentation -Wno-error=class-memaccess)
+    target_compile_options(rnr_v10_2_scpu PRIVATE -Wall -Wextra -Wpedantic -Werror)
     set_source_files_properties(
         runtime/v10_2_audio/smp/smp.cpp
         ${V10_2_SMP_SOURCES}
@@ -108,17 +108,45 @@ else()
 endif()
 add_test(NAME v10_2_static_dsp COMMAND test_v10_2_static_dsp)
 
+add_executable(test_rnr_sha256
+    tests/native/test_rnr_sha256.c
+    frontend/common/rnr_sha256.c)
+target_include_directories(test_rnr_sha256 PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/frontend/common")
+if(MSVC)
+    target_compile_options(test_rnr_sha256 PRIVATE /W4 /WX /permissive-)
+else()
+    target_compile_options(test_rnr_sha256 PRIVATE -Wall -Wextra -Wpedantic -Werror)
+endif()
+add_test(NAME rnr_sha256 COMMAND test_rnr_sha256)
+
+# Manual ROM-gated soak + determinism check. Built but NOT registered with
+# CTest (needs the user-supplied ROM, same convention as v10_2_real_boot).
+add_executable(rnr-soak-check
+  tests/native/rnr_soak_check.c
+  frontend/common/rnr_app_core.c
+  frontend/common/rnr_sha256.c)
+target_include_directories(rnr-soak-check PRIVATE
+  "${CMAKE_CURRENT_SOURCE_DIR}/frontend/common"
+  "${CMAKE_CURRENT_SOURCE_DIR}/runtime"
+  "${CMAKE_CURRENT_SOURCE_DIR}/generated/current/v10_2/smp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/generated/current/v10_2/scpu"
+  "${CMAKE_CURRENT_SOURCE_DIR}/generated/current/v10_2/timing")
+target_link_libraries(rnr-soak-check PRIVATE rnr_v10_2_scpu)
+if(MSVC)
+  target_compile_options(rnr-soak-check PRIVATE /W4 /WX /permissive-)
+else()
+  target_compile_options(rnr-soak-check PRIVATE -Wall -Wextra -Wpedantic -Werror)
+endif()
+
 # Developer-only real-ROM gate. It is intentionally not registered with CTest:
 # copyrighted ROM data is host supplied and never enters source or build output.
-# Windows-only (uses fopen_s); Linux frontend uses portable core + CLI instead.
-if(WIN32)
 add_executable(v10_2_real_boot tests/native/v10_2_real_boot.c)
 target_link_libraries(v10_2_real_boot PRIVATE rnr_v10_2_scpu)
 if(MSVC)
     target_compile_options(v10_2_real_boot PRIVATE /W4 /WX /permissive-)
 else()
     target_compile_options(v10_2_real_boot PRIVATE -Wall -Wextra -Wpedantic -Werror)
-endif()
 endif()
 
 option(RNR_BUILD_WINDOWS_FRONTEND "Build the complete Windows launcher" ON)

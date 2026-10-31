@@ -1,4 +1,7 @@
+// Public-domain SHA-256 (Brad Conte style, self-contained).
+// For ROM identity check only.
 #include "rnr_sha256.h"
+
 #include <string.h>
 
 #define ROTR(x,n) (((x)>>(n))|((x)<<(32-(n))))
@@ -23,36 +26,35 @@ static const uint32_t K[64] = {
 void rnr_sha256(const uint8_t *data, size_t len, uint8_t out[32]) {
   uint32_t h[8] = {0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19};
   uint64_t bitlen = (uint64_t)len * 8u;
-  size_t new_len = len + 1;
-  uint8_t *msg;
+  size_t total = ((len + 9 + 63) / 64) * 64;
   size_t i, j;
-  // allocate padded message on stack-friendly heap (ROM is 1MiB, fine)
-  // Use a simple dynamic buffer via static chunk processing to avoid big malloc in header-only style:
-  // Here we process incrementally.
   uint32_t w[64];
   uint8_t block[64];
-  size_t block_len = 0;
-  size_t pos = 0;
-  uint32_t a,b,c,d,e,f,g,hh,t1,t2;
-  // helper to process one 64-byte block
-  // We iterate over padded stream via a getter
-  size_t total = ((len + 9 + 63) / 64) * 64;
   for (i = 0; i < total; i += 64) {
     for (j = 0; j < 64; j++) {
       size_t idx = i + j;
-      uint8_t v;
-      if (idx < len) v = data[idx];
-      else if (idx == len) v = 0x80;
-      else if (idx >= total - 8) v = (uint8_t)(bitlen >> ((total - 1 - idx) * 8));
-      else v = 0;
-      block[j] = v;
+      if (idx < len) block[j] = data[idx];
+      else if (idx == len) block[j] = 0x80;
+      else if (idx >= total - 8) block[j] = (uint8_t)(bitlen >> ((total - 1 - idx) * 8));
+      else block[j] = 0;
     }
-    for (j = 0; j < 16; j++) w[j] = ((uint32_t)block[j*4]<<24)|((uint32_t)block[j*4+1]<<16)|((uint32_t)block[j*4+2]<<8)|(uint32_t)block[j*4+3];
-    for (j = 16; j < 64; j++) w[j] = SIG1(w[j-2]) + w[j-7] + SIG0(w[j-15]) + w[j-16];
-    a=h[0];b=h[1];c=h[2];d=h[3];e=h[4];f=h[5];g=h[6];hh=h[7];
-    for (j = 0; j < 64; j++) { t1 = hh + EP1(e) + CH(e,f,g) + K[j] + w[j]; t2 = EP0(a) + MAJ(a,b,c); hh=g;g=f;f=e;e=d+t1;d=c;c=b;b=a;a=t1+t2; }
-    h[0]+=a;h[1]+=b;h[2]+=c;h[3]+=d;h[4]+=e;h[5]+=f;h[6]+=g;h[7]+=hh;
-    (void)pos; (void)block_len; (void)new_len; (void)msg;
+    for (j = 0; j < 16; j++)
+      w[j] = ((uint32_t)block[j*4] << 24) | ((uint32_t)block[j*4+1] << 16) |
+             ((uint32_t)block[j*4+2] << 8) | (uint32_t)block[j*4+3];
+    for (j = 16; j < 64; j++)
+      w[j] = SIG1(w[j-2]) + w[j-7] + SIG0(w[j-15]) + w[j-16];
+    {
+      uint32_t a=h[0],b=h[1],c=h[2],d=h[3],e=h[4],f=h[5],g=h[6],hh=h[7];
+      for (j = 0; j < 64; j++) {
+        uint32_t t1 = hh + EP1(e) + CH(e,f,g) + K[j] + w[j];
+        uint32_t t2 = EP0(a) + MAJ(a,b,c);
+        hh=g; g=f; f=e; e=d+t1; d=c; c=b; b=a; a=t1+t2;
+      }
+      h[0]+=a; h[1]+=b; h[2]+=c; h[3]+=d; h[4]+=e; h[5]+=f; h[6]+=g; h[7]+=hh;
+    }
   }
-  for (i = 0; i < 8; i++) { out[i*4]=(uint8_t)(h[i]>>24); out[i*4+1]=(uint8_t)(h[i]>>16); out[i*4+2]=(uint8_t)(h[i]>>8); out[i*4+3]=(uint8_t)h[i]; }
+  for (i = 0; i < 8; i++) {
+    out[i*4]=(uint8_t)(h[i]>>24); out[i*4+1]=(uint8_t)(h[i]>>16);
+    out[i*4+2]=(uint8_t)(h[i]>>8); out[i*4+3]=(uint8_t)h[i];
+  }
 }

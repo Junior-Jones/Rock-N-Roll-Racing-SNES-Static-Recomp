@@ -1,5 +1,5 @@
-#ifndef RNR_APP_CORE_LINUX_H
-#define RNR_APP_CORE_LINUX_H
+#ifndef RNR_APP_CORE_H
+#define RNR_APP_CORE_H
 
 #include "rnr_static_recomp.h"
 
