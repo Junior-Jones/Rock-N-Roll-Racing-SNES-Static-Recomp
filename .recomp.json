@@ -27,5 +27,8 @@
       "url": "https://github.com/Junior-Jones/Rock-N-Roll-Racing-SNES-Static-Recomp/blob/main/README.txt"
     }
   ],
-  "notes": "Provides a native Windows launcher, ahead-of-time game and audio execution, and five full-machine snapshot slots. No further work is currently planned."
+  "notes": "Provides a native Windows launcher, ahead-of-time game and audio execution, and five full-machine snapshot slots. No further work is currently planned.",
+  "tags": [
+    "Racing"
+  ]
 }
